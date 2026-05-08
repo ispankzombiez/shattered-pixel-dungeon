@@ -59,7 +59,7 @@ public class PetStatsTab extends Group {
 		statSlot(Messages.get(this, "health"), pet.HP + "/" + pet.HT);
 		statSlot(Messages.get(this, "kills"), Integer.toString(pet.kills));
 		if (pet.petLevel < 20) {
-			statSlot(Messages.get(this, "exp"), pet.experience + "/" + (2 * pet.petLevel * pet.petLevel));
+			statSlot(Messages.get(this, "exp"), pet.experience + "/" + expRequiredForNextLevel(pet));
 		} else {
 			statSlot(Messages.get(this, "exp"), Messages.get(this, "max"));
 		}
@@ -103,8 +103,16 @@ public class PetStatsTab extends Group {
 			return Messages.get(this, "ready");
 		}
 
-		int turns = (int) Math.ceil(pet.cooldown / (double) Math.max(1, pet.petLevel * pet.petLevel));
+		int turns = (int) Math.ceil(pet.cooldown / (double) cooldownRate(pet));
 		return Messages.get(this, "turns", turns);
+	}
+
+	private int expRequiredForNextLevel( EggPet pet ) {
+		return 2 * pet.petLevel * pet.petLevel;
+	}
+
+	private int cooldownRate( EggPet pet ) {
+		return Math.max(1, pet.petLevel * pet.petLevel);
 	}
 
 	private void statSlot( String label, String value ) {
