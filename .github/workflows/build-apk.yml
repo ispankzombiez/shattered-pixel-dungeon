@@ -48,15 +48,16 @@ jobs:
             echo "SIGNING_STORE_PASS=$RELEASE_KEYSTORE_PASSWORD" >> "$GITHUB_ENV"
             echo "SIGNING_KEY_PASS=$RELEASE_KEY_PASSWORD" >> "$GITHUB_ENV"
           else
+            # PKCS12 keystores do not support separate store/key passwords;
+            # keytool silently ignores -keypass and uses storepass for both.
+            # Use a single password to avoid a mismatch when apksigner opens the key.
             STORE_PASS="$(openssl rand -hex 16)"
-            KEY_PASS="$(openssl rand -hex 16)"
             echo "::add-mask::$STORE_PASS"
-            echo "::add-mask::$KEY_PASS"
             keytool -genkeypair -v \
               -keystore /tmp/ci-signing.keystore \
               -storepass "$STORE_PASS" \
               -alias ci-signing-key \
-              -keypass "$KEY_PASS" \
+              -keypass "$STORE_PASS" \
               -dname "CN=CI,O=Shattered Pixel Dungeon,C=US" \
               -keyalg RSA \
               -keysize 4096 \
@@ -64,7 +65,7 @@ jobs:
             echo "SIGNING_KEYSTORE=/tmp/ci-signing.keystore" >> "$GITHUB_ENV"
             echo "SIGNING_KEY_ALIAS=ci-signing-key" >> "$GITHUB_ENV"
             echo "SIGNING_STORE_PASS=$STORE_PASS" >> "$GITHUB_ENV"
-            echo "SIGNING_KEY_PASS=$KEY_PASS" >> "$GITHUB_ENV"
+            echo "SIGNING_KEY_PASS=$STORE_PASS" >> "$GITHUB_ENV"
           fi
 
       - name: Sign release APK
