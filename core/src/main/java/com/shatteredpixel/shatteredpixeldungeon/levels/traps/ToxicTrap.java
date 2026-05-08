@@ -22,6 +22,7 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels.traps;
 
 import com.shatteredpixel.shatteredpixeldungeon.Assets;
+import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
 import com.shatteredpixel.shatteredpixeldungeon.actors.blobs.Blob;
 import com.shatteredpixel.shatteredpixeldungeon.actors.blobs.ToxicGas;
@@ -42,7 +43,7 @@ public class ToxicTrap extends Trap{
 	@Override
 	public void activate() {
 
-		Heap heap = com.shatteredpixel.shatteredpixeldungeon.Dungeon.level.heaps.get(pos);
+		Heap heap = Dungeon.level.heaps.get(pos);
 		if (heap != null) heap.poison();
 
 		GameScene.add( Blob.seed( pos, 300 + 20 * scalingDepth(), ToxicGas.class ) );
