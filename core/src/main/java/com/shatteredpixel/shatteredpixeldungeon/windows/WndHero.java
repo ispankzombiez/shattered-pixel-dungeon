@@ -59,6 +59,7 @@ public class WndHero extends WndTabbed {
 	
 	private StatsTab stats;
 	private TalentsTab talents;
+	private PetStatsTab pet;
 	private BuffsTab buffs;
 
 	public static int lastIdx = 0;
@@ -75,6 +76,12 @@ public class WndHero extends WndTabbed {
 		talents = new TalentsTab();
 		add(talents);
 		talents.setRect(0, 0, WIDTH, HEIGHT);
+
+		boolean hasPet = Dungeon.hero.hasEggPet();
+		if (hasPet) {
+			pet = new PetStatsTab(Dungeon.hero, WIDTH);
+			add(pet);
+		}
 
 		buffs = new BuffsTab();
 		add( buffs );
@@ -101,10 +108,19 @@ public class WndHero extends WndTabbed {
 				talents.visible = talents.active = selected;
 			}
 		} );
+		if (hasPet) {
+			add( new IconTab( Icons.get(Icons.SNAKE) ) {
+				protected void select( boolean value ) {
+					super.select( value );
+					if (selected) lastIdx = 2;
+					pet.visible = pet.active = selected;
+				}
+			} );
+		}
 		add( new IconTab( Icons.get(Icons.BUFFS) ) {
 			protected void select( boolean value ) {
 				super.select( value );
-				if (selected) lastIdx = 2;
+				if (selected) lastIdx = hasPet ? 3 : 2;
 				buffs.visible = buffs.active = selected;
 			}
 		} );
@@ -115,6 +131,8 @@ public class WndHero extends WndTabbed {
 		talents.pane.scrollTo(0, talents.pane.content().height() - talents.pane.height());
 		talents.layout();
 
+		int tabCount = hasPet ? 4 : 3;
+		if (lastIdx >= tabCount) lastIdx = 0;
 		select( lastIdx );
 	}
 
