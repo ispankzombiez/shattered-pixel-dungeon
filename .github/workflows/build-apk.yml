@@ -32,11 +32,37 @@ jobs:
       - name: Build release APK
         run: ./gradlew android:assembleRelease
 
+      - name: Create signing keystore
+        run: |
+          keytool -genkeypair -v \
+            -keystore /tmp/ci-signing.keystore \
+            -storepass android \
+            -alias ci-signing-key \
+            -keypass android \
+            -dname "CN=CI,O=Shattered Pixel Dungeon,C=US" \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 10000
+
+      - name: Sign release APK
+        run: |
+          UNSIGNED_APK=android/build/outputs/apk/release/android-release-unsigned.apk
+          SIGNED_APK=android/build/outputs/apk/release/android-release-signed.apk
+          BUILD_TOOLS_DIR=$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n1)
+          "$BUILD_TOOLS_DIR/apksigner" sign \
+            --ks /tmp/ci-signing.keystore \
+            --ks-key-alias ci-signing-key \
+            --ks-pass pass:android \
+            --key-pass pass:android \
+            --out "$SIGNED_APK" \
+            "$UNSIGNED_APK"
+          "$BUILD_TOOLS_DIR/apksigner" verify "$SIGNED_APK"
+
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: android-release-apk
-          path: android/build/outputs/apk/release/android-release-unsigned.apk
+          path: android/build/outputs/apk/release/android-release-signed.apk
 
       - name: Get version name
         id: version
@@ -54,4 +80,4 @@ jobs:
           draft: false
           prerelease: false
           make_latest: true
-          files: android/build/outputs/apk/release/android-release-unsigned.apk
+          files: android/build/outputs/apk/release/android-release-signed.apk
