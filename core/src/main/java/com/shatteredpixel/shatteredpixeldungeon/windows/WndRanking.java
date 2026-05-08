@@ -61,6 +61,7 @@ import com.watabou.noosa.ui.Component;
 import com.watabou.utils.DeviceCompat;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class WndRanking extends WndTabbed {
@@ -108,22 +109,30 @@ public class WndRanking extends WndTabbed {
 	private void createControls() {
 
 		if (Dungeon.hero != null) {
-			Icons[] icons =
-					{Icons.RANKINGS, Icons.TALENT, Icons.BACKPACK_LRG, Icons.BADGES, Icons.CHALLENGE_COLOR};
-			Group[] pages =
-					{new StatsTab(), new TalentsTab(), new ItemsTab(), new BadgesTab(), null};
+			ArrayList<Icons> icons = new ArrayList<>();
+			ArrayList<Group> pages = new ArrayList<>();
 
-			if (Dungeon.challenges != 0) pages[4] = new ChallengesTab();
+			icons.add(Icons.RANKINGS);
+			pages.add(new StatsTab());
+			icons.add(Icons.TALENT);
+			pages.add(new TalentsTab());
+			if (Dungeon.hero.hasEggPet()) {
+				icons.add(Icons.SNAKE);
+				pages.add(new PetStatsTab(Dungeon.hero, WIDTH));
+			}
+			icons.add(Icons.BACKPACK_LRG);
+			pages.add(new ItemsTab());
+			icons.add(Icons.BADGES);
+			pages.add(new BadgesTab());
+			if (Dungeon.challenges != 0) {
+				icons.add(Icons.CHALLENGE_COLOR);
+				pages.add(new ChallengesTab());
+			}
 
-			for (int i = 0; i < pages.length; i++) {
+			for (int i = 0; i < pages.size(); i++) {
+				add(pages.get(i));
 
-				if (pages[i] == null) {
-					break;
-				}
-
-				add(pages[i]);
-
-				Tab tab = new RankingTab(icons[i], pages[i]);
+				Tab tab = new RankingTab(icons.get(i), pages.get(i));
 				add(tab);
 			}
 
