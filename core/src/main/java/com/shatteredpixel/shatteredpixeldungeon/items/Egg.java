@@ -127,13 +127,13 @@ public class Egg extends Item {
     public void onSummon(){ summons++; }
 
     @Override
-    public boolean doPickUp(Hero hero) {
+    public boolean doPickUp(Hero hero, int pos) {
         GLog.w(Messages.get(Egg.class, "warm"));
         Egg egg = hero.belongings.getItem(Egg.class);
         if (egg != null && egg != this) {
             GLog.w(Messages.get(Egg.class, "only_one"));
         }
-        return super.doPickUp(hero);
+        return super.doPickUp(hero, pos);
     }
 
     @Override

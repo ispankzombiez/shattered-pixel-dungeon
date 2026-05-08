@@ -46,6 +46,7 @@ import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.CharSprite;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.MobSprite;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.ScorpioSprite;
 import com.shatteredpixel.shatteredpixeldungeon.utils.GLog;
 import com.watabou.noosa.TextureFilm;
 import com.watabou.noosa.audio.Sample;
@@ -332,7 +333,7 @@ public abstract class EggPet extends DirectableAlly {
             flying = true;
             cooldown = 1000;
         }
-        @Override protected float attackDelay() { return 0.8f; }
+        @Override public float attackDelay() { return 0.8f; }
         @Override public void adjustStats(int level) { petLevel = level; HT = Math.max(1, level) * 14; defenseSkill = 5 + level*level; }
         @Override public int attackSkill(Char target) { return defenseSkill; }
         @Override public int damageRoll() { return Random.NormalIntRange(HT/5, HT/2); }
@@ -347,7 +348,7 @@ public abstract class EggPet extends DirectableAlly {
             flying = true;
             cooldown = 1000;
         }
-        @Override protected float attackDelay() { return 0.8f; }
+        @Override public float attackDelay() { return 0.8f; }
         @Override public void adjustStats(int level) { petLevel = level; HT = Math.max(1, level) * 10; defenseSkill = 5 + level*level; }
         @Override public int attackSkill(Char target) { return defenseSkill; }
         @Override public int damageRoll() { return Random.NormalIntRange(HT/5, HT/2); }
@@ -363,7 +364,7 @@ public abstract class EggPet extends DirectableAlly {
             flying = true;
             cooldown = 1000;
         }
-        @Override protected float attackDelay() { return 0.5f; }
+        @Override public float attackDelay() { return 0.5f; }
         @Override public void adjustStats(int level) { petLevel = level; HT = Math.max(1, level) * 8; defenseSkill = 5 + level*level; }
         @Override public int attackSkill(Char target) { return defenseSkill; }
         @Override public int damageRoll() { return Random.NormalIntRange(defenseSkill/2, defenseSkill); }
