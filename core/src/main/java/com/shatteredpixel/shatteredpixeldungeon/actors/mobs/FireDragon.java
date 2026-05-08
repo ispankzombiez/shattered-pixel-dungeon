@@ -35,6 +35,8 @@ import com.watabou.utils.Random;
 
 public class FireDragon extends DirectableAlly {
 
+// Baseline stats used before initAsPet() is called (i.e. if somehow created without hatching).
+// initAsPet() overwrites these with depth-scaled values.
 {
 spriteClass = ElementalSprite.Fire.class;
 
@@ -49,6 +51,7 @@ properties.add(Property.INORGANIC);
 
 private boolean petInitialized = false;
 
+/** Scales stats to the current dungeon depth, called by FireDragonEgg on hatch. */
 public void initAsPet() {
 petInitialized = true;
 int regionScale = Math.max(2, (1 + Dungeon.scalingDepth() / 5));
@@ -75,7 +78,8 @@ return super.drRoll() + Random.NormalIntRange(0, 3);
 
 @Override
 protected boolean act() {
-// slow passive regeneration, mirroring RedDragon's regen mechanic
+// ~10% chance per turn to regenerate 1 HP, giving ~1 HP/10 turns on average.
+// Mirrors the regen mechanic from Sprouted PD's RedDragon.
 if (HP < HT && Random.Float() < 0.1f) {
 HP = Math.min(HP + 1, HT);
 }

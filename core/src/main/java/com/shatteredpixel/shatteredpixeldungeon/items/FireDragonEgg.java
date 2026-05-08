@@ -43,6 +43,7 @@ public class FireDragonEgg extends Item {
 	public static final String AC_CRACK = "CRACK";
 
 	{
+		// Reuse the EASTER_EGG sprite (egg-shaped), as no dedicated dragon egg sprite exists.
 		image = ItemSpriteSheet.EASTER_EGG;
 
 		defaultAction = AC_CRACK;
