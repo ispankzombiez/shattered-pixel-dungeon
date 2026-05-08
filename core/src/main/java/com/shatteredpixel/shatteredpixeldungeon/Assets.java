@@ -327,6 +327,9 @@ public class Assets {
 		public static final String LOTUS    = "sprites/lotus.png";
 		public static final String NINJA_LOG        = "sprites/ninja_log.png";
 		public static final String SPIRIT_HAWK      = "sprites/spirit_hawk.png";
+		public static final String PET_DRAGON       = "sprites/pet_dragon.png";
+		public static final String FAIRY            = "sprites/fairy.png";
+		public static final String VELOCIROOSTER    = "sprites/velocirooster.png";
 		public static final String RED_SENTRY       = "sprites/red_sentry.png";
 		public static final String CRYSTAL_WISP     = "sprites/crystal_wisp.png";
 		public static final String CRYSTAL_GUARDIAN = "sprites/crystal_guardian.png";

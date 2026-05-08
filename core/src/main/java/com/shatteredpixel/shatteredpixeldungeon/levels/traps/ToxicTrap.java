@@ -27,6 +27,7 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.blobs.Blob;
 import com.shatteredpixel.shatteredpixeldungeon.actors.blobs.ToxicGas;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
+import com.shatteredpixel.shatteredpixeldungeon.items.Heap;
 import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.PathFinder;
@@ -40,6 +41,9 @@ public class ToxicTrap extends Trap{
 
 	@Override
 	public void activate() {
+
+		Heap heap = com.shatteredpixel.shatteredpixeldungeon.Dungeon.level.heaps.get(pos);
+		if (heap != null) heap.poison();
 
 		GameScene.add( Blob.seed( pos, 300 + 20 * scalingDepth(), ToxicGas.class ) );
 		Sample.INSTANCE.play(Assets.Sounds.GAS);

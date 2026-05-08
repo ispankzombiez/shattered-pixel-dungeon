@@ -25,6 +25,7 @@ import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
+import com.shatteredpixel.shatteredpixeldungeon.items.Heap;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfTeleportation;
 import com.shatteredpixel.shatteredpixeldungeon.journal.Bestiary;
 import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
@@ -44,6 +45,9 @@ public class SummoningTrap extends Trap {
 
 	@Override
 	public void activate() {
+
+		Heap heap = Dungeon.level.heaps.get(pos);
+		if (heap != null) heap.summon();
 
 		int nMobs = 1;
 		if (Random.Int( 2 ) == 0) {

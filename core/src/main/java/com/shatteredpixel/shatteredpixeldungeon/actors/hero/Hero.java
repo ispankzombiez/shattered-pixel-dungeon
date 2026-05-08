@@ -76,6 +76,7 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.hero.spells.HolyWard;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.spells.HolyWeapon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.spells.Smite;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mimic;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.EggPet;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Monk;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Snake;
@@ -87,6 +88,7 @@ import com.shatteredpixel.shatteredpixeldungeon.effects.SpellSprite;
 import com.shatteredpixel.shatteredpixeldungeon.effects.Splash;
 import com.shatteredpixel.shatteredpixeldungeon.items.Ankh;
 import com.shatteredpixel.shatteredpixeldungeon.items.Dewdrop;
+import com.shatteredpixel.shatteredpixeldungeon.items.Egg;
 import com.shatteredpixel.shatteredpixeldungeon.items.EquipableItem;
 import com.shatteredpixel.shatteredpixeldungeon.items.Heap;
 import com.shatteredpixel.shatteredpixeldungeon.items.Heap.Type;
@@ -183,6 +185,7 @@ import com.watabou.utils.GameMath;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Point;
 import com.watabou.utils.Random;
+import com.watabou.utils.Reflection;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -214,6 +217,13 @@ public class Hero extends Char {
 	private int defenseSkill = 5;
 
 	public boolean ready = false;
+	public Class<? extends EggPet> eggPetClass = null;
+	public int eggPetHP = 0;
+	public int eggPetLevel = 0;
+	public int eggPetKills = 0;
+	public int eggPetExperience = 0;
+	public int eggPetCooldown = 0;
+	public int eggPetGoaways = 0;
 	public boolean damageInterrupt = true;
 	public HeroAction curAction = null;
 	public HeroAction lastAction = null;
@@ -295,6 +305,13 @@ public class Hero extends Char {
 	private static final String LEVEL		= "lvl";
 	private static final String EXPERIENCE	= "exp";
 	private static final String HTBOOST     = "htboost";
+	private static final String EGG_PET_CLASS = "egg_pet_class";
+	private static final String EGG_PET_HP = "egg_pet_hp";
+	private static final String EGG_PET_LEVEL = "egg_pet_level";
+	private static final String EGG_PET_KILLS = "egg_pet_kills";
+	private static final String EGG_PET_EXP = "egg_pet_exp";
+	private static final String EGG_PET_COOLDOWN = "egg_pet_cooldown";
+	private static final String EGG_PET_GOAWAYS = "egg_pet_goaways";
 	
 	@Override
 	public void storeInBundle( Bundle bundle ) {
@@ -315,6 +332,15 @@ public class Hero extends Char {
 		bundle.put( EXPERIENCE, exp );
 		
 		bundle.put( HTBOOST, HTBoost );
+		if (eggPetClass != null) {
+			bundle.put(EGG_PET_CLASS, eggPetClass);
+			bundle.put(EGG_PET_HP, eggPetHP);
+			bundle.put(EGG_PET_LEVEL, eggPetLevel);
+			bundle.put(EGG_PET_KILLS, eggPetKills);
+			bundle.put(EGG_PET_EXP, eggPetExperience);
+			bundle.put(EGG_PET_COOLDOWN, eggPetCooldown);
+			bundle.put(EGG_PET_GOAWAYS, eggPetGoaways);
+		}
 
 		belongings.storeInBundle( bundle );
 	}
@@ -338,6 +364,15 @@ public class Hero extends Char {
 		defenseSkill = bundle.getInt( DEFENSE );
 		
 		STR = bundle.getInt( STRENGTH );
+		if (bundle.contains(EGG_PET_CLASS)) {
+			eggPetClass = bundle.getClass(EGG_PET_CLASS);
+			eggPetHP = bundle.getInt(EGG_PET_HP);
+			eggPetLevel = bundle.getInt(EGG_PET_LEVEL);
+			eggPetKills = bundle.getInt(EGG_PET_KILLS);
+			eggPetExperience = bundle.getInt(EGG_PET_EXP);
+			eggPetCooldown = bundle.getInt(EGG_PET_COOLDOWN);
+			eggPetGoaways = bundle.getInt(EGG_PET_GOAWAYS);
+		}
 
 		belongings.restoreFromBundle( bundle );
 	}
@@ -827,9 +862,88 @@ public class Hero extends Char {
 		next();
 	}
 	
+	public EggPet activeEggPet(){
+		for (Char ch : Actor.chars()) {
+			if (ch instanceof EggPet) return (EggPet) ch;
+		}
+		return null;
+	}
+
+	public boolean hasEggPet(){
+		return eggPetClass != null || activeEggPet() != null;
+	}
+
+	public void syncEggPet(EggPet pet){
+		eggPetClass = pet.getClass();
+		eggPetHP = pet.HP;
+		eggPetLevel = pet.petLevel;
+		eggPetKills = pet.kills;
+		eggPetExperience = pet.experience;
+		eggPetCooldown = pet.cooldown;
+		eggPetGoaways = pet.goaways;
+	}
+
+	public void setEggPet(Class<? extends EggPet> petClass, EggPet pet){
+		eggPetClass = petClass;
+		syncEggPet(pet);
+	}
+
+	public void clearEggPet(){
+		eggPetClass = null;
+		eggPetHP = 0;
+		eggPetLevel = 0;
+		eggPetKills = 0;
+		eggPetExperience = 0;
+		eggPetCooldown = 0;
+		eggPetGoaways = 0;
+	}
+
+	public void prepareEggPetForTransition(){
+		EggPet pet = activeEggPet();
+		if (pet != null){
+			syncEggPet(pet);
+			Actor.remove(pet);
+			Dungeon.level.mobs.remove(pet);
+			if (pet.sprite != null){
+				pet.sprite.killAndErase();
+				pet.sprite = null;
+			}
+			pet.clearTime();
+		}
+	}
+
+	public void restoreEggPetToLevel(){
+		if (eggPetClass == null || activeEggPet() != null) return;
+		EggPet pet = Reflection.newInstance(eggPetClass);
+		if (pet == null) return;
+		pet.restoreHeroState(this);
+		ArrayList<Integer> spawnPoints = new ArrayList<>();
+		for (int n : PathFinder.NEIGHBOURS8){
+			int p = pos + n;
+			if (Actor.findChar(p) == null && (Dungeon.level.passable[p] || (pet.flying && Dungeon.level.avoid[p]))){
+				spawnPoints.add(p);
+			}
+		}
+		if (spawnPoints.isEmpty()) return;
+		pet.pos = Random.element(spawnPoints);
+		GameScene.add(pet);
+		Dungeon.level.occupyCell(pet);
+		pet.clearDefensingPos();
+		syncEggPet(pet);
+	}
+
 	@Override
 	public boolean act() {
 		
+		for (Item item : belongings) {
+			if (item instanceof Egg) ((Egg) item).onCarriedTurn();
+		}
+		EggPet activeEggPet = activeEggPet();
+		if (activeEggPet != null) {
+			syncEggPet(activeEggPet);
+		} else if (eggPetClass != null) {
+			restoreEggPetToLevel();
+		}
 		//calls to dungeon.observe will also update hero's local FOV.
 		fieldOfView = Dungeon.level.heroFOV;
 

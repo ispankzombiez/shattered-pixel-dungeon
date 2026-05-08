@@ -220,7 +220,10 @@ public class Heap implements Bundlable {
 		boolean evaporated = false;
 		
 		for (Item item : items.toArray( new Item[0] )) {
-			if (item instanceof Scroll && !item.unique) {
+			if (item instanceof Egg) {
+				((Egg) item).onBurn();
+				burnt = true;
+			} else if (item instanceof Scroll && !item.unique) {
 				items.remove( item );
 				burnt = true;
 			} else if (item instanceof Dewdrop) {
@@ -323,7 +326,10 @@ public class Heap implements Bundlable {
 		
 		boolean frozen = false;
 		for (Item item : items.toArray( new Item[0] )) {
-			if (item instanceof MysteryMeat) {
+			if (item instanceof Egg) {
+				((Egg) item).onFreeze();
+				frozen = true;
+			} else if (item instanceof MysteryMeat) {
 				replace( item, FrozenCarpaccio.cook( (MysteryMeat)item ) );
 				frozen = true;
 			} else if (item instanceof Potion && !item.unique) {
@@ -344,6 +350,27 @@ public class Heap implements Bundlable {
 		}
 	}
 	
+
+	public void poison() {
+		if (type != Type.HEAP) return;
+		for (Item item : items.toArray(new Item[0])) {
+			if (item instanceof Egg) ((Egg) item).onPoison();
+		}
+	}
+
+	public void lit() {
+		if (type != Type.HEAP) return;
+		for (Item item : items.toArray(new Item[0])) {
+			if (item instanceof Egg) ((Egg) item).onLit();
+		}
+	}
+
+	public void summon() {
+		if (type != Type.HEAP) return;
+		for (Item item : items.toArray(new Item[0])) {
+			if (item instanceof Egg) ((Egg) item).onSummon();
+		}
+	}
 	public static void burnFX( int pos ) {
 		CellEmitter.get( pos ).burst( ElmoParticle.FACTORY, 6 );
 		Sample.INSTANCE.play( Assets.Sounds.BURNING );
