@@ -174,8 +174,12 @@ public abstract class EggPet extends DirectableAlly {
     @Override
     public boolean interact(Char c) {
         if (c == Dungeon.hero) {
-            followHero();
-            return true;
+            if (Dungeon.level.adjacent(pos, c.pos)) {
+                return super.interact(c);
+            } else {
+                followHero();
+                return true;
+            }
         }
         return super.interact(c);
     }
