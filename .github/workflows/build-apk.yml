@@ -32,11 +32,71 @@ jobs:
       - name: Build release APK
         run: ./gradlew android:assembleRelease
 
+      - name: Prepare signing keystore
+        env:
+          RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
+          RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
+          RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+          RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
+        run: |
+          if [ -n "$RELEASE_KEYSTORE_BASE64" ] && [ -n "$RELEASE_KEYSTORE_PASSWORD" ] && [ -n "$RELEASE_KEY_ALIAS" ] && [ -n "$RELEASE_KEY_PASSWORD" ]; then
+            echo "$RELEASE_KEYSTORE_BASE64" | base64 --decode > /tmp/ci-signing.keystore
+            echo "::add-mask::$RELEASE_KEYSTORE_PASSWORD"
+            echo "::add-mask::$RELEASE_KEY_PASSWORD"
+            echo "SIGNING_KEYSTORE=/tmp/ci-signing.keystore" >> "$GITHUB_ENV"
+            echo "SIGNING_KEY_ALIAS=$RELEASE_KEY_ALIAS" >> "$GITHUB_ENV"
+            echo "SIGNING_STORE_PASS=$RELEASE_KEYSTORE_PASSWORD" >> "$GITHUB_ENV"
+            echo "SIGNING_KEY_PASS=$RELEASE_KEY_PASSWORD" >> "$GITHUB_ENV"
+          else
+            # PKCS12 keystores do not support separate store/key passwords;
+            # keytool silently ignores -keypass and uses storepass for both.
+            # Use a single password to avoid a mismatch when apksigner opens the key.
+            STORE_PASS="$(openssl rand -hex 16)"
+            echo "::add-mask::$STORE_PASS"
+            keytool -genkeypair -v \
+              -keystore /tmp/ci-signing.keystore \
+              -storepass "$STORE_PASS" \
+              -alias ci-signing-key \
+              -keypass "$STORE_PASS" \
+              -dname "CN=CI,O=Shattered Pixel Dungeon,C=US" \
+              -keyalg RSA \
+              -keysize 4096 \
+              -validity 10000
+            echo "SIGNING_KEYSTORE=/tmp/ci-signing.keystore" >> "$GITHUB_ENV"
+            echo "SIGNING_KEY_ALIAS=ci-signing-key" >> "$GITHUB_ENV"
+            echo "SIGNING_STORE_PASS=$STORE_PASS" >> "$GITHUB_ENV"
+            echo "SIGNING_KEY_PASS=$STORE_PASS" >> "$GITHUB_ENV"
+          fi
+
+      - name: Sign release APK
+        run: |
+          UNSIGNED_APK=android/build/outputs/apk/release/android-release-unsigned.apk
+          SIGNED_APK=android/build/outputs/apk/release/android-release-signed.apk
+          APKSIGNER="$(command -v apksigner || true)"
+          if [ -z "$APKSIGNER" ]; then
+            LATEST_BUILD_TOOLS="$(ls -1d "$ANDROID_HOME"/build-tools/* 2>/dev/null | sort -V | tail -n1 || true)"
+            if [ -n "$LATEST_BUILD_TOOLS" ] && [ -x "$LATEST_BUILD_TOOLS/apksigner" ]; then
+              APKSIGNER="$LATEST_BUILD_TOOLS/apksigner"
+            fi
+          fi
+          if [ -z "$APKSIGNER" ]; then
+            echo "Unable to find apksigner in PATH or \$ANDROID_HOME/build-tools" >&2
+            exit 1
+          fi
+          "$APKSIGNER" sign \
+            --ks "$SIGNING_KEYSTORE" \
+            --ks-key-alias "$SIGNING_KEY_ALIAS" \
+            --ks-pass env:SIGNING_STORE_PASS \
+            --key-pass env:SIGNING_KEY_PASS \
+            --out "$SIGNED_APK" \
+            "$UNSIGNED_APK"
+          "$APKSIGNER" verify "$SIGNED_APK"
+
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: android-release-apk
-          path: android/build/outputs/apk/release/android-release-unsigned.apk
+          path: android/build/outputs/apk/release/android-release-signed.apk
 
       - name: Get version name
         id: version
@@ -54,4 +114,4 @@ jobs:
           draft: false
           prerelease: false
           make_latest: true
-          files: android/build/outputs/apk/release/android-release-unsigned.apk
+          files: android/build/outputs/apk/release/android-release-signed.apk
