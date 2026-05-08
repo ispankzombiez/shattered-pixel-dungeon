@@ -29,14 +29,14 @@ jobs:
       - name: Grant execute permission to gradlew
         run: chmod +x gradlew
 
-      - name: Build debug APK
-        run: ./gradlew android:assembleDebug
+      - name: Build release APK
+        run: ./gradlew android:assembleRelease
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: android-debug-apk
-          path: android/build/outputs/apk/debug/android-debug.apk
+          name: android-release-apk
+          path: android/build/outputs/apk/release/android-release-unsigned.apk
 
       - name: Get version name
         id: version
@@ -49,8 +49,10 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: github.ref_name == 'main' || github.ref_name == 'master'
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           tag_name: v${{ steps.version.outputs.version }}
           name: Shattered Pixel Dungeon v${{ steps.version.outputs.version }}
           draft: false
           prerelease: false
-          files: android/build/outputs/apk/debug/android-debug.apk
+          make_latest: true
+          files: android/build/outputs/apk/release/android-release-unsigned.apk
