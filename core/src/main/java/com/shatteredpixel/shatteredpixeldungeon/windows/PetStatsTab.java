@@ -36,6 +36,7 @@ import com.watabou.utils.Reflection;
 public class PetStatsTab extends Group {
 
 	private static final int GAP = 6;
+	private static final int BUTTON_PADDING = 2;
 
 	private final int width;
 	private float pos;
@@ -68,7 +69,8 @@ public class PetStatsTab extends Group {
 				}
 			}
 		};
-		RedButton btnStay = new RedButton(Messages.get(this, pet.stay ? "release" : "stay")) {
+		boolean stayMode = hero.activeEggPet() != null ? hero.activeEggPet().stay : pet.stay;
+		RedButton btnStay = new RedButton(Messages.get(this, stayMode ? "release" : "stay")) {
 			@Override
 			protected void onClick() {
 				EggPet activePet = hero.activeEggPet();
@@ -83,7 +85,7 @@ public class PetStatsTab extends Group {
 				}
 			}
 		};
-		float buttonHeight = Math.max(btnCall.reqHeight(), btnStay.reqHeight()) + 2;
+		float buttonHeight = Math.max(btnCall.reqHeight(), btnStay.reqHeight()) + BUTTON_PADDING;
 		float buttonWidth = (width - GAP) / 2f;
 		btnCall.setRect(0, pos, buttonWidth, buttonHeight);
 		btnStay.setRect(btnCall.right() + GAP, pos, width - btnCall.width() - GAP, buttonHeight);

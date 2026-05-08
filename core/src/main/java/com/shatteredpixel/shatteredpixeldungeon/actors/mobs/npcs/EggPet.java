@@ -127,21 +127,19 @@ public abstract class EggPet extends DirectableAlly {
 
     @Override
     protected boolean act() {
+        boolean disableAutoAttacks = Dungeon.hero != null && callback;
         if (Dungeon.hero != null) {
             if (callback) {
                 if (Dungeon.level.adjacent(pos, Dungeon.hero.pos)) {
                     callback = false;
+                    disableAutoAttacks = false;
                 } else {
                     followHero();
                 }
-                attacksAutomatically = false;
-            } else {
-                attacksAutomatically = true;
             }
             Dungeon.hero.syncEggPet(this);
-        } else {
-            attacksAutomatically = true;
         }
+        attacksAutomatically = !disableAutoAttacks;
         return super.act();
     }
 
