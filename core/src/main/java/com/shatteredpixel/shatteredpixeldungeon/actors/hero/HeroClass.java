@@ -117,7 +117,7 @@ public enum HeroClass {
 
 		new ScrollOfIdentify().identify();
 
-		new FireDragonEgg().identify().collect();
+		// new FireDragonEgg().identify().collect();
 
 		switch (this) {
 			case WARRIOR:
