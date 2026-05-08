@@ -59,7 +59,7 @@ jobs:
               -keypass "$KEY_PASS" \
               -dname "CN=CI,O=Shattered Pixel Dungeon,C=US" \
               -keyalg RSA \
-              -keysize 2048 \
+              -keysize 4096 \
               -validity 10000
             echo "SIGNING_KEYSTORE=/tmp/ci-signing.keystore" >> "$GITHUB_ENV"
             echo "SIGNING_KEY_ALIAS=ci-signing-key" >> "$GITHUB_ENV"
@@ -73,7 +73,10 @@ jobs:
           SIGNED_APK=android/build/outputs/apk/release/android-release-signed.apk
           APKSIGNER="$(command -v apksigner || true)"
           if [ -z "$APKSIGNER" ]; then
-            APKSIGNER="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort | tail -n1)"
+            LATEST_BUILD_TOOLS="$(ls -1d "$ANDROID_HOME"/build-tools/* 2>/dev/null | sort | tail -n1 || true)"
+            if [ -n "$LATEST_BUILD_TOOLS" ] && [ -x "$LATEST_BUILD_TOOLS/apksigner" ]; then
+              APKSIGNER="$LATEST_BUILD_TOOLS/apksigner"
+            fi
           fi
           if [ -z "$APKSIGNER" ]; then
             echo "Unable to find apksigner in PATH or \$ANDROID_HOME/build-tools" >&2
