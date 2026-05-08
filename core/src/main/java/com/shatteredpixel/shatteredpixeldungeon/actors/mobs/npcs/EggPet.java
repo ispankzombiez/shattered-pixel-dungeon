@@ -139,7 +139,10 @@ public abstract class EggPet extends DirectableAlly {
             }
             Dungeon.hero.syncEggPet(this);
         }
-        attacksAutomatically = !disableAutoAttacks;
+        boolean shouldAutoAttack = !disableAutoAttacks;
+        if (attacksAutomatically != shouldAutoAttack) {
+            attacksAutomatically = shouldAutoAttack;
+        }
         return super.act();
     }
 

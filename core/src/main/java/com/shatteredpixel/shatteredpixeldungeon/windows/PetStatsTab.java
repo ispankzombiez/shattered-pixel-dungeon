@@ -69,7 +69,8 @@ public class PetStatsTab extends Group {
 				}
 			}
 		};
-		boolean stayMode = hero.activeEggPet() != null ? hero.activeEggPet().stay : pet.stay;
+		EggPet activePet = hero.activeEggPet();
+		boolean stayMode = activePet != null && activePet.stay;
 		RedButton btnStay = new RedButton(Messages.get(this, stayMode ? "release" : "stay")) {
 			@Override
 			protected void onClick() {
