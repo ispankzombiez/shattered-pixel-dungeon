@@ -915,7 +915,10 @@ public class Hero extends Char {
 	public void restoreEggPetToLevel(){
 		if (eggPetClass == null || activeEggPet() != null) return;
 		EggPet pet = Reflection.newInstance(eggPetClass);
-		if (pet == null) return;
+		if (pet == null) {
+			GLog.w("Failed to restore egg pet.");
+			return;
+		}
 		pet.restoreHeroState(this);
 		ArrayList<Integer> spawnPoints = new ArrayList<>();
 		for (int n : PathFinder.NEIGHBOURS8){

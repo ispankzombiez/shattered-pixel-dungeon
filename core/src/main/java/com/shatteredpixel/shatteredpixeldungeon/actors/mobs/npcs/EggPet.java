@@ -128,7 +128,8 @@ public abstract class EggPet extends DirectableAlly {
             kills++;
             experience += ((Mob) enemy).EXP;
             enemy = null;
-            if (experience >= petLevel * (petLevel + petLevel) && petLevel < 20) {
+            int expNeeded = 2 * petLevel * petLevel;
+            if (experience >= expNeeded && petLevel < 20) {
                 petLevel++;
                 adjustStats(petLevel);
                 HP = HT;
