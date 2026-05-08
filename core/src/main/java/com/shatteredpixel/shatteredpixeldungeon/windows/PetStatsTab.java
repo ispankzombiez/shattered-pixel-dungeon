@@ -26,6 +26,7 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.EggPet;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.scenes.PixelScene;
 import com.shatteredpixel.shatteredpixeldungeon.ui.Icons;
+import com.shatteredpixel.shatteredpixeldungeon.ui.RedButton;
 import com.shatteredpixel.shatteredpixeldungeon.ui.RenderedTextBlock;
 import com.shatteredpixel.shatteredpixeldungeon.ui.Window;
 import com.watabou.noosa.Group;
@@ -54,6 +55,41 @@ public class PetStatsTab extends Group {
 		add(title);
 
 		pos = title.bottom() + GAP;
+
+		RedButton btnCall = new RedButton(Messages.get(this, "call")) {
+			@Override
+			protected void onClick() {
+				EggPet activePet = hero.activeEggPet();
+				if (activePet != null) {
+					activePet.callback = true;
+					activePet.stay = false;
+					activePet.followHero();
+					hero.syncEggPet(activePet);
+				}
+			}
+		};
+		RedButton btnStay = new RedButton(Messages.get(this, pet.stay ? "release" : "stay")) {
+			@Override
+			protected void onClick() {
+				EggPet activePet = hero.activeEggPet();
+				if (activePet != null) {
+					activePet.stay = !activePet.stay;
+					activePet.callback = false;
+					if (!activePet.stay) {
+						activePet.followHero();
+					}
+					text(Messages.get(PetStatsTab.this, activePet.stay ? "release" : "stay"));
+					hero.syncEggPet(activePet);
+				}
+			}
+		};
+		float buttonHeight = Math.max(btnCall.reqHeight(), btnStay.reqHeight()) + 2;
+		float buttonWidth = (width - GAP) / 2f;
+		btnCall.setRect(0, pos, buttonWidth, buttonHeight);
+		btnStay.setRect(btnCall.right() + GAP, pos, width - btnCall.width() - GAP, buttonHeight);
+		add(btnCall);
+		add(btnStay);
+		pos = btnCall.bottom() + GAP;
 
 		statSlot(Messages.get(this, "attack"), Integer.toString(pet.attackSkill(null)));
 		statSlot(Messages.get(this, "health"), pet.HP + "/" + pet.HT);

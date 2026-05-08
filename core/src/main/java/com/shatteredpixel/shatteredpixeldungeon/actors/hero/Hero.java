@@ -224,6 +224,8 @@ public class Hero extends Char {
 	public int eggPetExperience = 0;
 	public int eggPetCooldown = 0;
 	public int eggPetGoaways = 0;
+	public boolean eggPetCallback = false;
+	public boolean eggPetStay = false;
 	public boolean damageInterrupt = true;
 	public HeroAction curAction = null;
 	public HeroAction lastAction = null;
@@ -312,6 +314,8 @@ public class Hero extends Char {
 	private static final String EGG_PET_EXP = "egg_pet_exp";
 	private static final String EGG_PET_COOLDOWN = "egg_pet_cooldown";
 	private static final String EGG_PET_GOAWAYS = "egg_pet_goaways";
+	private static final String EGG_PET_CALLBACK = "egg_pet_callback";
+	private static final String EGG_PET_STAY = "egg_pet_stay";
 	
 	@Override
 	public void storeInBundle( Bundle bundle ) {
@@ -340,6 +344,8 @@ public class Hero extends Char {
 			bundle.put(EGG_PET_EXP, eggPetExperience);
 			bundle.put(EGG_PET_COOLDOWN, eggPetCooldown);
 			bundle.put(EGG_PET_GOAWAYS, eggPetGoaways);
+			bundle.put(EGG_PET_CALLBACK, eggPetCallback);
+			bundle.put(EGG_PET_STAY, eggPetStay);
 		}
 
 		belongings.storeInBundle( bundle );
@@ -372,6 +378,8 @@ public class Hero extends Char {
 			eggPetExperience = bundle.getInt(EGG_PET_EXP);
 			eggPetCooldown = bundle.getInt(EGG_PET_COOLDOWN);
 			eggPetGoaways = bundle.getInt(EGG_PET_GOAWAYS);
+			eggPetCallback = bundle.getBoolean(EGG_PET_CALLBACK);
+			eggPetStay = bundle.getBoolean(EGG_PET_STAY);
 		}
 
 		belongings.restoreFromBundle( bundle );
@@ -881,6 +889,8 @@ public class Hero extends Char {
 		eggPetExperience = pet.experience;
 		eggPetCooldown = pet.cooldown;
 		eggPetGoaways = pet.goaways;
+		eggPetCallback = pet.callback;
+		eggPetStay = pet.stay;
 	}
 
 	public void setEggPet(Class<? extends EggPet> petClass, EggPet pet){
@@ -896,6 +906,8 @@ public class Hero extends Char {
 		eggPetExperience = 0;
 		eggPetCooldown = 0;
 		eggPetGoaways = 0;
+		eggPetCallback = false;
+		eggPetStay = false;
 	}
 
 	public void prepareEggPetForTransition(){
