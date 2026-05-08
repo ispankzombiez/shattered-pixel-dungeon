@@ -108,11 +108,13 @@ public class PetStatsTab extends Group {
 	}
 
 	private int expRequiredForNextLevel( EggPet pet ) {
-		return 2 * pet.petLevel * pet.petLevel;
+		int level = Math.max(1, pet.petLevel);
+		return 2 * level * level;
 	}
 
 	private int cooldownRate( EggPet pet ) {
-		return Math.max(1, pet.petLevel * pet.petLevel);
+		int level = Math.max(1, pet.petLevel);
+		return level * level;
 	}
 
 	private void statSlot( String label, String value ) {
@@ -121,7 +123,7 @@ public class PetStatsTab extends Group {
 		do {
 			txt = PixelScene.renderTextBlock(label, size);
 			size--;
-		} while (txt.width() >= width * 0.55f);
+		} while (size > 4 && txt.width() >= width * 0.55f);
 		txt.setPos(0, pos + (6 - txt.height()) / 2f);
 		PixelScene.align(txt);
 		add(txt);
@@ -130,7 +132,7 @@ public class PetStatsTab extends Group {
 		do {
 			txt = PixelScene.renderTextBlock(value, size);
 			size--;
-		} while (txt.width() >= width * 0.45f);
+		} while (size > 4 && txt.width() >= width * 0.45f);
 		txt.setPos(width * 0.55f, pos + (6 - txt.height()) / 2f);
 		PixelScene.align(txt);
 		add(txt);
