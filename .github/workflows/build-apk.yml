@@ -73,7 +73,7 @@ jobs:
           SIGNED_APK=android/build/outputs/apk/release/android-release-signed.apk
           APKSIGNER="$(command -v apksigner || true)"
           if [ -z "$APKSIGNER" ]; then
-            LATEST_BUILD_TOOLS="$(ls -1d "$ANDROID_HOME"/build-tools/* 2>/dev/null | sort | tail -n1 || true)"
+            LATEST_BUILD_TOOLS="$(ls -1d "$ANDROID_HOME"/build-tools/* 2>/dev/null | sort -V | tail -n1 || true)"
             if [ -n "$LATEST_BUILD_TOOLS" ] && [ -x "$LATEST_BUILD_TOOLS/apksigner" ]; then
               APKSIGNER="$LATEST_BUILD_TOOLS/apksigner"
             fi
