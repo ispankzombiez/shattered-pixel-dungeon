@@ -604,6 +604,8 @@ public abstract class Level implements Bundlable {
 			GLog.w(Messages.get(Stasis.StasisBuff.class, "left_behind"));
 		}
 
+		Dungeon.hero.prepareEggPetForTransition();
+
 		//spend the hero's partial turns,  so the hero cannot take partial turns between floors
 		Dungeon.hero.spendToWhole();
 		for (Actor a : Actor.all()){
