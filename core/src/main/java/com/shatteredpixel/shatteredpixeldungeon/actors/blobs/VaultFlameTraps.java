@@ -23,6 +23,7 @@ package com.shatteredpixel.shatteredpixeldungeon.actors.blobs;
 
 import com.shatteredpixel.shatteredpixeldungeon.Assets;
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
+import com.shatteredpixel.shatteredpixeldungeon.ShatteredPixelDungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
@@ -117,10 +118,9 @@ public class VaultFlameTraps extends Blob {
 			}
 		}
 
-		long now = System.currentTimeMillis();
-		if (playSfx && SFXLastPlayed + 80 < now) {
+		if (playSfx && SFXLastPlayed + 80 < ShatteredPixelDungeon.realTime) {
 			Sample.INSTANCE.play(Assets.Sounds.BURNING, 0.5f);
-			SFXLastPlayed = now;
+			SFXLastPlayed = ShatteredPixelDungeon.realTime;
 		}
 	}
 
