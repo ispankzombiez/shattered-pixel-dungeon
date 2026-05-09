@@ -37,9 +37,13 @@ import com.watabou.utils.Random;
  */
 public class Gullin extends Gnoll {
 
+	// 60% chance (3 in 5) to drop a NornStone on death, matching Sprouted PD behaviour
+	private static final int NORNSTONE_DROP_CHANCE_IN = 3;
+	private static final int NORNSTONE_DROP_CHANCE_OUT_OF = 5;
+
 	@Override
 	public void die( Object cause ) {
-		if (Random.Int(5) < 3) {
+		if (Random.Int(NORNSTONE_DROP_CHANCE_OUT_OF) < NORNSTONE_DROP_CHANCE_IN) {
 			Generator.Category cat = Dungeon.hero.heroClass == HeroClass.HUNTRESS
 					? Generator.Category.NORNSTONE
 					: Generator.Category.NORNSTONE2;

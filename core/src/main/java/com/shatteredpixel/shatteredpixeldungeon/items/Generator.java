@@ -699,7 +699,10 @@ public class Generator {
 			};
 			NORNSTONE.probs = new float[]{ 2, 2, 2, 2, 2 };
 
-			// NORNSTONE2 is the same pool minus GreenNornStone (used for non-Huntress hero)
+			// NORNSTONE2 is the same pool as NORNSTONE but GreenNornStone has prob 0
+			// (used for non-Huntress heroes). GreenNornStone is kept in the array with
+			// prob 0 rather than omitted, consistent with other zero-prob entries in the
+			// codebase (e.g., Rotberry in SEED, ScrollOfUpgrade in SCROLL).
 			NORNSTONE2.classes = new Class<?>[]{
 					BlueNornStone.class,
 					GreenNornStone.class,
