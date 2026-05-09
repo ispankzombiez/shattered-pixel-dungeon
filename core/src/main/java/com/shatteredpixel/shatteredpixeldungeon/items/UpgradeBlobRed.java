@@ -26,18 +26,18 @@ import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 
 public class UpgradeBlobRed extends UpgradeBlob {
 
-private static final ItemSprite.Glowing RED = new ItemSprite.Glowing(0xFF4444);
+	private static final ItemSprite.Glowing RED = new ItemSprite.Glowing(0xFF4444);
 
-{
-image = ItemSpriteSheet.DEWDROP;
-}
+	{
+		image = ItemSpriteSheet.DEWDROP;
+	}
 
-public UpgradeBlobRed() {
-super(3);
-}
+	public UpgradeBlobRed() {
+		super(3);
+	}
 
-@Override
-public ItemSprite.Glowing glowing() {
-return RED;
-}
+	@Override
+	public ItemSprite.Glowing glowing() {
+		return RED;
+	}
 }

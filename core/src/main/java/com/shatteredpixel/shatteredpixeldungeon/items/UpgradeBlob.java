@@ -38,92 +38,91 @@ import java.util.ArrayList;
 
 public abstract class UpgradeBlob extends Item {
 
-private static final float TIME_TO_UPGRADE = 2f;
-private static final String AC_UPGRADE = "UPGRADE";
+	private static final float TIME_TO_UPGRADE	= 2f;
+	private static final String AC_UPGRADE		= "UPGRADE";
 
-private final int upgrades;
+	private final int upgrades;
 
-protected UpgradeBlob(int upgrades) {
-this.upgrades = upgrades;
-stackable = true;
-bones = true;
-defaultAction = AC_UPGRADE;
-}
+	protected UpgradeBlob(int upgrades) {
+		this.upgrades = upgrades;
+		stackable = true;
+		bones = true;
+		defaultAction = AC_UPGRADE;
+	}
 
-@Override
-public ArrayList<String> actions(Hero hero) {
-ArrayList<String> actions = super.actions(hero);
-actions.add(AC_UPGRADE);
-return actions;
-}
+	@Override
+	public ArrayList<String> actions(Hero hero) {
+		ArrayList<String> actions = super.actions(hero);
+		actions.add(AC_UPGRADE);
+		return actions;
+	}
 
-@Override
-public void execute(Hero hero, String action) {
-super.execute(hero, action);
-if (action.equals(AC_UPGRADE)) {
-curUser = hero;
-GameScene.selectItem(itemSelector);
-}
-}
+	@Override
+	public void execute(Hero hero, String action) {
+		super.execute(hero, action);
+		if (action.equals(AC_UPGRADE)) {
+			curUser = hero;
+			GameScene.selectItem(itemSelector);
+		}
+	}
 
-private void upgrade(Item item) {
-int toApply = Math.max(0, Math.min(upgrades, 15 - item.level()));
-if (toApply <= 0) {
-GLog.w(Messages.get(this, "already_maxed"));
-return;
-}
+	private void upgrade(Item item) {
+		int toApply = Math.max(0, Math.min(upgrades, 15 - item.level()));
+		if (toApply <= 0) {
+			GLog.w(Messages.get(this, "already_maxed"));
+			return;
+		}
 
-detach(curUser.belongings.backpack);
-Catalog.countUse(getClass());
+		detach(curUser.belongings.backpack);
+		Catalog.countUse(getClass());
 
-item.upgrade(toApply);
-Badges.validateItemLevelAquired(item);
-GLog.p(Messages.get(this, "upgraded", item.name()));
+		item.upgrade(toApply);
+		Badges.validateItemLevelAquired(item);
+		GLog.p(Messages.get(this, "upgraded", item.name()));
 
-curUser.sprite.operate(curUser.pos);
-curUser.sprite.emitter().start(Speck.factory(Speck.UP), 0.2f, 3);
-Sample.INSTANCE.play(Assets.Sounds.TELEPORT);
+		curUser.sprite.operate(curUser.pos);
+		curUser.sprite.emitter().start(Speck.factory(Speck.UP), 0.2f, 3);
+		Sample.INSTANCE.play(Assets.Sounds.TELEPORT);
 
-curUser.spendAndNext(TIME_TO_UPGRADE);
-}
+		curUser.spendAndNext(TIME_TO_UPGRADE);
+	}
 
-@Override
-public boolean isUpgradable() {
-return false;
-}
+	@Override
+	public boolean isUpgradable() {
+		return false;
+	}
 
-@Override
-public boolean isIdentified() {
-return true;
-}
+	@Override
+	public boolean isIdentified() {
+		return true;
+	}
 
-@Override
-public int value() {
-return 30 * quantity;
-}
+	@Override
+	public int value() {
+		return 30 * quantity;
+	}
 
-private final WndBag.ItemSelector itemSelector = new WndBag.ItemSelector() {
+	private final WndBag.ItemSelector itemSelector = new WndBag.ItemSelector() {
+		@Override
+		public String textPrompt() {
+			return Messages.get(UpgradeBlob.this, "prompt");
+		}
 
-@Override
-public String textPrompt() {
-return Messages.get(UpgradeBlob.this, "prompt");
-}
+		@Override
+		public Class<? extends Bag> preferredBag() {
+			return Belongings.Backpack.class;
+		}
 
-@Override
-public Class<? extends Bag> preferredBag() {
-return Belongings.Backpack.class;
-}
+		@Override
+		public boolean itemSelectable(Item item) {
+			return item.isUpgradable();
+		}
 
-@Override
-public boolean itemSelectable(Item item) {
-return item.isUpgradable();
-}
-
-@Override
-public void onSelect(Item item) {
-if (item != null) {
-UpgradeBlob.this.upgrade(item);
-}
-}
-};
+		@Override
+		public void onSelect(Item item) {
+			if (item != null) {
+				UpgradeBlob.this.upgrade(item);
+			}
+		}
+	};
 }
