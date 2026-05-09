@@ -71,7 +71,7 @@ public class GoldenJellyMushroom extends Food {
 
 		GLog.w( Messages.get(this, "effect") );
 
-		if (Random.Int(10) == 1) {
+		if (Random.Int(10) == 0) {
 			// 10% rare outcome: stronger root, shorter vertigo
 			for (Mob mob : Dungeon.level.mobs.toArray(new Mob[0])) {
 				Buff.prolong( mob, Roots.class, 20f );

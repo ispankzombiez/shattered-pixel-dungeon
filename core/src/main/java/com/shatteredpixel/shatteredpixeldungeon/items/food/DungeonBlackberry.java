@@ -54,7 +54,7 @@ public class DungeonBlackberry extends Food {
 	protected void satisfy( Hero hero ) {
 		super.satisfy( hero );
 
-		if (Random.Int(10) == 1) {
+		if (Random.Int(10) == 0) {
 			// 10% chance: MindVision + stronger healing burst
 			GLog.w( Messages.get(this, "trippy") );
 			Buff.affect( hero, MindVision.class, MindVision.DURATION );
