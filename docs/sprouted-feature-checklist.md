@@ -4,8 +4,28 @@ This checklist is generated from source comparison between:
 - `dachhack/SproutedPixelDungeon-Gradle` (Sprouted reference)
 - `ispankzombiez/shattered-pixel-dungeon` (current repo)
 
-Each unchecked item is a Sprouted-side feature/class path that does not currently exist as a matching Java path in this Shattered codebase.
-Use this as the implementation tracking list in follow-up updates.
+This checklist primarily tracks **path-level parity** (whether matching class paths exist).
+Use the core backlog below to track **behavior-level parity** work for follow-up updates.
+
+## core map generation parity backlog (behavior, not just class paths)
+
+- [ ] Implement `levels/Layouts.java` with Sprouted-style layout definitions and selection logic.
+- [ ] Implement `levels/MazeLayout.java` maze generation logic (carving, connectivity, and constraints).
+- [ ] Implement `levels/Room.java` as Sprouted map-generation room data (not an empty placeholder).
+- [ ] Wire Sprouted map-generation flow into level creation (generation pipeline integration, not just class presence).
+- [ ] Integrate Sprouted depth/branch routing for generated special maps into `Dungeon.newLevel()` selection.
+- [ ] Replace empty Sprouted generation-adjacent level shells with functional generation logic:
+  - [ ] `levels/BattleLevel.java`
+  - [ ] `levels/CatacombLevel.java`
+  - [ ] `levels/FieldLevel.java`
+  - [ ] `levels/FortressLevel.java`
+  - [ ] `levels/MineLevel.java`
+  - [ ] `levels/TownLevel.java`
+  - [ ] `levels/TownLayouts.java`
+  - [ ] `levels/TenguDenLevel.java`
+  - [ ] `levels/TenguHideoutLevel.java`
+  - [ ] `levels/SokobanLayouts.java`
+  - [ ] `levels/SokobanLayouts2.java`
 
 ## actors → animate
 
