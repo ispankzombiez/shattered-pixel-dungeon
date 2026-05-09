@@ -240,12 +240,12 @@ Use this as the implementation tracking list in follow-up updates.
 - [x] `items/food/Cloudberry.java`
 - [ ] `items/food/DeathCap.java`
 - [ ] `items/food/Earthstar.java`
-- [ ] `items/food/FullMoonberry.java`
+- [x] `items/food/FullMoonberry.java`
 - [x] `items/food/GoldenJelly.java`
 - [ ] `items/food/GoldenNut.java`
 - [ ] `items/food/JackOLantern.java`
 - [x] `items/food/Meat.java`
-- [ ] `items/food/Moonberry.java`
+- [x] `items/food/Moonberry.java`
 - [x] `items/food/Nut.java`
 - [x] `items/food/OverpricedRation.java`
 - [ ] `items/food/PixieParasol.java`

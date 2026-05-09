@@ -51,7 +51,9 @@ import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.TimekeepersHourg
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.UnstableSpellbook;
 import com.shatteredpixel.shatteredpixeldungeon.items.bombs.Bomb;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Food;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.FullMoonberry;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Meat;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.Moonberry;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.MysteryMeat;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Nut;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.OverpricedRation;
@@ -547,7 +549,9 @@ public class Generator {
 					Egg.class,
 					Nut.class,
 					Meat.class,
-					OverpricedRation.class };
+					OverpricedRation.class,
+					Moonberry.class,
+					FullMoonberry.class };
 			FOOD.defaultProbs = new float[]{
 					4,      //Food
 					1,      //Pasty
@@ -555,7 +559,9 @@ public class Generator {
 					0.25f,  //Egg
 					0.25f,  //Nut
 					0,      //Meat
-					0       //OverpricedRation
+					0,      //OverpricedRation
+					0,      //Moonberry
+					0       //FullMoonberry
 			};
 			FOOD.probs = FOOD.defaultProbs.clone();
 			

@@ -63,8 +63,10 @@ import com.shatteredpixel.shatteredpixeldungeon.items.food.Cloudberry;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Food;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.FrozenCarpaccio;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.GoldenJelly;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.FullMoonberry;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Meat;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.MeatPie;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.Moonberry;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.MysteryMeat;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Nut;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.OverpricedRation;
@@ -243,7 +245,8 @@ public enum Catalog {
 				StewedMeat.class, FrozenCarpaccio.class, SmallRation.class, Berry.class,
 				Blackberry.class, Blueberry.class, Cloudberry.class, Nut.class, ToastedNut.class,
 				SupplyRation.class, Blandfruit.class, PhantomMeat.class, MeatPie.class,
-				Meat.class, OverpricedRation.class, GoldenJelly.class );
+				Meat.class, OverpricedRation.class, GoldenJelly.class, Moonberry.class,
+				FullMoonberry.class );
 
 		EXOTIC_POTIONS.addItems(ExoticPotion.exoToReg.keySet().toArray(new Class[0]));
 
