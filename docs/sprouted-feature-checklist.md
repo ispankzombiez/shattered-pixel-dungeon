@@ -7,7 +7,7 @@ This checklist is generated from source comparison between:
 This checklist primarily tracks **path-level parity** (whether matching class paths exist).
 Use the core backlog below to track **behavior-level parity** work for follow-up updates.
 
-## core map generation parity backlog (behavior, not just class paths)
+## Core Map Generation Parity Backlog (behavior, not just class paths)
 
 - [ ] Implement `levels/Layouts.java` with Sprouted-style layout definitions and selection logic.
 - [ ] Implement `levels/MazeLayout.java` maze generation logic (carving, connectivity, and constraints).
