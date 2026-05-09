@@ -548,7 +548,15 @@ public class Generator {
 					Nut.class,
 					Meat.class,
 					OverpricedRation.class };
-			FOOD.defaultProbs = new float[]{ 4, 1, 0, 0.25f, 0.25f, 0, 0 };
+			FOOD.defaultProbs = new float[]{
+					4,      //Food
+					1,      //Pasty
+					0,      //MysteryMeat
+					0.25f,  //Egg
+					0.25f,  //Nut
+					0,      //Meat
+					0       //OverpricedRation
+			};
 			FOOD.probs = FOOD.defaultProbs.clone();
 			
 			RING.classes = new Class<?>[]{
