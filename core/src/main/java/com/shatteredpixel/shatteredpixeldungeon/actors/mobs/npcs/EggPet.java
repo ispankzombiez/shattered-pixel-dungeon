@@ -61,12 +61,16 @@ public abstract class EggPet extends DirectableAlly {
     public int experience = 0;
     public int cooldown = 0;
     public int goaways = 0;
+    public boolean callback = false;
+    public boolean stay = false;
 
     private static final String PET_LEVEL = "pet_level";
     private static final String KILLS = "kills";
     private static final String EXPERIENCE = "experience";
     private static final String COOLDOWN = "cooldown";
     private static final String GOAWAYS = "goaways";
+    private static final String CALLBACK = "callback";
+    private static final String STAY = "stay";
 
     {
         state = HUNTING;
@@ -89,6 +93,8 @@ public abstract class EggPet extends DirectableAlly {
         experience = hero.eggPetExperience;
         cooldown = hero.eggPetCooldown;
         goaways = hero.eggPetGoaways;
+        callback = hero.eggPetCallback;
+        stay = hero.eggPetStay;
         adjustStats(petLevel);
         HP = hero.eggPetHP > 0 ? Math.min(hero.eggPetHP, HT) : HT;
     }
@@ -101,6 +107,8 @@ public abstract class EggPet extends DirectableAlly {
         bundle.put(EXPERIENCE, experience);
         bundle.put(COOLDOWN, cooldown);
         bundle.put(GOAWAYS, goaways);
+        bundle.put(CALLBACK, callback);
+        bundle.put(STAY, stay);
     }
 
     @Override
@@ -111,14 +119,29 @@ public abstract class EggPet extends DirectableAlly {
         experience = bundle.getInt(EXPERIENCE);
         cooldown = bundle.getInt(COOLDOWN);
         goaways = bundle.getInt(GOAWAYS);
+        callback = bundle.getBoolean(CALLBACK);
+        stay = bundle.getBoolean(STAY);
         adjustStats(petLevel);
         HP = Math.min(HP, HT);
     }
 
     @Override
     protected boolean act() {
+        boolean disableAutoAttacks = Dungeon.hero != null && callback;
         if (Dungeon.hero != null) {
+            if (callback) {
+                if (Dungeon.level.adjacent(pos, Dungeon.hero.pos)) {
+                    callback = false;
+                    disableAutoAttacks = false;
+                } else {
+                    followHero();
+                }
+            }
             Dungeon.hero.syncEggPet(this);
+        }
+        boolean shouldAutoAttack = !disableAutoAttacks;
+        if (attacksAutomatically != shouldAutoAttack) {
+            attacksAutomatically = shouldAutoAttack;
         }
         return super.act();
     }
@@ -182,6 +205,14 @@ public abstract class EggPet extends DirectableAlly {
             }
         }
         return super.interact(c);
+    }
+
+    @Override
+    protected boolean getCloser(int target) {
+        if (stay) {
+            return false;
+        }
+        return super.getCloser(target);
     }
 
     @Override
