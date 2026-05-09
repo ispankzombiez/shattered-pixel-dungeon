@@ -22,7 +22,7 @@ Use this as the implementation tracking list in follow-up updates.
 
 ## actors → buffs
 
-- [ ] `actors/buffs/BerryRegeneration.java`
+- [x] `actors/buffs/BerryRegeneration.java`
 - [ ] `actors/buffs/CountDown.java`
 - [ ] `actors/buffs/Dewcharge.java`
 - [ ] `actors/buffs/DrowsySpell.java`
@@ -234,10 +234,10 @@ Use this as the implementation tracking list in follow-up updates.
 
 ## items → food
 
-- [ ] `items/food/Blackberry.java`
+- [x] `items/food/Blackberry.java`
 - [ ] `items/food/BlueMilk.java`
-- [ ] `items/food/Blueberry.java`
-- [ ] `items/food/Cloudberry.java`
+- [x] `items/food/Blueberry.java`
+- [x] `items/food/Cloudberry.java`
 - [ ] `items/food/DeathCap.java`
 - [ ] `items/food/Earthstar.java`
 - [ ] `items/food/FullMoonberry.java`
@@ -246,11 +246,11 @@ Use this as the implementation tracking list in follow-up updates.
 - [ ] `items/food/JackOLantern.java`
 - [ ] `items/food/Meat.java`
 - [ ] `items/food/Moonberry.java`
-- [ ] `items/food/Nut.java`
+- [x] `items/food/Nut.java`
 - [ ] `items/food/OverpricedRation.java`
 - [ ] `items/food/PixieParasol.java`
 - [ ] `items/food/PotionOfConstitution.java`
-- [ ] `items/food/ToastedNut.java`
+- [x] `items/food/ToastedNut.java`
 
 ## items → journalpages
 
@@ -604,4 +604,3 @@ Use this as the implementation tracking list in follow-up updates.
 - [ ] `windows/WndTinkerer.java`
 - [ ] `windows/WndTinkerer2.java`
 - [ ] `windows/WndTinkerer3.java`
-

@@ -5,9 +5,6 @@
  * Shattered Pixel Dungeon
  * Copyright (C) 2014-2026 Evan Debenham
  *
- * Sprouted Pixel Dungeon
- * Copyright (C) 2015 dachhack
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,7 +19,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.shatteredpixel.shatteredpixeldungeon.items.food;
+package com.shatteredpixel.shatteredpixeldungeon.actors.buffs;
 
-public class DungeonNut extends Nut {
+public class BerryRegeneration extends Healing {
+
+	public BerryRegeneration level( int amount ) {
+		setHeal( amount, 0.1f, 0 );
+		return this;
+	}
 }

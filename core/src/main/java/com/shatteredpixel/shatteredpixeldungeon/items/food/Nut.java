@@ -5,9 +5,6 @@
  * Shattered Pixel Dungeon
  * Copyright (C) 2014-2026 Evan Debenham
  *
- * Sprouted Pixel Dungeon
- * Copyright (C) 2015 dachhack
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,13 +21,35 @@
 
 package com.shatteredpixel.shatteredpixeldungeon.items.food;
 
-public class DungeonBlackberry extends Blackberry {
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Barkskin;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Hunger;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
+import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
+import com.shatteredpixel.shatteredpixeldungeon.utils.GLog;
+import com.watabou.utils.Random;
 
-	public DungeonBlackberry() {
-		this( 1 );
+public class Nut extends Food {
+
+	{
+		image = ItemSpriteSheet.BLANDFRUIT;
+		energy = (Hunger.STARVING - Hunger.HUNGRY) / 2f;
+
+		bones = false;
 	}
 
-	public DungeonBlackberry( int quantity ) {
-		this.quantity = quantity;
+	@Override
+	protected void satisfy( Hero hero ) {
+		super.satisfy( hero );
+
+		if (Random.Int(10) == 0) {
+			GLog.w( Messages.get(this, "blessing") );
+			Barkskin.conditionallyAppend( hero, hero.HT / 4, 5 );
+		}
+	}
+
+	@Override
+	public int value() {
+		return 20 * quantity;
 	}
 }
