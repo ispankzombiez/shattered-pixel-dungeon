@@ -22,10 +22,7 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
 import com.shatteredpixel.shatteredpixeldungeon.Assets;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Barrier;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
-import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Talent;
-import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.VialOfBlood;
 import com.shatteredpixel.shatteredpixeldungeon.journal.Catalog;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
@@ -38,16 +35,17 @@ import java.util.ArrayList;
 
 public class Waterskin extends Item {
 
-	private static final int MAX_VOLUME	= 20;
+	private static final int MAX_VOLUME	= 100;
 
 	private static final String AC_DRINK	= "DRINK";
+	private static final String AC_SIP	= "SIP";
 
 	private static final float TIME_TO_DRINK = 1f;
 
 	private static final String TXT_STATUS	= "%d/%d";
 
 	{
-		image = ItemSpriteSheet.WATERSKIN;
+		image = ItemSpriteSheet.VIAL;
 
 		defaultAction = AC_DRINK;
 
@@ -74,6 +72,9 @@ public class Waterskin extends Item {
 	public ArrayList<String> actions( Hero hero ) {
 		ArrayList<String> actions = super.actions( hero );
 		if (volume > 0) {
+			actions.add( AC_SIP );
+		}
+		if (volume > 2) {
 			actions.add( AC_DRINK );
 		}
 		return actions;
@@ -84,35 +85,32 @@ public class Waterskin extends Item {
 
 		super.execute( hero, action );
 
-		if (action.equals( AC_DRINK )) {
+		if (action.equals( AC_SIP )) {
 
 			if (volume > 0) {
-				
-				float missingHealthPercent = 1f - (hero.HP / (float)hero.HT);
+				int dropsToConsume = (int)GameMath.gate(1, 3, volume);
+				if (Dewdrop.consumeDew(dropsToConsume, hero, true)) {
+					volume -= dropsToConsume;
+					Catalog.countUses(Dewdrop.class, dropsToConsume);
 
-				//each drop is worth 5% of total health
-				float dropsNeeded = missingHealthPercent / 0.05f;
+					hero.spend(TIME_TO_DRINK);
+					hero.busy();
 
-				//we are getting extra heal value, scale back drops needed accordingly
-				if (dropsNeeded > 1.01f && VialOfBlood.delayBurstHealing()){
-					dropsNeeded /= VialOfBlood.totalHealMultiplier();
+					Sample.INSTANCE.play(Assets.Sounds.DRINK);
+					hero.sprite.operate(hero.pos);
+
+					updateQuickslot();
 				}
 
-				//add extra drops if we can gain shielding
-				int curShield = 0;
-				if (hero.buff(Barrier.class) != null) curShield = hero.buff(Barrier.class).shielding();
-				int maxShield = Math.round(hero.HT *0.2f*hero.pointsInTalent(Talent.SHIELDING_DEW));
-				if (hero.hasTalent(Talent.SHIELDING_DEW)){
-					float missingShieldPercent = 1f - (curShield / (float)maxShield);
-					missingShieldPercent *= 0.2f*hero.pointsInTalent(Talent.SHIELDING_DEW);
-					if (missingShieldPercent > 0){
-						dropsNeeded += missingShieldPercent / 0.05f;
-					}
-				}
 
-				//trimming off 0.01 drops helps with floating point errors
-				int dropsToConsume = (int)Math.ceil(dropsNeeded - 0.01f);
-				dropsToConsume = (int)GameMath.gate(1, dropsToConsume, volume);
+			} else {
+				GLog.w( Messages.get(this, "empty") );
+			}
+
+		} else if (action.equals( AC_DRINK )) {
+
+			if (volume > 0) {
+				int dropsToConsume = (int)GameMath.gate(1, 10, volume);
 
 				if (Dewdrop.consumeDew(dropsToConsume, hero, true)){
 					volume -= dropsToConsume;
@@ -154,6 +152,18 @@ public class Waterskin extends Item {
 
 	public void empty() {
 		volume = 0;
+		updateQuickslot();
+	}
+
+	public boolean hasBlessingCharge() {
+		return volume >= 10;
+	}
+
+	public void consumeBlessingCharge() {
+		volume -= 10;
+		if (volume < 0) {
+			volume = 0;
+		}
 		updateQuickslot();
 	}
 
