@@ -52,11 +52,11 @@ public class PitcherPlant extends Plant {
 			drops++;
 		}
 		for (int i = 0; i < drops; i++) {
-			Plant.Seed seed = (Plant.Seed) Generator.randomUsingDefaults(Generator.Category.SEED);
+			Plant.Seed seed;
 			// Never drop another PitcherPlant seed to avoid runaway proliferation
-			if (seed instanceof PitcherPlant.Seed) {
+			do {
 				seed = (Plant.Seed) Generator.randomUsingDefaults(Generator.Category.SEED);
-			}
+			} while (seed instanceof PitcherPlant.Seed);
 			Dungeon.level.drop(seed, pos).sprite.drop();
 		}
 
