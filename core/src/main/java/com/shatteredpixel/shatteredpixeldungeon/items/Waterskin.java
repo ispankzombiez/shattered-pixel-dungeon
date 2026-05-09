@@ -22,7 +22,12 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
 import com.shatteredpixel.shatteredpixeldungeon.Assets;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Haste;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Invisibility;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
+import com.shatteredpixel.shatteredpixeldungeon.effects.Speck;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfRemoveCurse;
 import com.shatteredpixel.shatteredpixeldungeon.journal.Catalog;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
@@ -35,14 +40,18 @@ import java.util.ArrayList;
 
 public class Waterskin extends Item {
 
-	private static final int MAX_VOLUME	= 100;
-	private static final int SIP_MAX_DROPS = 3;
-	private static final int DRINK_MIN_DROPS = 3;
-	private static final int DRINK_MAX_DROPS = 10;
+	private static final int MAX_VOLUME		= 100;
+	private static final int SIP_MAX_DROPS    = 3;
+	private static final int DRINK_MIN_DROPS  = 3;
+	private static final int DRINK_MAX_DROPS  = 10;
 	private static final int BLESSING_CHARGE_AMOUNT = 10;
+	private static final int SPLASH_COST      = 10;
+	private static final int UNCURSE_COST     = 50;
 
 	private static final String AC_DRINK	= "DRINK";
-	private static final String AC_SIP	= "SIP";
+	private static final String AC_SIP		= "SIP";
+	private static final String AC_SPLASH	= "SPLASH";
+	private static final String AC_UNCURSE	= "UNCURSE";
 
 	private static final float TIME_TO_DRINK = 1f;
 
@@ -80,6 +89,12 @@ public class Waterskin extends Item {
 		}
 		if (volume > 2) {
 			actions.add( AC_DRINK );
+		}
+		if (volume >= SPLASH_COST) {
+			actions.add( AC_SPLASH );
+		}
+		if (volume >= UNCURSE_COST) {
+			actions.add( AC_UNCURSE );
 		}
 		return actions;
 	}
@@ -130,6 +145,58 @@ public class Waterskin extends Item {
 				}
 
 
+			} else {
+				GLog.w( Messages.get(this, "empty") );
+			}
+
+		} else if (action.equals( AC_SPLASH )) {
+
+			if (volume >= SPLASH_COST) {
+				volume -= SPLASH_COST;
+
+				Buff.affect(hero, Haste.class, Haste.DURATION);
+				Buff.affect(hero, Invisibility.class, Invisibility.DURATION);
+
+				hero.sprite.emitter().burst(Speck.factory(Speck.JET), 5);
+				GLog.i( Messages.get(this, "splash") );
+
+				hero.spend(TIME_TO_DRINK);
+				hero.busy();
+
+				Sample.INSTANCE.play(Assets.Sounds.DRINK);
+				hero.sprite.operate(hero.pos);
+
+				updateQuickslot();
+			} else {
+				GLog.w( Messages.get(this, "empty") );
+			}
+
+		} else if (action.equals( AC_UNCURSE )) {
+
+			if (volume >= UNCURSE_COST) {
+				volume -= UNCURSE_COST;
+
+				boolean procced = ScrollOfRemoveCurse.uncurse(hero,
+						hero.belongings.weapon(),
+						hero.belongings.armor(),
+						hero.belongings.ring());
+				procced = ScrollOfRemoveCurse.uncurse(hero,
+						hero.belongings.backpack.items.toArray(new Item[0]))
+						|| procced;
+
+				if (procced) {
+					GLog.p( Messages.get(this, "uncurse_procced") );
+				} else {
+					GLog.i( Messages.get(this, "uncurse_not_procced") );
+				}
+
+				hero.spend(TIME_TO_DRINK);
+				hero.busy();
+
+				Sample.INSTANCE.play(Assets.Sounds.DRINK);
+				hero.sprite.operate(hero.pos);
+
+				updateQuickslot();
 			} else {
 				GLog.w( Messages.get(this, "empty") );
 			}
@@ -194,6 +261,39 @@ public class Waterskin extends Item {
 			GLog.p( Messages.get(this, "full") );
 		}
 
+		updateQuickslot();
+	}
+
+	/** Collect a red dewdrop — worth 5x a normal drop */
+	public void collectRedDew( int quantity ) {
+		GLog.i( Messages.get(this, "collected") );
+		volume += quantity * 5;
+		if (volume >= MAX_VOLUME) {
+			volume = MAX_VOLUME;
+			GLog.p( Messages.get(this, "full") );
+		}
+		updateQuickslot();
+	}
+
+	/** Collect a yellow dewdrop — worth 2x a normal drop */
+	public void collectYellowDew( int quantity ) {
+		GLog.i( Messages.get(this, "collected") );
+		volume += quantity * 2;
+		if (volume >= MAX_VOLUME) {
+			volume = MAX_VOLUME;
+			GLog.p( Messages.get(this, "full") );
+		}
+		updateQuickslot();
+	}
+
+	/** Collect a violet dewdrop — worth 50x a normal drop */
+	public void collectVioletDew( int quantity ) {
+		GLog.i( Messages.get(this, "collected") );
+		volume += quantity * 50;
+		if (volume >= MAX_VOLUME) {
+			volume = MAX_VOLUME;
+			GLog.p( Messages.get(this, "full") );
+		}
 		updateQuickslot();
 	}
 
