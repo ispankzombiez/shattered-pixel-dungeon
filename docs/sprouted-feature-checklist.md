@@ -9,33 +9,33 @@ Use this as the implementation tracking list in follow-up updates.
 
 ## actors → animate
 
-- [ ] `actors/animate/WeaponAnimate.java`
+- [x] `actors/animate/WeaponAnimate.java`
 
 ## actors → blobs
 
-- [ ] `actors/blobs/Alter.java`
-- [ ] `actors/blobs/CorruptGas.java`
-- [ ] `actors/blobs/Portal.java`
-- [ ] `actors/blobs/Water.java`
-- [ ] `actors/blobs/WaterOfTransmutation.java`
-- [ ] `actors/blobs/WaterOfUpgradeEating.java`
+- [x] `actors/blobs/Alter.java`
+- [x] `actors/blobs/CorruptGas.java`
+- [x] `actors/blobs/Portal.java`
+- [x] `actors/blobs/Water.java`
+- [x] `actors/blobs/WaterOfTransmutation.java`
+- [x] `actors/blobs/WaterOfUpgradeEating.java`
 
 ## actors → buffs
 
 - [x] `actors/buffs/BerryRegeneration.java`
-- [ ] `actors/buffs/CountDown.java`
-- [ ] `actors/buffs/Dewcharge.java`
-- [ ] `actors/buffs/DrowsySpell.java`
-- [ ] `actors/buffs/EarthImbue.java`
-- [ ] `actors/buffs/FullMoonStrength.java`
-- [ ] `actors/buffs/GasesImmunity.java`
-- [ ] `actors/buffs/LichenDrop.java`
-- [ ] `actors/buffs/LokisPoison.java`
-- [ ] `actors/buffs/MagicImmunity.java`
-- [ ] `actors/buffs/MagicSurge.java`
-- [ ] `actors/buffs/ManaRegen.java`
-- [ ] `actors/buffs/Shield.java`
-- [ ] `actors/buffs/Strength.java`
+- [x] `actors/buffs/CountDown.java`
+- [x] `actors/buffs/Dewcharge.java`
+- [x] `actors/buffs/DrowsySpell.java`
+- [x] `actors/buffs/EarthImbue.java`
+- [x] `actors/buffs/FullMoonStrength.java`
+- [x] `actors/buffs/GasesImmunity.java`
+- [x] `actors/buffs/LichenDrop.java`
+- [x] `actors/buffs/LokisPoison.java`
+- [x] `actors/buffs/MagicImmunity.java`
+- [x] `actors/buffs/MagicSurge.java`
+- [x] `actors/buffs/ManaRegen.java`
+- [x] `actors/buffs/Shield.java`
+- [x] `actors/buffs/Strength.java`
 
 ## actors → mobs
 
