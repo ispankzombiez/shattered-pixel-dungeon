@@ -375,15 +375,16 @@ public class WandOfRegrowth extends Wand {
 		}
 
 		private Item randomDewdrop(){
-			if (Random.Int(10) == 1){
+			if (Random.Int(10) == 0){
 				return new VioletDewdrop();
-			} else if (Random.Int(5) == 1){
-				return new RedDewdrop();
-			} else if (Random.Int(3) == 1){
-				return new YellowDewdrop();
-			} else {
-				return new Dewdrop();
 			}
+			if (Random.Int(5) == 0){
+				return new RedDewdrop();
+			}
+			if (Random.Int(3) == 0){
+				return new YellowDewdrop();
+			}
+			return new Dewdrop();
 		}
 
 		//seed is never dropped, only care about plant class

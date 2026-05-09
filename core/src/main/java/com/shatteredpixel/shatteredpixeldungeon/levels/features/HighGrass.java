@@ -196,12 +196,13 @@ public class HighGrass {
 	private static Item randomDewdrop(int naturalismLevel){
 		if (naturalismLevel > 4 && Random.Int(Math.max(1, 100 - naturalismLevel)) == 0){
 			return new VioletDewdrop();
-		} else if (naturalismLevel > 2 && Random.Int(Math.max(1, 50 - naturalismLevel)) == 0){
-			return new RedDewdrop();
-		} else if (naturalismLevel > 0 && Random.Int(Math.max(1, 30 - naturalismLevel)) == 0){
-			return new YellowDewdrop();
-		} else {
-			return new Dewdrop();
 		}
+		if (naturalismLevel > 2 && Random.Int(Math.max(1, 50 - naturalismLevel)) == 0){
+			return new RedDewdrop();
+		}
+		if (naturalismLevel > 0 && Random.Int(Math.max(1, 30 - naturalismLevel)) == 0){
+			return new YellowDewdrop();
+		}
+		return new Dewdrop();
 	}
 }
