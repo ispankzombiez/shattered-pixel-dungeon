@@ -51,8 +51,10 @@ import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.TimekeepersHourg
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.UnstableSpellbook;
 import com.shatteredpixel.shatteredpixeldungeon.items.bombs.Bomb;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Food;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.Meat;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.MysteryMeat;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Nut;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.OverpricedRation;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Pasty;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.Potion;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfExperience;
@@ -543,8 +545,10 @@ public class Generator {
 					Pasty.class,
 					MysteryMeat.class,
 					Egg.class,
-					Nut.class };
-			FOOD.defaultProbs = new float[]{ 4, 1, 0, 0.25f, 0.25f };
+					Nut.class,
+					Meat.class,
+					OverpricedRation.class };
+			FOOD.defaultProbs = new float[]{ 4, 1, 0, 0.25f, 0.25f, 0, 0 };
 			FOOD.probs = FOOD.defaultProbs.clone();
 			
 			RING.classes = new Class<?>[]{

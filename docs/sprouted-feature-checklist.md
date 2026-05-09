@@ -241,13 +241,13 @@ Use this as the implementation tracking list in follow-up updates.
 - [ ] `items/food/DeathCap.java`
 - [ ] `items/food/Earthstar.java`
 - [ ] `items/food/FullMoonberry.java`
-- [ ] `items/food/GoldenJelly.java`
+- [x] `items/food/GoldenJelly.java`
 - [ ] `items/food/GoldenNut.java`
 - [ ] `items/food/JackOLantern.java`
-- [ ] `items/food/Meat.java`
+- [x] `items/food/Meat.java`
 - [ ] `items/food/Moonberry.java`
 - [x] `items/food/Nut.java`
-- [ ] `items/food/OverpricedRation.java`
+- [x] `items/food/OverpricedRation.java`
 - [ ] `items/food/PixieParasol.java`
 - [ ] `items/food/PotionOfConstitution.java`
 - [x] `items/food/ToastedNut.java`
