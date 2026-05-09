@@ -39,45 +39,45 @@ Use this as the implementation tracking list in follow-up updates.
 
 ## actors → mobs
 
-- [ ] `actors/mobs/AdultDragonViolet.java`
-- [ ] `actors/mobs/AlbinoPiranha.java`
-- [ ] `actors/mobs/Assassin.java`
-- [ ] `actors/mobs/BanditKing.java`
+- [x] `actors/mobs/AdultDragonViolet.java`
+- [x] `actors/mobs/AlbinoPiranha.java`
+- [x] `actors/mobs/Assassin.java`
+- [x] `actors/mobs/BanditKing.java`
 - [ ] `actors/mobs/Bestiary.java`
-- [ ] `actors/mobs/BlueCat.java`
-- [ ] `actors/mobs/BlueWraith.java`
-- [ ] `actors/mobs/BrokenRobot.java`
-- [ ] `actors/mobs/BrownBat.java`
-- [ ] `actors/mobs/ControlPanel.java`
-- [ ] `actors/mobs/CrabKing.java`
-- [ ] `actors/mobs/DemonGoo.java`
-- [ ] `actors/mobs/DwarfKingTomb.java`
-- [ ] `actors/mobs/DwarfLich.java`
-- [ ] `actors/mobs/FishProtector.java`
-- [ ] `actors/mobs/FlyingProtector.java`
-- [ ] `actors/mobs/ForestProtector.java`
-- [ ] `actors/mobs/FossilSkeleton.java`
-- [ ] `actors/mobs/GoldThief.java`
-- [ ] `actors/mobs/GraveProtector.java`
-- [ ] `actors/mobs/GreyOni.java`
-- [ ] `actors/mobs/GreyRat.java`
-- [ ] `actors/mobs/Gullin.java`
-- [ ] `actors/mobs/King.java`
-- [ ] `actors/mobs/Kupua.java`
-- [ ] `actors/mobs/Lichen.java`
-- [ ] `actors/mobs/LitTower.java`
-- [ ] `actors/mobs/MagicEye.java`
-- [ ] `actors/mobs/MineSentinel.java`
-- [ ] `actors/mobs/MonsterBox.java`
-- [ ] `actors/mobs/MossySkeleton.java`
-- [ ] `actors/mobs/MrDestructo.java`
-- [ ] `actors/mobs/MrDestructo2dot0.java`
-- [ ] `actors/mobs/Oni.java`
-- [ ] `actors/mobs/OrbOfZotMob.java`
-- [ ] `actors/mobs/Otiluke.java`
-- [ ] `actors/mobs/PoisonGoo.java`
-- [ ] `actors/mobs/RatBoss.java`
-- [ ] `actors/mobs/RedWraith.java`
+- [x] `actors/mobs/BlueCat.java`
+- [x] `actors/mobs/BlueWraith.java`
+- [x] `actors/mobs/BrokenRobot.java`
+- [x] `actors/mobs/BrownBat.java`
+- [x] `actors/mobs/ControlPanel.java`
+- [x] `actors/mobs/CrabKing.java`
+- [x] `actors/mobs/DemonGoo.java`
+- [x] `actors/mobs/DwarfKingTomb.java`
+- [x] `actors/mobs/DwarfLich.java`
+- [x] `actors/mobs/FishProtector.java`
+- [x] `actors/mobs/FlyingProtector.java`
+- [x] `actors/mobs/ForestProtector.java`
+- [x] `actors/mobs/FossilSkeleton.java`
+- [x] `actors/mobs/GoldThief.java`
+- [x] `actors/mobs/GraveProtector.java`
+- [x] `actors/mobs/GreyOni.java`
+- [x] `actors/mobs/GreyRat.java`
+- [x] `actors/mobs/Gullin.java`
+- [x] `actors/mobs/King.java`
+- [x] `actors/mobs/Kupua.java`
+- [x] `actors/mobs/Lichen.java`
+- [x] `actors/mobs/LitTower.java`
+- [x] `actors/mobs/MagicEye.java`
+- [x] `actors/mobs/MineSentinel.java`
+- [x] `actors/mobs/MonsterBox.java`
+- [x] `actors/mobs/MossySkeleton.java`
+- [x] `actors/mobs/MrDestructo.java`
+- [x] `actors/mobs/MrDestructo2dot0.java`
+- [x] `actors/mobs/Oni.java`
+- [x] `actors/mobs/OrbOfZotMob.java`
+- [x] `actors/mobs/Otiluke.java`
+- [x] `actors/mobs/PoisonGoo.java`
+- [x] `actors/mobs/RatBoss.java`
+- [x] `actors/mobs/RedWraith.java`
 - [ ] `actors/mobs/SeekingBomb.java`
 - [ ] `actors/mobs/SeekingClusterBomb.java`
 - [ ] `actors/mobs/Sentinel.java`
