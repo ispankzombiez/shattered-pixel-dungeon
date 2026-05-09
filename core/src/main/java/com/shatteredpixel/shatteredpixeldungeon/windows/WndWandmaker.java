@@ -26,6 +26,7 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.Wandmaker;
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
 import com.shatteredpixel.shatteredpixeldungeon.items.quest.CorpseDust;
 import com.shatteredpixel.shatteredpixeldungeon.items.quest.Embers;
+import com.shatteredpixel.shatteredpixeldungeon.items.quest.GooBlob;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.plants.Rotberry;
 import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
@@ -67,6 +68,11 @@ public class WndWandmaker extends Window {
 			msg = Messages.get(this, "ember");
 		} else if (item instanceof Rotberry.Seed){
 			msg = Messages.get(this, "berry");
+		}
+
+		// If player has a GooBlob, mention the upgrade bonus
+		if (Dungeon.hero.belongings.getItem(GooBlob.class) != null) {
+			msg += "\n\n" + Messages.get(this, "gooblob_bonus");
 		}
 
 		RenderedTextBlock message = PixelScene.renderTextBlock( msg, 6 );
@@ -114,6 +120,14 @@ public class WndWandmaker extends Window {
 		hide();
 
 		questItem.detach( Dungeon.hero.belongings.backpack );
+
+		// GooBlob bonus: consume it to upgrade the chosen wand by +1
+		GooBlob blob = Dungeon.hero.belongings.getItem(GooBlob.class);
+		if (blob != null) {
+			blob.detach(Dungeon.hero.belongings.backpack);
+			reward.upgrade();
+			GLog.p(Messages.get(WndWandmaker.class, "gooblob_upgraded"));
+		}
 
 		reward.identify(false);
 		if (reward.doPickUp( Dungeon.hero )) {

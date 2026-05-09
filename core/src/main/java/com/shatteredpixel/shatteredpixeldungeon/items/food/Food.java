@@ -30,6 +30,7 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Hunger;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Talent;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.EggPet;
 import com.shatteredpixel.shatteredpixeldungeon.effects.SpellSprite;
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.Artifact;
@@ -46,7 +47,8 @@ public class Food extends Item {
 
 	public static final float TIME_TO_EAT	= 3f;
 	
-	public static final String AC_EAT	= "EAT";
+	public static final String AC_EAT	    = "EAT";
+	public static final String AC_FEED_PET  = "FEED_PET";
 	
 	public float energy = Hunger.HUNGRY;
 	
@@ -63,7 +65,17 @@ public class Food extends Item {
 	public ArrayList<String> actions( Hero hero ) {
 		ArrayList<String> actions = super.actions( hero );
 		actions.add( AC_EAT );
+		// Only show the feed action when the hero has an active pet
+		if (hero.activeEggPet() != null) {
+			actions.add( AC_FEED_PET );
+		}
 		return actions;
+	}
+
+	@Override
+	public String actionName( String action, Hero hero ) {
+		if (AC_FEED_PET.equals(action)) return Messages.get(this, "ac_feed_pet");
+		return super.actionName(action, hero);
 	}
 	
 	@Override
@@ -91,6 +103,33 @@ public class Food extends Item {
 			Statistics.foodEaten++;
 			Badges.validateFoodEaten();
 			
+		} else if (action.equals( AC_FEED_PET )) {
+
+			EggPet pet = hero.activeEggPet();
+			if (pet == null) {
+				GLog.w(Messages.get(this, "no_pet"));
+				return;
+			}
+
+			detach( hero.belongings.backpack );
+
+			// Feeding heals the pet proportional to the food's energy value
+			int healAmt = Math.round(energy / Hunger.HUNGRY * pet.HT / 3f);
+			healAmt = Math.max(1, healAmt);
+			if (pet.HP < pet.HT) {
+				pet.HP = Math.min(pet.HT, pet.HP + healAmt);
+				pet.sprite.showStatus(com.shatteredpixel.shatteredpixeldungeon.sprites.CharSprite.POSITIVE,
+						Integer.toString(healAmt));
+			}
+			// Reset the "go away" counter when fed — pet loyalty mechanic
+			pet.goaways = 0;
+
+			GLog.p(Messages.get(this, "feed_pet_msg", pet.name()));
+
+			hero.sprite.operate(hero.pos);
+			hero.busy();
+			Sample.INSTANCE.play(Assets.Sounds.EAT);
+			hero.spend(TIME_TO_EAT);
 		}
 	}
 

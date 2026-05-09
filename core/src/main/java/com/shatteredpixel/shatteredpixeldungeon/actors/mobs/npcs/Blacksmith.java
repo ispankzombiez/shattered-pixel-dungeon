@@ -30,6 +30,7 @@ import com.shatteredpixel.shatteredpixeldungeon.items.Generator;
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
 import com.shatteredpixel.shatteredpixeldungeon.items.armor.Armor;
 import com.shatteredpixel.shatteredpixeldungeon.items.quest.DarkGold;
+import com.shatteredpixel.shatteredpixeldungeon.items.quest.MetalShard;
 import com.shatteredpixel.shatteredpixeldungeon.items.quest.Pickaxe;
 import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.ParchmentScrap;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.Weapon;
@@ -455,6 +456,15 @@ public class Blacksmith extends NPC {
 			if (gold != null){
 				favor += Math.min(2000, gold.quantity()*50);
 				gold.detachAll(Dungeon.hero.belongings.backpack);
+			}
+
+			// MetalShards (from DM300/DM201) add bonus favor: 100 per shard, up to 5 shards (500 max)
+			MetalShard shards = Dungeon.hero.belongings.getItem(MetalShard.class);
+			if (shards != null){
+				int shardFavor = Math.min(500, shards.quantity() * 100);
+				favor += shardFavor;
+				shards.detachAll(Dungeon.hero.belongings.backpack);
+				GLog.p(Messages.get(Quest.class, "shard_bonus", shardFavor));
 			}
 
 			Pickaxe pick = Dungeon.hero.belongings.getItem(Pickaxe.class);

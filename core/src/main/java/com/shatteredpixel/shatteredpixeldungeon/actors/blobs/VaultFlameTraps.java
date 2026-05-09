@@ -23,15 +23,18 @@ package com.shatteredpixel.shatteredpixeldungeon.actors.blobs;
 
 import com.shatteredpixel.shatteredpixeldungeon.Assets;
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
-import com.shatteredpixel.shatteredpixeldungeon.ShatteredPixelDungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Burning;
 import com.shatteredpixel.shatteredpixeldungeon.effects.BlobEmitter;
 import com.shatteredpixel.shatteredpixeldungeon.effects.CellEmitter;
 import com.shatteredpixel.shatteredpixeldungeon.effects.particles.ElmoParticle;
+import com.shatteredpixel.shatteredpixeldungeon.items.Heap;
 import com.shatteredpixel.shatteredpixeldungeon.levels.Level;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
-import com.shatteredpixel.shatteredpixeldungeon.sprites.CharSprite;
+import com.shatteredpixel.shatteredpixeldungeon.plants.Plant;
+import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 
@@ -80,14 +83,9 @@ public class VaultFlameTraps extends Blob {
 				cell = i + j* Dungeon.level.width();
 				if (cur[cell] > 0) {
 
-					//similar to fire.burn(), but Tengu is immune, and hero loses score
+					//similar to fire.burn(), but Tengu is immune
 					Char ch = Actor.findChar( cell );
-					if (ch == Dungeon.hero){
-						Sample.INSTANCE.play(Assets.Sounds.BURNING);
-						SFXLastPlayed = ShatteredPixelDungeon.realTime;
-						ch.sprite.showStatus(CharSprite.NEGATIVE, "!!!");
-					}
-					/*if (ch != null && !ch.isImmune(Fire.class)) {
+					if (ch != null && !ch.isImmune(Fire.class)) {
 						Buff.affect( ch, Burning.class ).reignite( ch );
 					}
 
@@ -105,7 +103,7 @@ public class VaultFlameTraps extends Blob {
 						Dungeon.level.destroy( cell );
 
 						GameScene.updateMap( cell );
-					}*/
+					}
 
 					if (Dungeon.level.heroFOV[cell]){
 						CellEmitter.get(cell).start(ElmoParticle.FACTORY, 0.02f, 10);
@@ -119,9 +117,10 @@ public class VaultFlameTraps extends Blob {
 			}
 		}
 
-		if (playSfx && SFXLastPlayed +80 < ShatteredPixelDungeon.realTime) {
+		long now = System.currentTimeMillis();
+		if (playSfx && SFXLastPlayed + 80 < now) {
 			Sample.INSTANCE.play(Assets.Sounds.BURNING, 0.5f);
-			SFXLastPlayed = ShatteredPixelDungeon.realTime;
+			SFXLastPlayed = now;
 		}
 	}
 
