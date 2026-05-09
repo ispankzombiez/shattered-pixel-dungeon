@@ -49,6 +49,7 @@ public class Food extends Item {
 	
 	public static final String AC_EAT	    = "EAT";
 	public static final String AC_FEED_PET  = "FEED_PET";
+	private static final float PET_FEED_HEAL_DIVISOR = 3f;
 	
 	public float energy = Hunger.HUNGRY;
 	
@@ -114,7 +115,7 @@ public class Food extends Item {
 			detach( hero.belongings.backpack );
 
 			// Feeding heals the pet proportional to the food's energy value
-			int healAmt = Math.round(energy / Hunger.HUNGRY * pet.HT / 3f);
+			int healAmt = Math.round(energy / Hunger.HUNGRY * pet.HT / PET_FEED_HEAL_DIVISOR);
 			healAmt = Math.max(1, healAmt);
 			if (pet.HP < pet.HT) {
 				pet.HP = Math.min(pet.HT, pet.HP + healAmt);

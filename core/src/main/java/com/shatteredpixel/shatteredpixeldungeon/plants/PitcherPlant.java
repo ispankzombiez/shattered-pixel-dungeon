@@ -35,10 +35,14 @@ import com.watabou.utils.Random;
  */
 public class PitcherPlant extends Plant {
 
+	private static final int TEMP_SPRITE_INDEX = 7;
+	private static final int BASE_SEED_VALUE = 15;
+	private static final int ENERGY_PER_SEED = 2;
+
 	{
-		// Reuse the Mageroyal plant tile (index 7) as a visual placeholder.
+		// Reuse the Mageroyal plant tile as a visual placeholder.
 		// A dedicated tile can be added later when art is available.
-		image = 7;
+		image = TEMP_SPRITE_INDEX;
 		seedClass = Seed.class;
 	}
 
@@ -79,12 +83,12 @@ public class PitcherPlant extends Plant {
 
 		@Override
 		public int value() {
-			return 15 * quantity;
+			return BASE_SEED_VALUE * quantity;
 		}
 
 		@Override
 		public int energyVal() {
-			return 2 * quantity;
+			return ENERGY_PER_SEED * quantity;
 		}
 	}
 }
