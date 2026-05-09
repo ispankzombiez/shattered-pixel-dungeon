@@ -42,7 +42,7 @@ public class Moonberry extends Berry {
 
 		GLog.w( Messages.get(this, "strength") );
 		Buff.affect( hero, Adrenaline.class, Adrenaline.DURATION );
-		if (Random.Int(2) == 1) {
+		if (Random.Boolean()) {
 			Barkskin.conditionallyAppend( hero, hero.HT / 2, 8 );
 		}
 	}
