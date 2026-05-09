@@ -32,7 +32,6 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.PinCushion;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
 import com.shatteredpixel.shatteredpixeldungeon.effects.FloatingText;
 import com.shatteredpixel.shatteredpixeldungeon.effects.Splash;
-import com.shatteredpixel.shatteredpixeldungeon.journal.Bestiary;
 import com.shatteredpixel.shatteredpixeldungeon.levels.Level;
 import com.shatteredpixel.shatteredpixeldungeon.levels.Terrain;
 import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
@@ -162,8 +161,8 @@ public class CrystalGuardian extends Mob{
 
 			if (!recovering) {
 				recovering = true;
-				Bestiary.setSeen(getClass());
-				Bestiary.countEncounter(getClass());
+				com.shatteredpixel.shatteredpixeldungeon.journal.Bestiary.setSeen(getClass());
+				com.shatteredpixel.shatteredpixeldungeon.journal.Bestiary.countEncounter(getClass());
 				if (sprite != null) ((CrystalGuardianSprite) sprite).crumple();
 			}
 		}

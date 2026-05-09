@@ -51,8 +51,20 @@ import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.TimekeepersHourg
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.UnstableSpellbook;
 import com.shatteredpixel.shatteredpixeldungeon.items.bombs.Bomb;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Food;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.BlueMilk;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.DeathCap;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.Earthstar;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.FullMoonberry;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.GoldenNut;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.JackOLantern;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.Meat;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.Moonberry;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.MysteryMeat;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.Nut;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.OverpricedRation;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Pasty;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.PixieParasol;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.PotionOfConstitution;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.Potion;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfExperience;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfFrost;
@@ -541,8 +553,37 @@ public class Generator {
 					Food.class,
 					Pasty.class,
 					MysteryMeat.class,
-					Egg.class };
-			FOOD.defaultProbs = new float[]{ 4, 1, 0, 0.25f };
+					Egg.class,
+					Nut.class,
+					Meat.class,
+					OverpricedRation.class,
+					Moonberry.class,
+					FullMoonberry.class,
+					BlueMilk.class,
+					DeathCap.class,
+					Earthstar.class,
+					GoldenNut.class,
+					JackOLantern.class,
+					PixieParasol.class,
+					PotionOfConstitution.class };
+			FOOD.defaultProbs = new float[]{
+					4,      //Food
+					1,      //Pasty
+					0,      //MysteryMeat
+					0.25f,  //Egg
+					0.25f,  //Nut
+					0,      //Meat
+					0,      //OverpricedRation
+					0,      //Moonberry
+					0,      //FullMoonberry
+					0,      //BlueMilk
+					0,      //DeathCap
+					0,      //Earthstar
+					0,      //GoldenNut
+					0,      //JackOLantern
+					0,      //PixieParasol
+					0       //PotionOfConstitution
+			};
 			FOOD.probs = FOOD.defaultProbs.clone();
 			
 			RING.classes = new Class<?>[]{

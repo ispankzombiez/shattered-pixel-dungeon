@@ -37,6 +37,9 @@ import com.shatteredpixel.shatteredpixeldungeon.items.Generator;
 import com.shatteredpixel.shatteredpixeldungeon.items.armor.glyphs.Camouflage;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.SandalsOfNature;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Berry;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.Blackberry;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.Blueberry;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.Cloudberry;
 import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.PetrifiedSeed;
 import com.shatteredpixel.shatteredpixeldungeon.levels.Level;
 import com.shatteredpixel.shatteredpixeldungeon.levels.MiningLevel;
@@ -46,17 +49,21 @@ import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
 import com.watabou.utils.Random;
 
 public class HighGrass {
-	
+
+	private static final int BLACKBERRY_DROP = 3;
+	private static final int BLUEBERRY_DROP = 4;
+	private static final int CLOUDBERRY_DROP = 5;
+
 	//prevents items dropped from grass, from trampling that same grass.
 	//yes this is a bit ugly, oh well.
 	private static boolean freezeTrample = false;
 
 	public static void trample( Level level, int pos ) {
-		
+
 		if (freezeTrample) return;
-		
+
 		Char ch = Actor.findChar(pos);
-		
+
 		if (level.map[pos] == Terrain.FURROWED_GRASS){
 			if (ch instanceof Hero && ((Hero) ch).heroClass == HeroClass.HUNTRESS){
 				//Do nothing
@@ -64,7 +71,7 @@ public class HighGrass {
 			} else {
 				Level.set(pos, Terrain.GRASS);
 			}
-			
+
 		} else {
 			if (ch instanceof Hero && ((Hero) ch).heroClass == HeroClass.HUNTRESS){
 				Level.set(pos, Terrain.FURROWED_GRASS);
@@ -72,9 +79,9 @@ public class HighGrass {
 			} else {
 				Level.set(pos, Terrain.GRASS);
 			}
-			
+
 			int naturalismLevel = 0;
-			
+
 			if (ch != null) {
 				SandalsOfNature.Naturalism naturalism = ch.buff( SandalsOfNature.Naturalism.class );
 				if (naturalism != null) {
@@ -106,7 +113,7 @@ public class HighGrass {
 
 						if (droppingBerry) {
 							dropped.countUp(1);
-							level.drop(new Berry(), pos).sprite.drop();
+							level.drop(randomNatureBerry(), pos).sprite.drop();
 						}
 					}
 
@@ -124,7 +131,7 @@ public class HighGrass {
 			if (Dungeon.level instanceof VaultLevel){
 				naturalismLevel = -1;
 			}
-			
+
 			if (naturalismLevel >= 0) {
 				// Seed, scales from 1/25 to 1/9
 				float lootChance = 1/(25f - naturalismLevel*4f);
@@ -139,7 +146,7 @@ public class HighGrass {
 						level.drop(Generator.random(Generator.Category.SEED), pos).sprite.drop();
 					}
 				}
-				
+
 				// Dew, scales from 1/6 to 1/4
 				lootChance = 1/(6f -naturalismLevel/2f);
 
@@ -156,16 +163,29 @@ public class HighGrass {
 			if (ch != null) {
 				Camouflage.activate(ch, ch.glyphLevel(Camouflage.class));
 			}
-			
+
 		}
-		
+
 		freezeTrample = false;
-		
+
 		if (ShatteredPixelDungeon.scene() instanceof GameScene) {
 			GameScene.updateMap(pos);
-			
+
 			CellEmitter.get(pos).burst(LeafParticle.LEVEL_SPECIFIC, 4);
 			if (Dungeon.level.heroFOV[pos]) Dungeon.observe();
+		}
+	}
+
+	private static Berry randomNatureBerry() {
+		switch (Random.Int(6)) {
+			case BLACKBERRY_DROP:
+				return new Blackberry();
+			case BLUEBERRY_DROP:
+				return new Blueberry();
+			case CLOUDBERRY_DROP:
+				return new Cloudberry();
+			default:
+				return new Berry();
 		}
 	}
 }

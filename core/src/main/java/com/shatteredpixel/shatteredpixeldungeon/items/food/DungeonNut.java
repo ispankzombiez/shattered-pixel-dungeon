@@ -24,41 +24,5 @@
 
 package com.shatteredpixel.shatteredpixeldungeon.items.food;
 
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Barkskin;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Hunger;
-import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
-import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
-import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
-import com.shatteredpixel.shatteredpixeldungeon.utils.GLog;
-import com.watabou.utils.Random;
-
-/**
- * Ported from Sprouted Pixel Dungeon (Nut).
- *
- * A dungeon nut that is a decent snack and has a 10% chance to grant
- * a Barkskin bonus equal to 25% of max HP.
- */
-public class DungeonNut extends Food {
-
-	{
-		image = ItemSpriteSheet.BLANDFRUIT;
-		energy = (Hunger.STARVING - Hunger.HUNGRY) / 2f; // 75 food value — satisfying snack
-
-		bones = false;
-	}
-
-	@Override
-	protected void satisfy( Hero hero ) {
-		super.satisfy( hero );
-
-		if (Random.Int(10) == 0) {
-			GLog.w( Messages.get(this, "blessing") );
-			Barkskin.conditionallyAppend( hero, hero.HT / 4, 5 );
-		}
-	}
-
-	@Override
-	public int value() {
-		return 20 * quantity;
-	}
+public class DungeonNut extends Nut {
 }

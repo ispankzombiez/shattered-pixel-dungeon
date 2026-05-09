@@ -24,64 +24,13 @@
 
 package com.shatteredpixel.shatteredpixeldungeon.items.food;
 
-import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Healing;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Hunger;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.MindVision;
-import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
-import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
-import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
-import com.shatteredpixel.shatteredpixeldungeon.utils.GLog;
-import com.watabou.utils.Random;
-
-/**
- * Ported from Sprouted Pixel Dungeon (Blackberry).
- *
- * A dungeon berry that provides minor restorative regeneration
- * and has a 10% chance to grant Mind Vision.
- */
-public class DungeonBlackberry extends Food {
-
-	{
-		image = ItemSpriteSheet.BERRY;
-		energy = (Hunger.STARVING - Hunger.HUNGRY) / 10f; // 15 food value — very light snack
-
-		bones = false;
-	}
-
-	@Override
-	protected void satisfy( Hero hero ) {
-		super.satisfy( hero );
-
-		if (Random.Int(10) == 0) {
-			// 10% chance: MindVision + stronger healing burst
-			GLog.w( Messages.get(this, "trippy") );
-			Buff.affect( hero, MindVision.class, MindVision.DURATION );
-			Dungeon.observe();
-
-			Healing healing = Buff.affect( hero, Healing.class );
-			healing.setHeal( hero.HT, 0.1f, 0 );
-
-			GLog.i( Messages.get(this, "energy_burst") );
-		} else {
-			// Normal: minor healing over time
-			GLog.i( Messages.get(this, "energy") );
-			Healing healing = Buff.affect( hero, Healing.class );
-			healing.setHeal( hero.HT / 2, 0.1f, 0 );
-		}
-	}
-
-	@Override
-	public int value() {
-		return 20 * quantity;
-	}
+public class DungeonBlackberry extends Blackberry {
 
 	public DungeonBlackberry() {
 		this( 1 );
 	}
 
-	public DungeonBlackberry( int value ) {
-		this.quantity = value;
+	public DungeonBlackberry( int quantity ) {
+		this.quantity = quantity;
 	}
 }
