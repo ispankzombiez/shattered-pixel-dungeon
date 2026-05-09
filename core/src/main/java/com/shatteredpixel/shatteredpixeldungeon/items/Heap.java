@@ -228,7 +228,7 @@ public class Heap implements Bundlable {
 			} else if (item instanceof Scroll && !item.unique) {
 				items.remove( item );
 				burnt = true;
-			} else if (item instanceof Dewdrop) {
+			} else if (isDewdrop(item)) {
 				items.remove( item );
 				evaporated = true;
 			} else if (item instanceof MysteryMeat || item instanceof FrozenCarpaccio) {
@@ -266,6 +266,13 @@ public class Heap implements Bundlable {
 			}
 			
 		}
+	}
+
+	private boolean isDewdrop(Item item){
+		return item instanceof Dewdrop
+				|| item instanceof RedDewdrop
+				|| item instanceof YellowDewdrop
+				|| item instanceof VioletDewdrop;
 	}
 
 	//Note: should not be called to initiate an explosion, but rather by an explosion that is happening.

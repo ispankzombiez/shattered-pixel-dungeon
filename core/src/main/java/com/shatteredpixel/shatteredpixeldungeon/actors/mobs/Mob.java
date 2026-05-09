@@ -926,9 +926,21 @@ public abstract class Mob extends Char {
 	}
 
 	public float lootChance(){
-		float lootChance = this.lootChance;
+		return lootChance(this.lootChance);
+	}
 
-		float dropBonus = RingOfWealth.dropChanceMultiplier( Dungeon.hero );
+	public float lootChanceOther(){
+		return lootChance(lootChanceOther);
+	}
+
+	public float lootChanceThird(){
+		return lootChance(lootChanceThird);
+	}
+
+	private float lootChance(float chance){
+		float lootChance = chance;
+
+		float dropBonus = RingOfWealth.dropChanceMultiplier(Dungeon.hero);
 
 		Talent.BountyHunterTracker bhTracker = Dungeon.hero.buff(Talent.BountyHunterTracker.class);
 		if (bhTracker != null){
@@ -955,6 +967,16 @@ public abstract class Mob extends Char {
 				Item loot = createLoot();
 				if (loot != null) {
 					Dungeon.level.drop(loot, pos).sprite.drop();
+				}
+			} else if (Random.Float() < lootChanceOther()) {
+				Item lootOther = createLootOther();
+				if (lootOther != null) {
+					Dungeon.level.drop(lootOther, pos).sprite.drop();
+				}
+			} else if (Random.Float() < lootChanceThird()) {
+				Item lootThird = createLootThird();
+				if (lootThird != null) {
+					Dungeon.level.drop(lootThird, pos).sprite.drop();
 				}
 			}
 		}
@@ -986,7 +1008,11 @@ public abstract class Mob extends Char {
 	}
 	
 	protected Object loot = null;
+	protected Object lootOther = null;
+	protected Object lootThird = null;
 	protected float lootChance = 0;
+	protected float lootChanceOther = 0;
+	protected float lootChanceThird = 0;
 	
 	@SuppressWarnings("unchecked")
 	public Item createLoot() {
@@ -1012,6 +1038,64 @@ public abstract class Mob extends Char {
 		} else {
 
 			item = (Item)loot;
+
+		}
+		return item;
+	}
+
+	@SuppressWarnings("unchecked")
+	public Item createLootOther() {
+		Item item;
+		if (lootOther instanceof Generator.Category) {
+
+			item = Generator.randomUsingDefaults( (Generator.Category)lootOther );
+
+		} else if (lootOther instanceof Class<?>) {
+
+			if (ExoticPotion.regToExo.containsKey(lootOther)){
+				if (Random.Float() < ExoticCrystals.consumableExoticChance()){
+					return Generator.random(ExoticPotion.regToExo.get(lootOther));
+				}
+			} else if (ExoticScroll.regToExo.containsKey(lootOther)){
+				if (Random.Float() < ExoticCrystals.consumableExoticChance()){
+					return Generator.random(ExoticScroll.regToExo.get(lootOther));
+				}
+			}
+
+			item = Generator.random( (Class<? extends Item>)lootOther );
+
+		} else {
+
+			item = (Item)lootOther;
+
+		}
+		return item;
+	}
+
+	@SuppressWarnings("unchecked")
+	public Item createLootThird() {
+		Item item;
+		if (lootThird instanceof Generator.Category) {
+
+			item = Generator.randomUsingDefaults( (Generator.Category)lootThird );
+
+		} else if (lootThird instanceof Class<?>) {
+
+			if (ExoticPotion.regToExo.containsKey(lootThird)){
+				if (Random.Float() < ExoticCrystals.consumableExoticChance()){
+					return Generator.random(ExoticPotion.regToExo.get(lootThird));
+				}
+			} else if (ExoticScroll.regToExo.containsKey(lootThird)){
+				if (Random.Float() < ExoticCrystals.consumableExoticChance()){
+					return Generator.random(ExoticScroll.regToExo.get(lootThird));
+				}
+			}
+
+			item = Generator.random( (Class<? extends Item>)lootThird );
+
+		} else {
+
+			item = (Item)lootThird;
 
 		}
 		return item;
@@ -1507,4 +1591,3 @@ public abstract class Mob extends Char {
 		heldAllies.clear();
 	}
 }
-
