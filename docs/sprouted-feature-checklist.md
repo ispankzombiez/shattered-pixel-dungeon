@@ -43,7 +43,7 @@ Use this as the implementation tracking list in follow-up updates.
 - [x] `actors/mobs/AlbinoPiranha.java`
 - [x] `actors/mobs/Assassin.java`
 - [x] `actors/mobs/BanditKing.java`
-- [ ] `actors/mobs/Bestiary.java`
+- [x] `actors/mobs/Bestiary.java`
 - [x] `actors/mobs/BlueCat.java`
 - [x] `actors/mobs/BlueWraith.java`
 - [x] `actors/mobs/BrokenRobot.java`
@@ -78,118 +78,118 @@ Use this as the implementation tracking list in follow-up updates.
 - [x] `actors/mobs/PoisonGoo.java`
 - [x] `actors/mobs/RatBoss.java`
 - [x] `actors/mobs/RedWraith.java`
-- [ ] `actors/mobs/SeekingBomb.java`
-- [ ] `actors/mobs/SeekingClusterBomb.java`
-- [ ] `actors/mobs/Sentinel.java`
-- [ ] `actors/mobs/ShadowYog.java`
-- [ ] `actors/mobs/Shell.java`
-- [ ] `actors/mobs/Shielded.java`
-- [ ] `actors/mobs/SkeletonHand1.java`
-- [ ] `actors/mobs/SkeletonHand2.java`
-- [ ] `actors/mobs/SkeletonKing.java`
-- [ ] `actors/mobs/SokobanSentinel.java`
-- [ ] `actors/mobs/SpectralRat.java`
-- [ ] `actors/mobs/SteelBee.java`
-- [ ] `actors/mobs/TenguDen.java`
-- [ ] `actors/mobs/TenguEscape.java`
-- [ ] `actors/mobs/ThiefKing.java`
-- [ ] `actors/mobs/Tower.java`
-- [ ] `actors/mobs/VaultProtector.java`
-- [ ] `actors/mobs/Yog.java`
-- [ ] `actors/mobs/Zot.java`
-- [ ] `actors/mobs/ZotPhase.java`
-- [ ] `actors/mobs/npcs/Blacksmith2.java`
-- [ ] `actors/mobs/npcs/Guard.java`
-- [ ] `actors/mobs/npcs/OtilukeNPC.java`
-- [ ] `actors/mobs/npcs/RatKingDen.java`
-- [ ] `actors/mobs/npcs/SeekingBombNPC.java`
-- [ ] `actors/mobs/npcs/SeekingClusterBombNPC.java`
-- [ ] `actors/mobs/npcs/SheepSokoban.java`
-- [ ] `actors/mobs/npcs/SheepSokobanBlack.java`
-- [ ] `actors/mobs/npcs/SheepSokobanCorner.java`
-- [ ] `actors/mobs/npcs/SheepSokobanStop.java`
-- [ ] `actors/mobs/npcs/SheepSokobanSwitch.java`
-- [ ] `actors/mobs/npcs/Tinkerer1.java`
-- [ ] `actors/mobs/npcs/Tinkerer2.java`
-- [ ] `actors/mobs/npcs/Tinkerer3.java`
-- [ ] `actors/mobs/npcs/Tinkerer4.java`
-- [ ] `actors/mobs/npcs/Tinkerer5.java`
-- [ ] `actors/mobs/pets/BlueDragon.java`
-- [ ] `actors/mobs/pets/Bunny.java`
-- [ ] `actors/mobs/pets/Fairy.java`
-- [ ] `actors/mobs/pets/GreenDragon.java`
-- [ ] `actors/mobs/pets/PET.java`
-- [ ] `actors/mobs/pets/RedDragon.java`
-- [ ] `actors/mobs/pets/Scorpion.java`
-- [ ] `actors/mobs/pets/ShadowDragon.java`
-- [ ] `actors/mobs/pets/Spider.java`
-- [ ] `actors/mobs/pets/SugarplumFairy.java`
-- [ ] `actors/mobs/pets/Velocirooster.java`
-- [ ] `actors/mobs/pets/VioletDragon.java`
-- [ ] `actors/mobs/pets/bee.java`
+- [x] `actors/mobs/SeekingBomb.java`
+- [x] `actors/mobs/SeekingClusterBomb.java`
+- [x] `actors/mobs/Sentinel.java`
+- [x] `actors/mobs/ShadowYog.java`
+- [x] `actors/mobs/Shell.java`
+- [x] `actors/mobs/Shielded.java`
+- [x] `actors/mobs/SkeletonHand1.java`
+- [x] `actors/mobs/SkeletonHand2.java`
+- [x] `actors/mobs/SkeletonKing.java`
+- [x] `actors/mobs/SokobanSentinel.java`
+- [x] `actors/mobs/SpectralRat.java`
+- [x] `actors/mobs/SteelBee.java`
+- [x] `actors/mobs/TenguDen.java`
+- [x] `actors/mobs/TenguEscape.java`
+- [x] `actors/mobs/ThiefKing.java`
+- [x] `actors/mobs/Tower.java`
+- [x] `actors/mobs/VaultProtector.java`
+- [x] `actors/mobs/Yog.java`
+- [x] `actors/mobs/Zot.java`
+- [x] `actors/mobs/ZotPhase.java`
+- [x] `actors/mobs/npcs/Blacksmith2.java`
+- [x] `actors/mobs/npcs/Guard.java`
+- [x] `actors/mobs/npcs/OtilukeNPC.java`
+- [x] `actors/mobs/npcs/RatKingDen.java`
+- [x] `actors/mobs/npcs/SeekingBombNPC.java`
+- [x] `actors/mobs/npcs/SeekingClusterBombNPC.java`
+- [x] `actors/mobs/npcs/SheepSokoban.java`
+- [x] `actors/mobs/npcs/SheepSokobanBlack.java`
+- [x] `actors/mobs/npcs/SheepSokobanCorner.java`
+- [x] `actors/mobs/npcs/SheepSokobanStop.java`
+- [x] `actors/mobs/npcs/SheepSokobanSwitch.java`
+- [x] `actors/mobs/npcs/Tinkerer1.java`
+- [x] `actors/mobs/npcs/Tinkerer2.java`
+- [x] `actors/mobs/npcs/Tinkerer3.java`
+- [x] `actors/mobs/npcs/Tinkerer4.java`
+- [x] `actors/mobs/npcs/Tinkerer5.java`
+- [x] `actors/mobs/pets/BlueDragon.java`
+- [x] `actors/mobs/pets/Bunny.java`
+- [x] `actors/mobs/pets/Fairy.java`
+- [x] `actors/mobs/pets/GreenDragon.java`
+- [x] `actors/mobs/pets/PET.java`
+- [x] `actors/mobs/pets/RedDragon.java`
+- [x] `actors/mobs/pets/Scorpion.java`
+- [x] `actors/mobs/pets/ShadowDragon.java`
+- [x] `actors/mobs/pets/Spider.java`
+- [x] `actors/mobs/pets/SugarplumFairy.java`
+- [x] `actors/mobs/pets/Velocirooster.java`
+- [x] `actors/mobs/pets/VioletDragon.java`
+- [x] `actors/mobs/pets/bee.java`
 
 ## core-systems
 
-- [ ] `DungeonTilemap.java`
-- [ ] `FogOfWar.java`
-- [ ] `Journal.java`
-- [ ] `Preferences.java`
-- [ ] `ResultDescriptions.java`
+- [x] `DungeonTilemap.java`
+- [x] `FogOfWar.java`
+- [x] `Journal.java`
+- [x] `Preferences.java`
+- [x] `ResultDescriptions.java`
 
 ## effects
 
-- [ ] `effects/DeathRay.java`
-- [ ] `effects/Halo.java`
-- [ ] `effects/LightningLarge.java`
+- [x] `effects/DeathRay.java`
+- [x] `effects/Halo.java`
+- [x] `effects/LightningLarge.java`
 
 ## items → Ammo
 
-- [ ] `items/Ammo/Ammo.java`
-- [ ] `items/Ammo/Arrow.java`
-- [ ] `items/Ammo/SilverArrow.java`
+- [x] `items/Ammo/Ammo.java`
+- [x] `items/Ammo/Arrow.java`
+- [x] `items/Ammo/SilverArrow.java`
 
 ## items
 
-- [ ] `items/ActiveMrDestructo.java`
-- [ ] `items/ActiveMrDestructo2.java`
-- [ ] `items/AdamantArmor.java`
-- [ ] `items/AdamantRing.java`
-- [ ] `items/AdamantWand.java`
-- [ ] `items/AdamantWeapon.java`
-- [ ] `items/AncientCoin.java`
-- [ ] `items/ArmorKit.java`
+- [x] `items/ActiveMrDestructo.java`
+- [x] `items/ActiveMrDestructo2.java`
+- [x] `items/AdamantArmor.java`
+- [x] `items/AdamantRing.java`
+- [x] `items/AdamantWand.java`
+- [x] `items/AdamantWeapon.java`
+- [x] `items/AncientCoin.java`
+- [x] `items/ArmorKit.java`
 - [ ] `items/Bomb.java`
-- [ ] `items/Bone.java`
-- [ ] `items/BookOfDead.java`
-- [ ] `items/BookOfLife.java`
-- [ ] `items/BookOfTranscendence.java`
-- [ ] `items/CavesKey.java`
-- [ ] `items/CityKey.java`
-- [ ] `items/ClusterBomb.java`
-- [ ] `items/ConchShell.java`
-- [ ] `items/DewVial.java`
-- [ ] `items/DewVial2.java`
-- [ ] `items/DizzyBomb.java`
-- [ ] `items/DumplingBomb.java`
-- [ ] `items/DwarfHammer.java`
-- [ ] `items/EasterEgg.java`
-- [ ] `items/FishingBomb.java`
-- [ ] `items/GreaterStylus.java`
-- [ ] `items/HallsKey.java`
-- [ ] `items/HolyHandGrenade.java`
-- [ ] `items/InactiveMrDestructo.java`
-- [ ] `items/InactiveMrDestructo2.java`
-- [ ] `items/LevelDewdrop.java`
-- [ ] `items/LloydsBeacon.java`
-- [ ] `items/Mushroom.java`
-- [ ] `items/OrbOfZot.java`
-- [ ] `items/OtilukesJournal.java`
-- [ ] `items/Palantir.java`
-- [ ] `items/PrisonKey.java`
-- [ ] `items/PuddingCup.java`
-- [ ] `items/ReturnBeacon.java`
-- [ ] `items/Rice.java`
-- [ ] `items/SanChikarah.java`
+- [x] `items/Bone.java`
+- [x] `items/BookOfDead.java`
+- [x] `items/BookOfLife.java`
+- [x] `items/BookOfTranscendence.java`
+- [x] `items/CavesKey.java`
+- [x] `items/CityKey.java`
+- [x] `items/ClusterBomb.java`
+- [x] `items/ConchShell.java`
+- [x] `items/DewVial.java`
+- [x] `items/DewVial2.java`
+- [x] `items/DizzyBomb.java`
+- [x] `items/DumplingBomb.java`
+- [x] `items/DwarfHammer.java`
+- [x] `items/EasterEgg.java`
+- [x] `items/FishingBomb.java`
+- [x] `items/GreaterStylus.java`
+- [x] `items/HallsKey.java`
+- [x] `items/HolyHandGrenade.java`
+- [x] `items/InactiveMrDestructo.java`
+- [x] `items/InactiveMrDestructo2.java`
+- [x] `items/LevelDewdrop.java`
+- [x] `items/LloydsBeacon.java`
+- [x] `items/Mushroom.java`
+- [x] `items/OrbOfZot.java`
+- [x] `items/OtilukesJournal.java`
+- [x] `items/Palantir.java`
+- [x] `items/PrisonKey.java`
+- [x] `items/PuddingCup.java`
+- [x] `items/ReturnBeacon.java`
+- [x] `items/Rice.java`
+- [x] `items/SanChikarah.java`
 - [ ] `items/SanChikarahDeath.java`
 - [ ] `items/SanChikarahLife.java`
 - [ ] `items/SanChikarahTranscend.java`

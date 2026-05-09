@@ -39,7 +39,6 @@ import com.shatteredpixel.shatteredpixeldungeon.effects.TargetedCell;
 import com.shatteredpixel.shatteredpixeldungeon.effects.particles.PurpleParticle;
 import com.shatteredpixel.shatteredpixeldungeon.effects.particles.ShadowParticle;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.DriedRose;
-import com.shatteredpixel.shatteredpixeldungeon.journal.Bestiary;
 import com.shatteredpixel.shatteredpixeldungeon.levels.Level;
 import com.shatteredpixel.shatteredpixeldungeon.mechanics.Ballistica;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
@@ -519,13 +518,13 @@ public class YogDzewa extends Mob {
 	@Override
 	public void die( Object cause ) {
 
-		Bestiary.skipCountingEncounters = true;
+		com.shatteredpixel.shatteredpixeldungeon.journal.Bestiary.skipCountingEncounters = true;
 		for (Mob mob : (Iterable<Mob>)Dungeon.level.mobs.clone()) {
 			if (mob instanceof Larva || mob instanceof YogRipper || mob instanceof YogEye || mob instanceof YogScorpio) {
 				mob.die( cause );
 			}
 		}
-		Bestiary.skipCountingEncounters = false;
+		com.shatteredpixel.shatteredpixeldungeon.journal.Bestiary.skipCountingEncounters = false;
 
 		updateVisibility(Dungeon.level);
 

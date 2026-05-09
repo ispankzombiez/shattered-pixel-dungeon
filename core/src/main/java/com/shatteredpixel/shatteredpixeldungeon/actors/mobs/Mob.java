@@ -80,7 +80,6 @@ import com.shatteredpixel.shatteredpixeldungeon.items.weapon.Weapon;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.enchantments.Lucky;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.darts.Dart;
-import com.shatteredpixel.shatteredpixeldungeon.journal.Bestiary;
 import com.shatteredpixel.shatteredpixeldungeon.journal.Notes;
 import com.shatteredpixel.shatteredpixeldungeon.levels.Level;
 import com.shatteredpixel.shatteredpixeldungeon.levels.features.Chasm;
@@ -845,8 +844,8 @@ public abstract class Mob extends Char {
 				Statistics.enemiesSlain++;
 				Badges.validateMonstersSlain();
 				Statistics.qualifiedForNoKilling = false;
-				Bestiary.setSeen(getClass());
-				Bestiary.countEncounter(getClass());
+				com.shatteredpixel.shatteredpixeldungeon.journal.Bestiary.setSeen(getClass());
+				com.shatteredpixel.shatteredpixeldungeon.journal.Bestiary.countEncounter(getClass());
 
 				AscensionChallenge.processEnemyKill(this);
 				
