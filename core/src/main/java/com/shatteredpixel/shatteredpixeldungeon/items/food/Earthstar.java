@@ -60,13 +60,13 @@ public class Earthstar extends Food {
 
 		boolean rareRoll = Random.Int(10) == 0;
 		for (Mob mob : Dungeon.level.mobs.toArray(new Mob[0])) {
-			int bleed = Math.max(1, (Dungeon.depth + 3) - Random.IntRange(0, Math.max(1, mob.dr() / 2)));
+			int bleed = Math.max(1, (Dungeon.depth + 3) - Random.IntRange(0, Math.max(1, mob.drRoll() / 2)));
 			Buff.affect( mob, Bleeding.class ).set( rareRoll ? bleed + 2 : bleed );
 			Buff.prolong( mob, Cripple.class, Cripple.DURATION * 2f );
 		}
 
 		hero.damage( Math.max(1, Math.round(hero.HP / 2f)), this );
-		int heroBleed = Math.max(1, Dungeon.depth - Random.IntRange(0, Math.max(1, hero.dr())));
+		int heroBleed = Math.max(1, Dungeon.depth - Random.IntRange(0, Math.max(1, hero.drRoll())));
 		Buff.affect( hero, Bleeding.class ).set( heroBleed );
 		Buff.prolong( hero, Cripple.class, rareRoll ? Cripple.DURATION * 2f : Cripple.DURATION );
 	}
