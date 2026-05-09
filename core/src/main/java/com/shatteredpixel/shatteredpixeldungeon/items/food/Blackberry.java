@@ -49,7 +49,7 @@ public class Blackberry extends Berry {
 			regeneration.level( hero.HT * 2 );
 			GLog.i( Messages.get(this, "energy_burst") );
 		} else {
-			regeneration.level( Math.max( 1, hero.HT / 2 ) );
+			regeneration.level( hero.HT / 2 );
 			GLog.i( Messages.get(this, "energy") );
 		}
 	}

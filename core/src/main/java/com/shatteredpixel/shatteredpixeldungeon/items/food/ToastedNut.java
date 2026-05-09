@@ -31,6 +31,8 @@ import com.watabou.utils.Random;
 
 public class ToastedNut extends Food {
 
+	private static final int STRONG_BLESSING_MULTIPLIER = 2;
+
 	{
 		image = ItemSpriteSheet.BLAND_CHUNKS;
 		energy = Hunger.STARVING - Hunger.HUNGRY;
@@ -43,7 +45,7 @@ public class ToastedNut extends Food {
 		super.satisfy( hero );
 
 		GLog.w( Messages.get(this, "blessing") );
-		Barkskin.conditionallyAppend( hero, hero.HT * (Random.Int(2) + 1), 5 );
+		Barkskin.conditionallyAppend( hero, hero.HT / 2 * (Random.Int(STRONG_BLESSING_MULTIPLIER) + 1), 5 );
 	}
 
 	@Override
