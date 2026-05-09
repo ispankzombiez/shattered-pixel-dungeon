@@ -38,6 +38,8 @@ import com.watabou.utils.Random;
 
 public class Blueberry extends Berry {
 
+	private static final float BONUS_REGEN_CHANCE = 0.25f;
+
 	{
 		energy = (Hunger.STARVING - Hunger.HUNGRY) / 10f;
 	}
@@ -46,7 +48,7 @@ public class Blueberry extends Berry {
 	protected void satisfy( Hero hero ) {
 		super.satisfy( hero );
 
-		if (Random.Float() >= 0.75f) {
+		if (Random.Float() < BONUS_REGEN_CHANCE) {
 			Buff.affect( hero, BerryRegeneration.class ).level( hero.HT * 2 );
 			GLog.w( Messages.get(this, "energy") );
 		}

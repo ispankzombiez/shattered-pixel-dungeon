@@ -34,6 +34,7 @@ import com.watabou.utils.Random;
 public class Cloudberry extends Berry {
 
 	private static final float LEVITATION_DURATION = 10f;
+	private static final int REGEN_ROLL = 9;
 
 	{
 		energy = (Hunger.STARVING - Hunger.HUNGRY) / 10f;
@@ -48,11 +49,11 @@ public class Cloudberry extends Berry {
 
 		int effectRoll = Random.Int(10);
 		if (effectRoll >= 6) {
-			Buff.affect( hero, Levitation.class, effectRoll == 9 ? LEVITATION_DURATION * 2 : LEVITATION_DURATION );
+			Buff.affect( hero, Levitation.class, effectRoll == REGEN_ROLL ? LEVITATION_DURATION * 2 : LEVITATION_DURATION );
 			GLog.i( Messages.get(this, "levitating") );
 		}
 
-		if (effectRoll == 9) {
+		if (effectRoll == REGEN_ROLL) {
 			Buff.affect( hero, BerryRegeneration.class ).level( hero.HT );
 			GLog.w( Messages.get(this, "energy") );
 		}
