@@ -36,6 +36,10 @@ import java.util.ArrayList;
 public class Waterskin extends Item {
 
 	private static final int MAX_VOLUME	= 100;
+	private static final int SIP_MAX_DROPS = 3;
+	private static final int DRINK_MIN_DROPS = 3;
+	private static final int DRINK_MAX_DROPS = 10;
+	private static final int BLESSING_CHARGE_AMOUNT = 10;
 
 	private static final String AC_DRINK	= "DRINK";
 	private static final String AC_SIP	= "SIP";
@@ -88,7 +92,7 @@ public class Waterskin extends Item {
 		if (action.equals( AC_SIP )) {
 
 			if (volume > 0) {
-				int dropsToConsume = (int)GameMath.gate(1, 3, volume);
+				int dropsToConsume = (int)GameMath.gate(1, SIP_MAX_DROPS, volume);
 				if (Dewdrop.consumeDew(dropsToConsume, hero, true)) {
 					volume -= dropsToConsume;
 					Catalog.countUses(Dewdrop.class, dropsToConsume);
@@ -110,7 +114,7 @@ public class Waterskin extends Item {
 		} else if (action.equals( AC_DRINK )) {
 
 			if (volume > 0) {
-				int dropsToConsume = (int)GameMath.gate(3, 10, volume);
+				int dropsToConsume = (int)GameMath.gate(DRINK_MIN_DROPS, DRINK_MAX_DROPS, volume);
 
 				if (Dewdrop.consumeDew(dropsToConsume, hero, true)){
 					volume -= dropsToConsume;
@@ -156,11 +160,11 @@ public class Waterskin extends Item {
 	}
 
 	public boolean hasBlessingCharge() {
-		return volume >= 10;
+		return volume >= BLESSING_CHARGE_AMOUNT;
 	}
 
 	public void consumeBlessingCharge() {
-		volume -= 10;
+		volume -= BLESSING_CHARGE_AMOUNT;
 		if (volume < 0) {
 			volume = 0;
 		}
