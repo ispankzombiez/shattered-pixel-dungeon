@@ -158,7 +158,7 @@ Use this as the implementation tracking list in follow-up updates.
 - [x] `items/AdamantWeapon.java`
 - [x] `items/AncientCoin.java`
 - [x] `items/ArmorKit.java`
-- [ ] `items/Bomb.java`
+- [x] `items/Bomb.java`
 - [x] `items/Bone.java`
 - [x] `items/BookOfDead.java`
 - [x] `items/BookOfLife.java`
@@ -190,47 +190,47 @@ Use this as the implementation tracking list in follow-up updates.
 - [x] `items/ReturnBeacon.java`
 - [x] `items/Rice.java`
 - [x] `items/SanChikarah.java`
-- [ ] `items/SanChikarahDeath.java`
-- [ ] `items/SanChikarahLife.java`
-- [ ] `items/SanChikarahTranscend.java`
-- [ ] `items/SeekingBombItem.java`
-- [ ] `items/SeekingClusterBombItem.java`
-- [ ] `items/SewersKey.java`
-- [ ] `items/ShadowDragonEgg.java`
-- [ ] `items/SmartBomb.java`
-- [ ] `items/Spellbook.java`
-- [ ] `items/Spellbook_old.java`
-- [ ] `items/SteelHoneypot.java`
-- [ ] `items/StoneOre.java`
-- [ ] `items/TenguKey.java`
-- [ ] `items/TomeOfMastery.java`
-- [ ] `items/TownReturnBeacon.java`
-- [ ] `items/Weightstone.java`
-- [ ] `items/Whistle.java`
+- [x] `items/SanChikarahDeath.java`
+- [x] `items/SanChikarahLife.java`
+- [x] `items/SanChikarahTranscend.java`
+- [x] `items/SeekingBombItem.java`
+- [x] `items/SeekingClusterBombItem.java`
+- [x] `items/SewersKey.java`
+- [x] `items/ShadowDragonEgg.java`
+- [x] `items/SmartBomb.java`
+- [x] `items/Spellbook.java`
+- [x] `items/Spellbook_old.java`
+- [x] `items/SteelHoneypot.java`
+- [x] `items/StoneOre.java`
+- [x] `items/TenguKey.java`
+- [x] `items/TomeOfMastery.java`
+- [x] `items/TownReturnBeacon.java`
+- [x] `items/Weightstone.java`
+- [x] `items/Whistle.java`
 
 ## items → armor
 
-- [ ] `items/armor/MetalUnderwear.java`
-- [ ] `items/armor/glyphs/AntiEntropy.java`
-- [ ] `items/armor/glyphs/Bounce.java`
-- [ ] `items/armor/glyphs/Displacement.java`
-- [ ] `items/armor/glyphs/Metabolism.java`
-- [ ] `items/armor/glyphs/Multiplicity.java`
-- [ ] `items/armor/glyphs/Stench.java`
+- [x] `items/armor/MetalUnderwear.java`
+- [x] `items/armor/glyphs/AntiEntropy.java`
+- [x] `items/armor/glyphs/Bounce.java`
+- [x] `items/armor/glyphs/Displacement.java`
+- [x] `items/armor/glyphs/Metabolism.java`
+- [x] `items/armor/glyphs/Multiplicity.java`
+- [x] `items/armor/glyphs/Stench.java`
 
 ## items → artifacts
 
-- [ ] `items/artifacts/RingOfDisintegration.java`
-- [ ] `items/artifacts/RingOfFrost.java`
+- [x] `items/artifacts/RingOfDisintegration.java`
+- [x] `items/artifacts/RingOfFrost.java`
 
 ## items → bags
 
-- [ ] `items/bags/AnkhChain.java`
-- [ ] `items/bags/KeyRing.java`
-- [ ] `items/bags/Quiver.java`
-- [ ] `items/bags/SeedPouch.java`
-- [ ] `items/bags/SpellBook.java`
-- [ ] `items/bags/WandHolster.java`
+- [x] `items/bags/AnkhChain.java`
+- [x] `items/bags/KeyRing.java`
+- [x] `items/bags/Quiver.java`
+- [x] `items/bags/SeedPouch.java`
+- [x] `items/bags/SpellBook.java`
+- [x] `items/bags/WandHolster.java`
 
 ## items → food
 
@@ -254,353 +254,353 @@ Use this as the implementation tracking list in follow-up updates.
 
 ## items → journalpages
 
-- [ ] `items/journalpages/DragonCave.java`
-- [ ] `items/journalpages/JournalPage.java`
-- [ ] `items/journalpages/SafeSpotPage.java`
-- [ ] `items/journalpages/Sokoban1.java`
-- [ ] `items/journalpages/Sokoban2.java`
-- [ ] `items/journalpages/Sokoban3.java`
-- [ ] `items/journalpages/Sokoban4.java`
-- [ ] `items/journalpages/Town.java`
-- [ ] `items/journalpages/Vault.java`
+- [x] `items/journalpages/DragonCave.java`
+- [x] `items/journalpages/JournalPage.java`
+- [x] `items/journalpages/SafeSpotPage.java`
+- [x] `items/journalpages/Sokoban1.java`
+- [x] `items/journalpages/Sokoban2.java`
+- [x] `items/journalpages/Sokoban3.java`
+- [x] `items/journalpages/Sokoban4.java`
+- [x] `items/journalpages/Town.java`
+- [x] `items/journalpages/Vault.java`
 
 ## items → keys
 
-- [ ] `items/keys/GoldenSkeletonKey.java`
-- [ ] `items/keys/SkeletonKey.java`
+- [x] `items/keys/GoldenSkeletonKey.java`
+- [x] `items/keys/SkeletonKey.java`
 
 ## items → misc
 
-- [ ] `items/misc/AutoPotion.java`
-- [ ] `items/misc/MiscEquippable.java`
-- [ ] `items/misc/Spectacles.java`
+- [x] `items/misc/AutoPotion.java`
+- [x] `items/misc/MiscEquippable.java`
+- [x] `items/misc/Spectacles.java`
 
 ## items → nornstone
 
-- [ ] `items/nornstone/BlueNornStone.java`
-- [ ] `items/nornstone/GreenNornStone.java`
-- [ ] `items/nornstone/NornStone.java`
-- [ ] `items/nornstone/OrangeNornStone.java`
-- [ ] `items/nornstone/PurpleNornStone.java`
-- [ ] `items/nornstone/YellowNornStone.java`
+- [x] `items/nornstone/BlueNornStone.java`
+- [x] `items/nornstone/GreenNornStone.java`
+- [x] `items/nornstone/NornStone.java`
+- [x] `items/nornstone/OrangeNornStone.java`
+- [x] `items/nornstone/PurpleNornStone.java`
+- [x] `items/nornstone/YellowNornStone.java`
 
 ## items → potions
 
-- [ ] `items/potions/PotionOfMana.java`
-- [ ] `items/potions/PotionOfMending.java`
-- [ ] `items/potions/PotionOfMight.java`
-- [ ] `items/potions/PotionOfOverHealing.java`
+- [x] `items/potions/PotionOfMana.java`
+- [x] `items/potions/PotionOfMending.java`
+- [x] `items/potions/PotionOfMight.java`
+- [x] `items/potions/PotionOfOverHealing.java`
 
 ## items → quest
 
-- [ ] `items/quest/RatSkull.java`
+- [x] `items/quest/RatSkull.java`
 
 ## items → rings
 
-- [ ] `items/rings/RingOfMagic.java`
+- [x] `items/rings/RingOfMagic.java`
 
 ## items → scrolls
 
-- [ ] `items/scrolls/ScrollOfMagicalInfusion.java`
-- [ ] `items/scrolls/ScrollOfMultiUpgrade.java`
-- [ ] `items/scrolls/ScrollOfPsionicBlast.java`
-- [ ] `items/scrolls/ScrollOfRegrowth.java`
+- [x] `items/scrolls/ScrollOfMagicalInfusion.java`
+- [x] `items/scrolls/ScrollOfMultiUpgrade.java`
+- [x] `items/scrolls/ScrollOfPsionicBlast.java`
+- [x] `items/scrolls/ScrollOfRegrowth.java`
 
 ## items → spells
 
-- [ ] `items/spells/SpellOfAmok.java`
-- [ ] `items/spells/SpellOfAmok2.java`
-- [ ] `items/spells/SpellOfArmor.java`
-- [ ] `items/spells/SpellOfBlink.java`
-- [ ] `items/spells/SpellOfCharm.java`
-- [ ] `items/spells/SpellOfCountdown.java`
-- [ ] `items/spells/SpellOfDeath.java`
-- [ ] `items/spells/SpellOfDewDraw.java`
-- [ ] `items/spells/SpellOfDispel.java`
-- [ ] `items/spells/SpellOfFireblast.java`
-- [ ] `items/spells/SpellOfFirebolt.java`
-- [ ] `items/spells/SpellOfFirestorm.java`
-- [ ] `items/spells/SpellOfFright.java`
-- [ ] `items/spells/SpellOfGasImmunity.java`
-- [ ] `items/spells/SpellOfHaste.java`
-- [ ] `items/spells/SpellOfIceblast.java`
-- [ ] `items/spells/SpellOfIcebolt.java`
-- [ ] `items/spells/SpellOfIcestorm.java`
-- [ ] `items/spells/SpellOfInvisibility.java`
-- [ ] `items/spells/SpellOfLevitation.java`
-- [ ] `items/spells/SpellOfLight.java`
-- [ ] `items/spells/SpellOfLightningblast.java`
-- [ ] `items/spells/SpellOfLightningbolt.java`
-- [ ] `items/spells/SpellOfLightningstorm.java`
-- [ ] `items/spells/SpellOfMagicMissile.java`
-- [ ] `items/spells/SpellOfMoonFury.java`
-- [ ] `items/spells/SpellOfPoison.java`
-- [ ] `items/spells/SpellOfRecharge.java`
-- [ ] `items/spells/SpellOfRegen.java`
-- [ ] `items/spells/SpellOfRoot.java`
-- [ ] `items/spells/SpellOfSleep.java`
-- [ ] `items/spells/SpellOfSlowing.java`
+- [x] `items/spells/SpellOfAmok.java`
+- [x] `items/spells/SpellOfAmok2.java`
+- [x] `items/spells/SpellOfArmor.java`
+- [x] `items/spells/SpellOfBlink.java`
+- [x] `items/spells/SpellOfCharm.java`
+- [x] `items/spells/SpellOfCountdown.java`
+- [x] `items/spells/SpellOfDeath.java`
+- [x] `items/spells/SpellOfDewDraw.java`
+- [x] `items/spells/SpellOfDispel.java`
+- [x] `items/spells/SpellOfFireblast.java`
+- [x] `items/spells/SpellOfFirebolt.java`
+- [x] `items/spells/SpellOfFirestorm.java`
+- [x] `items/spells/SpellOfFright.java`
+- [x] `items/spells/SpellOfGasImmunity.java`
+- [x] `items/spells/SpellOfHaste.java`
+- [x] `items/spells/SpellOfIceblast.java`
+- [x] `items/spells/SpellOfIcebolt.java`
+- [x] `items/spells/SpellOfIcestorm.java`
+- [x] `items/spells/SpellOfInvisibility.java`
+- [x] `items/spells/SpellOfLevitation.java`
+- [x] `items/spells/SpellOfLight.java`
+- [x] `items/spells/SpellOfLightningblast.java`
+- [x] `items/spells/SpellOfLightningbolt.java`
+- [x] `items/spells/SpellOfLightningstorm.java`
+- [x] `items/spells/SpellOfMagicMissile.java`
+- [x] `items/spells/SpellOfMoonFury.java`
+- [x] `items/spells/SpellOfPoison.java`
+- [x] `items/spells/SpellOfRecharge.java`
+- [x] `items/spells/SpellOfRegen.java`
+- [x] `items/spells/SpellOfRoot.java`
+- [x] `items/spells/SpellOfSleep.java`
+- [x] `items/spells/SpellOfSlowing.java`
 
 ## items → wands
 
-- [ ] `items/wands/WandOfAmok.java`
-- [ ] `items/wands/WandOfAvalanche.java`
-- [ ] `items/wands/WandOfBlink.java`
-- [ ] `items/wands/WandOfDisintegration2.java`
-- [ ] `items/wands/WandOfFirebolt.java`
-- [ ] `items/wands/WandOfFlock.java`
-- [ ] `items/wands/WandOfPoison.java`
-- [ ] `items/wands/WandOfSlowness.java`
-- [ ] `items/wands/WandOfTelekinesis.java`
-- [ ] `items/wands/WandOfTeleportation.java`
+- [x] `items/wands/WandOfAmok.java`
+- [x] `items/wands/WandOfAvalanche.java`
+- [x] `items/wands/WandOfBlink.java`
+- [x] `items/wands/WandOfDisintegration2.java`
+- [x] `items/wands/WandOfFirebolt.java`
+- [x] `items/wands/WandOfFlock.java`
+- [x] `items/wands/WandOfPoison.java`
+- [x] `items/wands/WandOfSlowness.java`
+- [x] `items/wands/WandOfTelekinesis.java`
+- [x] `items/wands/WandOfTeleportation.java`
 
 ## items → weapon
 
-- [ ] `items/weapon/enchantments/AresLeech.java`
-- [ ] `items/weapon/enchantments/BuzzSaw.java`
-- [ ] `items/weapon/enchantments/CromLuck.java`
-- [ ] `items/weapon/enchantments/Death.java`
-- [ ] `items/weapon/enchantments/Fire.java`
-- [ ] `items/weapon/enchantments/Horror.java`
-- [ ] `items/weapon/enchantments/Instability.java`
-- [ ] `items/weapon/enchantments/JupitersHorror.java`
-- [ ] `items/weapon/enchantments/Leech.java`
-- [ ] `items/weapon/enchantments/LokisPoison.java`
-- [ ] `items/weapon/enchantments/Luck.java`
-- [ ] `items/weapon/enchantments/NeptuneShock.java`
-- [ ] `items/weapon/enchantments/Nomnom.java`
-- [ ] `items/weapon/enchantments/Osmose.java`
-- [ ] `items/weapon/enchantments/Paralysis.java`
-- [ ] `items/weapon/enchantments/Poison.java`
-- [ ] `items/weapon/enchantments/Shock.java`
-- [ ] `items/weapon/enchantments/Slashing.java`
-- [ ] `items/weapon/enchantments/Slow.java`
-- [ ] `items/weapon/melee/AssassinsKnife.java`
-- [ ] `items/weapon/melee/Axe.java`
-- [ ] `items/weapon/melee/BroadSword.java`
-- [ ] `items/weapon/melee/Chainsaw.java`
-- [ ] `items/weapon/melee/GreatSword.java`
-- [ ] `items/weapon/melee/Knuckles.java`
-- [ ] `items/weapon/melee/MageStaff.java`
-- [ ] `items/weapon/melee/RoyalSpork.java`
-- [ ] `items/weapon/melee/ShortSword.java`
-- [ ] `items/weapon/melee/Spork.java`
-- [ ] `items/weapon/melee/relic/AresSword.java`
-- [ ] `items/weapon/melee/relic/CromCruachAxe.java`
-- [ ] `items/weapon/melee/relic/LokisFlail.java`
-- [ ] `items/weapon/melee/relic/NeptunusTrident.java`
-- [ ] `items/weapon/melee/relic/RelicMeleeWeapon.java`
-- [ ] `items/weapon/missiles/Boomerang.java`
-- [ ] `items/weapon/missiles/CurareDart.java`
-- [ ] `items/weapon/missiles/CurareShuriken.java`
-- [ ] `items/weapon/missiles/Dart.java`
-- [ ] `items/weapon/missiles/ForestDart.java`
-- [ ] `items/weapon/missiles/IncendiaryDart.java`
-- [ ] `items/weapon/missiles/IncendiaryShuriken.java`
-- [ ] `items/weapon/missiles/JupitersWraith.java`
-- [ ] `items/weapon/missiles/RiceBall.java`
-- [ ] `items/weapon/missiles/Skull.java`
-- [ ] `items/weapon/missiles/Tamahawk.java`
-- [ ] `items/weapon/missiles/Wave.java`
-- [ ] `items/weapon/ranged/Bow.java`
-- [ ] `items/weapon/ranged/RangedWeapon.java`
+- [x] `items/weapon/enchantments/AresLeech.java`
+- [x] `items/weapon/enchantments/BuzzSaw.java`
+- [x] `items/weapon/enchantments/CromLuck.java`
+- [x] `items/weapon/enchantments/Death.java`
+- [x] `items/weapon/enchantments/Fire.java`
+- [x] `items/weapon/enchantments/Horror.java`
+- [x] `items/weapon/enchantments/Instability.java`
+- [x] `items/weapon/enchantments/JupitersHorror.java`
+- [x] `items/weapon/enchantments/Leech.java`
+- [x] `items/weapon/enchantments/LokisPoison.java`
+- [x] `items/weapon/enchantments/Luck.java`
+- [x] `items/weapon/enchantments/NeptuneShock.java`
+- [x] `items/weapon/enchantments/Nomnom.java`
+- [x] `items/weapon/enchantments/Osmose.java`
+- [x] `items/weapon/enchantments/Paralysis.java`
+- [x] `items/weapon/enchantments/Poison.java`
+- [x] `items/weapon/enchantments/Shock.java`
+- [x] `items/weapon/enchantments/Slashing.java`
+- [x] `items/weapon/enchantments/Slow.java`
+- [x] `items/weapon/melee/AssassinsKnife.java`
+- [x] `items/weapon/melee/Axe.java`
+- [x] `items/weapon/melee/BroadSword.java`
+- [x] `items/weapon/melee/Chainsaw.java`
+- [x] `items/weapon/melee/GreatSword.java`
+- [x] `items/weapon/melee/Knuckles.java`
+- [x] `items/weapon/melee/MageStaff.java`
+- [x] `items/weapon/melee/RoyalSpork.java`
+- [x] `items/weapon/melee/ShortSword.java`
+- [x] `items/weapon/melee/Spork.java`
+- [x] `items/weapon/melee/relic/AresSword.java`
+- [x] `items/weapon/melee/relic/CromCruachAxe.java`
+- [x] `items/weapon/melee/relic/LokisFlail.java`
+- [x] `items/weapon/melee/relic/NeptunusTrident.java`
+- [x] `items/weapon/melee/relic/RelicMeleeWeapon.java`
+- [x] `items/weapon/missiles/Boomerang.java`
+- [x] `items/weapon/missiles/CurareDart.java`
+- [x] `items/weapon/missiles/CurareShuriken.java`
+- [x] `items/weapon/missiles/Dart.java`
+- [x] `items/weapon/missiles/ForestDart.java`
+- [x] `items/weapon/missiles/IncendiaryDart.java`
+- [x] `items/weapon/missiles/IncendiaryShuriken.java`
+- [x] `items/weapon/missiles/JupitersWraith.java`
+- [x] `items/weapon/missiles/RiceBall.java`
+- [x] `items/weapon/missiles/Skull.java`
+- [x] `items/weapon/missiles/Tamahawk.java`
+- [x] `items/weapon/missiles/Wave.java`
+- [x] `items/weapon/ranged/Bow.java`
+- [x] `items/weapon/ranged/RangedWeapon.java`
 
 ## levels
 
-- [ ] `levels/BattleLevel.java`
-- [ ] `levels/CatacombLevel.java`
-- [ ] `levels/ChasmLevel.java`
-- [ ] `levels/CrabBossLevel.java`
-- [ ] `levels/DragonCaveLevel.java`
-- [ ] `levels/FieldLevel.java`
-- [ ] `levels/FishingLevel.java`
-- [ ] `levels/FortressLevel.java`
-- [ ] `levels/InfestBossLevel.java`
-- [ ] `levels/Layouts.java`
-- [ ] `levels/MazeLayout.java`
-- [ ] `levels/MineLevel.java`
-- [ ] `levels/MinesBossLevel.java`
-- [ ] `levels/Room.java`
-- [ ] `levels/SafeLevel.java`
-- [ ] `levels/SafeLevel1.java`
-- [ ] `levels/SkeletonBossLevel.java`
-- [ ] `levels/SokobanCastle.java`
-- [ ] `levels/SokobanIntroLevel.java`
-- [ ] `levels/SokobanLayouts.java`
-- [ ] `levels/SokobanLayouts2.java`
-- [ ] `levels/SokobanPuzzles2Level.java`
-- [ ] `levels/SokobanPuzzlesLevel.java`
-- [ ] `levels/SokobanTeleportLevel.java`
-- [ ] `levels/SokobanVaultLevel.java`
-- [ ] `levels/TenguDenLevel.java`
-- [ ] `levels/TenguHideoutLevel.java`
-- [ ] `levels/ThiefBossLevel.java`
-- [ ] `levels/ThiefCatchLevel.java`
-- [ ] `levels/TownLayouts.java`
-- [ ] `levels/TownLevel.java`
-- [ ] `levels/ZotBossLevel.java`
+- [x] `levels/BattleLevel.java`
+- [x] `levels/CatacombLevel.java`
+- [x] `levels/ChasmLevel.java`
+- [x] `levels/CrabBossLevel.java`
+- [x] `levels/DragonCaveLevel.java`
+- [x] `levels/FieldLevel.java`
+- [x] `levels/FishingLevel.java`
+- [x] `levels/FortressLevel.java`
+- [x] `levels/InfestBossLevel.java`
+- [x] `levels/Layouts.java`
+- [x] `levels/MazeLayout.java`
+- [x] `levels/MineLevel.java`
+- [x] `levels/MinesBossLevel.java`
+- [x] `levels/Room.java`
+- [x] `levels/SafeLevel.java`
+- [x] `levels/SafeLevel1.java`
+- [x] `levels/SkeletonBossLevel.java`
+- [x] `levels/SokobanCastle.java`
+- [x] `levels/SokobanIntroLevel.java`
+- [x] `levels/SokobanLayouts.java`
+- [x] `levels/SokobanLayouts2.java`
+- [x] `levels/SokobanPuzzles2Level.java`
+- [x] `levels/SokobanPuzzlesLevel.java`
+- [x] `levels/SokobanTeleportLevel.java`
+- [x] `levels/SokobanVaultLevel.java`
+- [x] `levels/TenguDenLevel.java`
+- [x] `levels/TenguHideoutLevel.java`
+- [x] `levels/ThiefBossLevel.java`
+- [x] `levels/ThiefCatchLevel.java`
+- [x] `levels/TownLayouts.java`
+- [x] `levels/TownLevel.java`
+- [x] `levels/ZotBossLevel.java`
 
 ## levels → features
 
-- [ ] `levels/features/AlchemyPot.java`
-- [ ] `levels/features/Sign.java`
+- [x] `levels/features/AlchemyPot.java`
+- [x] `levels/features/Sign.java`
 
 ## levels → painters
 
-- [ ] `levels/painters/ArmoryPainter.java`
-- [ ] `levels/painters/BlacksmithPainter.java`
-- [ ] `levels/painters/BossExitPainter.java`
-- [ ] `levels/painters/CryptPainter.java`
-- [ ] `levels/painters/EntrancePainter.java`
-- [ ] `levels/painters/ExitPainter.java`
-- [ ] `levels/painters/GardenPainter.java`
-- [ ] `levels/painters/LaboratoryPainter.java`
-- [ ] `levels/painters/LibraryPainter.java`
-- [ ] `levels/painters/MagicWellPainter.java`
-- [ ] `levels/painters/PassagePainter.java`
-- [ ] `levels/painters/PitPainter.java`
-- [ ] `levels/painters/PoolPainter.java`
-- [ ] `levels/painters/RatKingPainter.java`
-- [ ] `levels/painters/RatKingPainter2.java`
-- [ ] `levels/painters/ShopPainter.java`
-- [ ] `levels/painters/StandardPainter.java`
-- [ ] `levels/painters/StatuePainter.java`
-- [ ] `levels/painters/StoragePainter.java`
-- [ ] `levels/painters/TrapsPainter.java`
-- [ ] `levels/painters/TreasuryPainter.java`
-- [ ] `levels/painters/TunnelPainter.java`
-- [ ] `levels/painters/VaultPainter.java`
-- [ ] `levels/painters/WeakFloorPainter.java`
+- [x] `levels/painters/ArmoryPainter.java`
+- [x] `levels/painters/BlacksmithPainter.java`
+- [x] `levels/painters/BossExitPainter.java`
+- [x] `levels/painters/CryptPainter.java`
+- [x] `levels/painters/EntrancePainter.java`
+- [x] `levels/painters/ExitPainter.java`
+- [x] `levels/painters/GardenPainter.java`
+- [x] `levels/painters/LaboratoryPainter.java`
+- [x] `levels/painters/LibraryPainter.java`
+- [x] `levels/painters/MagicWellPainter.java`
+- [x] `levels/painters/PassagePainter.java`
+- [x] `levels/painters/PitPainter.java`
+- [x] `levels/painters/PoolPainter.java`
+- [x] `levels/painters/RatKingPainter.java`
+- [x] `levels/painters/RatKingPainter2.java`
+- [x] `levels/painters/ShopPainter.java`
+- [x] `levels/painters/StandardPainter.java`
+- [x] `levels/painters/StatuePainter.java`
+- [x] `levels/painters/StoragePainter.java`
+- [x] `levels/painters/TrapsPainter.java`
+- [x] `levels/painters/TreasuryPainter.java`
+- [x] `levels/painters/TunnelPainter.java`
+- [x] `levels/painters/VaultPainter.java`
+- [x] `levels/painters/WeakFloorPainter.java`
 
 ## levels → traps
 
-- [ ] `levels/traps/ActivatePortalTrap.java`
-- [ ] `levels/traps/ChangeSheepTrap.java`
-- [ ] `levels/traps/FireTrap.java`
-- [ ] `levels/traps/FleecingTrap.java`
-- [ ] `levels/traps/HeapGenTrap.java`
-- [ ] `levels/traps/LightningTrap.java`
-- [ ] `levels/traps/ParalyticTrap.java`
-- [ ] `levels/traps/PoisonTrap.java`
-- [ ] `levels/traps/SokobanPortalTrap.java`
+- [x] `levels/traps/ActivatePortalTrap.java`
+- [x] `levels/traps/ChangeSheepTrap.java`
+- [x] `levels/traps/FireTrap.java`
+- [x] `levels/traps/FleecingTrap.java`
+- [x] `levels/traps/HeapGenTrap.java`
+- [x] `levels/traps/LightningTrap.java`
+- [x] `levels/traps/ParalyticTrap.java`
+- [x] `levels/traps/PoisonTrap.java`
+- [x] `levels/traps/SokobanPortalTrap.java`
 
 ## plants
 
-- [ ] `plants/Dewcatcher.java`
-- [ ] `plants/Dreamfoil.java`
-- [ ] `plants/Flytrap.java`
-- [ ] `plants/Phaseshift.java`
+- [x] `plants/Dewcatcher.java`
+- [x] `plants/Dreamfoil.java`
+- [x] `plants/Flytrap.java`
+- [x] `plants/Phaseshift.java`
 
 ## scenes
 
-- [ ] `scenes/BadgesScene.java`
-- [ ] `scenes/IntroScene.java`
+- [x] `scenes/BadgesScene.java`
+- [x] `scenes/IntroScene.java`
 
 ## sprites
 
-- [ ] `sprites/AdultDragonVioletSprite.java`
-- [ ] `sprites/AlbinoPiranhaSprite.java`
-- [ ] `sprites/AssassinSprite.java`
-- [ ] `sprites/BanditKingSprite.java`
-- [ ] `sprites/BlueDragonSprite.java`
-- [ ] `sprites/BlueWraithSprite.java`
-- [ ] `sprites/BrokenRobotSprite.java`
-- [ ] `sprites/BrownBatSprite.java`
-- [ ] `sprites/BunnySprite.java`
-- [ ] `sprites/BurningFistSprite.java`
-- [ ] `sprites/CrabKingSprite.java`
-- [ ] `sprites/DemonGooSprite.java`
-- [ ] `sprites/DewProtectorSprite.java`
-- [ ] `sprites/DwarfKingTombSprite.java`
-- [ ] `sprites/DwarfLichSprite.java`
-- [ ] `sprites/FairySprite.java`
-- [ ] `sprites/FishProtectorSprite.java`
-- [ ] `sprites/FlyingProtectorSprite.java`
-- [ ] `sprites/ForestProtectorSprite.java`
-- [ ] `sprites/FossilSkeletonSprite.java`
-- [ ] `sprites/GnollArcherSprite.java`
-- [ ] `sprites/GoldThiefSprite.java`
-- [ ] `sprites/GraveProtectorSprite.java`
-- [ ] `sprites/GreenDragonSprite.java`
-- [ ] `sprites/GreyOniSprite.java`
-- [ ] `sprites/GreyRatSprite.java`
-- [ ] `sprites/GullinSprite.java`
-- [ ] `sprites/InfectingFistSprite.java`
-- [ ] `sprites/KupuaSprite.java`
-- [ ] `sprites/LitTowerSprite.java`
-- [ ] `sprites/MagicEyeSprite.java`
-- [ ] `sprites/MonsterBoxSprite.java`
-- [ ] `sprites/MossySkeletonSprite.java`
-- [ ] `sprites/MrDestructo2dot0Sprite.java`
-- [ ] `sprites/MrDestructoSprite.java`
-- [ ] `sprites/OniSprite.java`
-- [ ] `sprites/OrbOfZotSprite.java`
-- [ ] `sprites/OtilukeNPCSprite.java`
-- [ ] `sprites/OtilukeSprite.java`
-- [ ] `sprites/PinningFistSprite.java`
-- [ ] `sprites/PlantSprite.java`
-- [ ] `sprites/PoisonGooSprite.java`
-- [ ] `sprites/RatBossSprite.java`
-- [ ] `sprites/RedDragonSprite.java`
-- [ ] `sprites/RedWraithSprite.java`
-- [ ] `sprites/RottingFistSprite.java`
-- [ ] `sprites/ScorpionSprite.java`
-- [ ] `sprites/SeekingBombSprite.java`
-- [ ] `sprites/SeekingClusterBombSprite.java`
-- [ ] `sprites/SentinelSprite.java`
-- [ ] `sprites/ShadowDragonSprite.java`
-- [ ] `sprites/ShadowYogSprite.java`
-- [ ] `sprites/ShellSprite.java`
-- [ ] `sprites/SkeletonHand1Sprite.java`
-- [ ] `sprites/SkeletonHand2Sprite.java`
-- [ ] `sprites/SkeletonKingSprite.java`
-- [ ] `sprites/SokobanBlackSheepSprite.java`
-- [ ] `sprites/SokobanCornerSheepSprite.java`
-- [ ] `sprites/SokobanSentinelSprite.java`
-- [ ] `sprites/SokobanSheepSprite.java`
-- [ ] `sprites/SokobanSheepSwitchSprite.java`
-- [ ] `sprites/SpectralRatSprite.java`
-- [ ] `sprites/SpiderSprite.java`
-- [ ] `sprites/SteelBeeSprite.java`
-- [ ] `sprites/SugarplumFairySprite.java`
-- [ ] `sprites/ThiefKingSprite.java`
-- [ ] `sprites/TinkererSprite.java`
-- [ ] `sprites/TowerSprite.java`
-- [ ] `sprites/VaultProtectorSprite.java`
-- [ ] `sprites/VelociroosterSprite.java`
-- [ ] `sprites/VillagerSprite.java`
-- [ ] `sprites/VioletDragonSprite.java`
-- [ ] `sprites/ZotPhaseSprite.java`
-- [ ] `sprites/ZotSprite.java`
+- [x] `sprites/AdultDragonVioletSprite.java`
+- [x] `sprites/AlbinoPiranhaSprite.java`
+- [x] `sprites/AssassinSprite.java`
+- [x] `sprites/BanditKingSprite.java`
+- [x] `sprites/BlueDragonSprite.java`
+- [x] `sprites/BlueWraithSprite.java`
+- [x] `sprites/BrokenRobotSprite.java`
+- [x] `sprites/BrownBatSprite.java`
+- [x] `sprites/BunnySprite.java`
+- [x] `sprites/BurningFistSprite.java`
+- [x] `sprites/CrabKingSprite.java`
+- [x] `sprites/DemonGooSprite.java`
+- [x] `sprites/DewProtectorSprite.java`
+- [x] `sprites/DwarfKingTombSprite.java`
+- [x] `sprites/DwarfLichSprite.java`
+- [x] `sprites/FairySprite.java`
+- [x] `sprites/FishProtectorSprite.java`
+- [x] `sprites/FlyingProtectorSprite.java`
+- [x] `sprites/ForestProtectorSprite.java`
+- [x] `sprites/FossilSkeletonSprite.java`
+- [x] `sprites/GnollArcherSprite.java`
+- [x] `sprites/GoldThiefSprite.java`
+- [x] `sprites/GraveProtectorSprite.java`
+- [x] `sprites/GreenDragonSprite.java`
+- [x] `sprites/GreyOniSprite.java`
+- [x] `sprites/GreyRatSprite.java`
+- [x] `sprites/GullinSprite.java`
+- [x] `sprites/InfectingFistSprite.java`
+- [x] `sprites/KupuaSprite.java`
+- [x] `sprites/LitTowerSprite.java`
+- [x] `sprites/MagicEyeSprite.java`
+- [x] `sprites/MonsterBoxSprite.java`
+- [x] `sprites/MossySkeletonSprite.java`
+- [x] `sprites/MrDestructo2dot0Sprite.java`
+- [x] `sprites/MrDestructoSprite.java`
+- [x] `sprites/OniSprite.java`
+- [x] `sprites/OrbOfZotSprite.java`
+- [x] `sprites/OtilukeNPCSprite.java`
+- [x] `sprites/OtilukeSprite.java`
+- [x] `sprites/PinningFistSprite.java`
+- [x] `sprites/PlantSprite.java`
+- [x] `sprites/PoisonGooSprite.java`
+- [x] `sprites/RatBossSprite.java`
+- [x] `sprites/RedDragonSprite.java`
+- [x] `sprites/RedWraithSprite.java`
+- [x] `sprites/RottingFistSprite.java`
+- [x] `sprites/ScorpionSprite.java`
+- [x] `sprites/SeekingBombSprite.java`
+- [x] `sprites/SeekingClusterBombSprite.java`
+- [x] `sprites/SentinelSprite.java`
+- [x] `sprites/ShadowDragonSprite.java`
+- [x] `sprites/ShadowYogSprite.java`
+- [x] `sprites/ShellSprite.java`
+- [x] `sprites/SkeletonHand1Sprite.java`
+- [x] `sprites/SkeletonHand2Sprite.java`
+- [x] `sprites/SkeletonKingSprite.java`
+- [x] `sprites/SokobanBlackSheepSprite.java`
+- [x] `sprites/SokobanCornerSheepSprite.java`
+- [x] `sprites/SokobanSentinelSprite.java`
+- [x] `sprites/SokobanSheepSprite.java`
+- [x] `sprites/SokobanSheepSwitchSprite.java`
+- [x] `sprites/SpectralRatSprite.java`
+- [x] `sprites/SpiderSprite.java`
+- [x] `sprites/SteelBeeSprite.java`
+- [x] `sprites/SugarplumFairySprite.java`
+- [x] `sprites/ThiefKingSprite.java`
+- [x] `sprites/TinkererSprite.java`
+- [x] `sprites/TowerSprite.java`
+- [x] `sprites/VaultProtectorSprite.java`
+- [x] `sprites/VelociroosterSprite.java`
+- [x] `sprites/VillagerSprite.java`
+- [x] `sprites/VioletDragonSprite.java`
+- [x] `sprites/ZotPhaseSprite.java`
+- [x] `sprites/ZotSprite.java`
 
 ## ui
 
-- [ ] `ui/GoldIndicator.java`
-- [ ] `ui/HealthIndicator.java`
-- [ ] `ui/PrefsButton.java`
-- [ ] `ui/SimpleButton.java`
-- [ ] `ui/SpellButton.java`
+- [x] `ui/GoldIndicator.java`
+- [x] `ui/HealthIndicator.java`
+- [x] `ui/PrefsButton.java`
+- [x] `ui/SimpleButton.java`
+- [x] `ui/SpellButton.java`
 
 ## utils
 
-- [ ] `utils/BArray.java`
-- [ ] `utils/Utils.java`
+- [x] `utils/BArray.java`
+- [x] `utils/Utils.java`
 
 ## windows
 
-- [ ] `windows/WndAscend.java`
-- [ ] `windows/WndBlacksmith2.java`
-- [ ] `windows/WndCatalogus.java`
-- [ ] `windows/WndChooseWay.java`
-- [ ] `windows/WndClass.java`
-- [ ] `windows/WndDescend.java`
-- [ ] `windows/WndDewDrawInfo.java`
-- [ ] `windows/WndDewVial.java`
-- [ ] `windows/WndItem.java`
-- [ ] `windows/WndLevelUp.java`
-- [ ] `windows/WndOtiluke.java`
-- [ ] `windows/WndOtilukeMessage.java`
-- [ ] `windows/WndPetHaste.java`
-- [ ] `windows/WndTinkerer.java`
-- [ ] `windows/WndTinkerer2.java`
-- [ ] `windows/WndTinkerer3.java`
+- [x] `windows/WndAscend.java`
+- [x] `windows/WndBlacksmith2.java`
+- [x] `windows/WndCatalogus.java`
+- [x] `windows/WndChooseWay.java`
+- [x] `windows/WndClass.java`
+- [x] `windows/WndDescend.java`
+- [x] `windows/WndDewDrawInfo.java`
+- [x] `windows/WndDewVial.java`
+- [x] `windows/WndItem.java`
+- [x] `windows/WndLevelUp.java`
+- [x] `windows/WndOtiluke.java`
+- [x] `windows/WndOtilukeMessage.java`
+- [x] `windows/WndPetHaste.java`
+- [x] `windows/WndTinkerer.java`
+- [x] `windows/WndTinkerer2.java`
+- [x] `windows/WndTinkerer3.java`
