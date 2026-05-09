@@ -41,7 +41,7 @@ public class GoldenNut extends Nut {
 	protected void satisfy( Hero hero ) {
 		super.satisfy( hero );
 
-		boolean greaterBlessing = Random.Int(2) == 1;
+		boolean greaterBlessing = Random.Boolean();
 		int htBoost = greaterBlessing ? 50 : 20;
 		int strBoost = greaterBlessing ? 5 : 2;
 
