@@ -57,13 +57,18 @@ import com.shatteredpixel.shatteredpixeldungeon.items.bombs.WoollyBomb;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Berry;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Blackberry;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Blandfruit;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.BlueMilk;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Blueberry;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.ChargrilledMeat;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Cloudberry;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.DeathCap;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.Earthstar;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Food;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.FrozenCarpaccio;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.GoldenJelly;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.GoldenNut;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.FullMoonberry;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.JackOLantern;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Meat;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.MeatPie;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Moonberry;
@@ -72,6 +77,8 @@ import com.shatteredpixel.shatteredpixeldungeon.items.food.Nut;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.OverpricedRation;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Pasty;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.PhantomMeat;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.PixieParasol;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.PotionOfConstitution;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.SmallRation;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.StewedMeat;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.SupplyRation;
@@ -246,7 +253,9 @@ public enum Catalog {
 				Blackberry.class, Blueberry.class, Cloudberry.class, Nut.class, ToastedNut.class,
 				SupplyRation.class, Blandfruit.class, PhantomMeat.class, MeatPie.class,
 				Meat.class, OverpricedRation.class, GoldenJelly.class, Moonberry.class,
-				FullMoonberry.class );
+				FullMoonberry.class, BlueMilk.class, DeathCap.class, Earthstar.class,
+				GoldenNut.class, JackOLantern.class, PixieParasol.class,
+				PotionOfConstitution.class );
 
 		EXOTIC_POTIONS.addItems(ExoticPotion.exoToReg.keySet().toArray(new Class[0]));
 

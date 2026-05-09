@@ -235,21 +235,21 @@ Use this as the implementation tracking list in follow-up updates.
 ## items → food
 
 - [x] `items/food/Blackberry.java`
-- [ ] `items/food/BlueMilk.java`
+- [x] `items/food/BlueMilk.java`
 - [x] `items/food/Blueberry.java`
 - [x] `items/food/Cloudberry.java`
-- [ ] `items/food/DeathCap.java`
-- [ ] `items/food/Earthstar.java`
+- [x] `items/food/DeathCap.java`
+- [x] `items/food/Earthstar.java`
 - [x] `items/food/FullMoonberry.java`
 - [x] `items/food/GoldenJelly.java`
-- [ ] `items/food/GoldenNut.java`
-- [ ] `items/food/JackOLantern.java`
+- [x] `items/food/GoldenNut.java`
+- [x] `items/food/JackOLantern.java`
 - [x] `items/food/Meat.java`
 - [x] `items/food/Moonberry.java`
 - [x] `items/food/Nut.java`
 - [x] `items/food/OverpricedRation.java`
-- [ ] `items/food/PixieParasol.java`
-- [ ] `items/food/PotionOfConstitution.java`
+- [x] `items/food/PixieParasol.java`
+- [x] `items/food/PotionOfConstitution.java`
 - [x] `items/food/ToastedNut.java`
 
 ## items → journalpages
