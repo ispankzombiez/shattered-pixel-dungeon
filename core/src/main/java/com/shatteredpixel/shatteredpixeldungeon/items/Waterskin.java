@@ -22,10 +22,12 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
 import com.shatteredpixel.shatteredpixeldungeon.Assets;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Barrier;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Haste;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Invisibility;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
-import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Talent;
-import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.VialOfBlood;
+import com.shatteredpixel.shatteredpixeldungeon.effects.Speck;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfRemoveCurse;
 import com.shatteredpixel.shatteredpixeldungeon.journal.Catalog;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
@@ -38,16 +40,25 @@ import java.util.ArrayList;
 
 public class Waterskin extends Item {
 
-	private static final int MAX_VOLUME	= 20;
+	private static final int MAX_VOLUME		= 100;
+	private static final int SIP_MAX_DROPS    = 3;
+	private static final int DRINK_MIN_DROPS  = 3;
+	private static final int DRINK_MAX_DROPS  = 10;
+	private static final int BLESSING_CHARGE_AMOUNT = 10;
+	private static final int SPLASH_COST      = 10;
+	private static final int UNCURSE_COST     = 50;
 
 	private static final String AC_DRINK	= "DRINK";
+	private static final String AC_SIP		= "SIP";
+	private static final String AC_SPLASH	= "SPLASH";
+	private static final String AC_UNCURSE	= "UNCURSE";
 
 	private static final float TIME_TO_DRINK = 1f;
 
 	private static final String TXT_STATUS	= "%d/%d";
 
 	{
-		image = ItemSpriteSheet.WATERSKIN;
+		image = ItemSpriteSheet.VIAL;
 
 		defaultAction = AC_DRINK;
 
@@ -74,7 +85,16 @@ public class Waterskin extends Item {
 	public ArrayList<String> actions( Hero hero ) {
 		ArrayList<String> actions = super.actions( hero );
 		if (volume > 0) {
+			actions.add( AC_SIP );
+		}
+		if (volume > 2) {
 			actions.add( AC_DRINK );
+		}
+		if (volume >= SPLASH_COST) {
+			actions.add( AC_SPLASH );
+		}
+		if (volume >= UNCURSE_COST) {
+			actions.add( AC_UNCURSE );
 		}
 		return actions;
 	}
@@ -84,35 +104,32 @@ public class Waterskin extends Item {
 
 		super.execute( hero, action );
 
-		if (action.equals( AC_DRINK )) {
+		if (action.equals( AC_SIP )) {
 
 			if (volume > 0) {
-				
-				float missingHealthPercent = 1f - (hero.HP / (float)hero.HT);
+				int dropsToConsume = (int)GameMath.gate(1, SIP_MAX_DROPS, volume);
+				if (Dewdrop.consumeDew(dropsToConsume, hero, true)) {
+					volume -= dropsToConsume;
+					Catalog.countUses(Dewdrop.class, dropsToConsume);
 
-				//each drop is worth 5% of total health
-				float dropsNeeded = missingHealthPercent / 0.05f;
+					hero.spend(TIME_TO_DRINK);
+					hero.busy();
 
-				//we are getting extra heal value, scale back drops needed accordingly
-				if (dropsNeeded > 1.01f && VialOfBlood.delayBurstHealing()){
-					dropsNeeded /= VialOfBlood.totalHealMultiplier();
+					Sample.INSTANCE.play(Assets.Sounds.DRINK);
+					hero.sprite.operate(hero.pos);
+
+					updateQuickslot();
 				}
 
-				//add extra drops if we can gain shielding
-				int curShield = 0;
-				if (hero.buff(Barrier.class) != null) curShield = hero.buff(Barrier.class).shielding();
-				int maxShield = Math.round(hero.HT *0.2f*hero.pointsInTalent(Talent.SHIELDING_DEW));
-				if (hero.hasTalent(Talent.SHIELDING_DEW)){
-					float missingShieldPercent = 1f - (curShield / (float)maxShield);
-					missingShieldPercent *= 0.2f*hero.pointsInTalent(Talent.SHIELDING_DEW);
-					if (missingShieldPercent > 0){
-						dropsNeeded += missingShieldPercent / 0.05f;
-					}
-				}
 
-				//trimming off 0.01 drops helps with floating point errors
-				int dropsToConsume = (int)Math.ceil(dropsNeeded - 0.01f);
-				dropsToConsume = (int)GameMath.gate(1, dropsToConsume, volume);
+			} else {
+				GLog.w( Messages.get(this, "empty") );
+			}
+
+		} else if (action.equals( AC_DRINK )) {
+
+			if (volume > 0) {
+				int dropsToConsume = (int)GameMath.gate(DRINK_MIN_DROPS, DRINK_MAX_DROPS, volume);
 
 				if (Dewdrop.consumeDew(dropsToConsume, hero, true)){
 					volume -= dropsToConsume;
@@ -128,6 +145,58 @@ public class Waterskin extends Item {
 				}
 
 
+			} else {
+				GLog.w( Messages.get(this, "empty") );
+			}
+
+		} else if (action.equals( AC_SPLASH )) {
+
+			if (volume >= SPLASH_COST) {
+				volume -= SPLASH_COST;
+
+				Buff.affect(hero, Haste.class, Haste.DURATION);
+				Buff.affect(hero, Invisibility.class, Invisibility.DURATION);
+
+				hero.sprite.emitter().burst(Speck.factory(Speck.JET), 5);
+				GLog.i( Messages.get(this, "splash") );
+
+				hero.spend(TIME_TO_DRINK);
+				hero.busy();
+
+				Sample.INSTANCE.play(Assets.Sounds.DRINK);
+				hero.sprite.operate(hero.pos);
+
+				updateQuickslot();
+			} else {
+				GLog.w( Messages.get(this, "empty") );
+			}
+
+		} else if (action.equals( AC_UNCURSE )) {
+
+			if (volume >= UNCURSE_COST) {
+				volume -= UNCURSE_COST;
+
+				boolean procced = ScrollOfRemoveCurse.uncurse(hero,
+						hero.belongings.weapon(),
+						hero.belongings.armor(),
+						hero.belongings.ring());
+				procced = ScrollOfRemoveCurse.uncurse(hero,
+						hero.belongings.backpack.items.toArray(new Item[0]))
+						|| procced;
+
+				if (procced) {
+					GLog.p( Messages.get(this, "uncurse_procced") );
+				} else {
+					GLog.i( Messages.get(this, "uncurse_not_procced") );
+				}
+
+				hero.spend(TIME_TO_DRINK);
+				hero.busy();
+
+				Sample.INSTANCE.play(Assets.Sounds.DRINK);
+				hero.sprite.operate(hero.pos);
+
+				updateQuickslot();
 			} else {
 				GLog.w( Messages.get(this, "empty") );
 			}
@@ -157,6 +226,18 @@ public class Waterskin extends Item {
 		updateQuickslot();
 	}
 
+	public boolean hasBlessingCharge() {
+		return volume >= BLESSING_CHARGE_AMOUNT;
+	}
+
+	public void consumeBlessingCharge() {
+		volume -= BLESSING_CHARGE_AMOUNT;
+		if (volume < 0) {
+			volume = 0;
+		}
+		updateQuickslot();
+	}
+
 	@Override
 	public boolean isUpgradable() {
 		return false;
@@ -180,6 +261,39 @@ public class Waterskin extends Item {
 			GLog.p( Messages.get(this, "full") );
 		}
 
+		updateQuickslot();
+	}
+
+	/** Collect a red dewdrop — worth 5x a normal drop */
+	public void collectRedDew( int quantity ) {
+		GLog.i( Messages.get(this, "collected") );
+		volume += quantity * 5;
+		if (volume >= MAX_VOLUME) {
+			volume = MAX_VOLUME;
+			GLog.p( Messages.get(this, "full") );
+		}
+		updateQuickslot();
+	}
+
+	/** Collect a yellow dewdrop — worth 2x a normal drop */
+	public void collectYellowDew( int quantity ) {
+		GLog.i( Messages.get(this, "collected") );
+		volume += quantity * 2;
+		if (volume >= MAX_VOLUME) {
+			volume = MAX_VOLUME;
+			GLog.p( Messages.get(this, "full") );
+		}
+		updateQuickslot();
+	}
+
+	/** Collect a violet dewdrop — worth 50x a normal drop */
+	public void collectVioletDew( int quantity ) {
+		GLog.i( Messages.get(this, "collected") );
+		volume += quantity * 50;
+		if (volume >= MAX_VOLUME) {
+			volume = MAX_VOLUME;
+			GLog.p( Messages.get(this, "full") );
+		}
 		updateQuickslot();
 	}
 
