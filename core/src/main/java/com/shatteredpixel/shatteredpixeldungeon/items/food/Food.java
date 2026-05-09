@@ -48,7 +48,7 @@ public class Food extends Item {
 	public static final float TIME_TO_EAT	= 3f;
 	
 	public static final String AC_EAT	    = "EAT";
-	public static final String AC_FEED_PET  = "FEED_PET";
+	public static final String AC_FEED_PET	= "FEED_PET";
 	private static final float PET_FEED_HEAL_DIVISOR = 3f;
 	
 	public float energy = Hunger.HUNGRY;

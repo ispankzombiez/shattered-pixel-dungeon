@@ -110,7 +110,7 @@ public class Waterskin extends Item {
 		} else if (action.equals( AC_DRINK )) {
 
 			if (volume > 0) {
-				int dropsToConsume = (int)GameMath.gate(1, 10, volume);
+				int dropsToConsume = (int)GameMath.gate(3, 10, volume);
 
 				if (Dewdrop.consumeDew(dropsToConsume, hero, true)){
 					volume -= dropsToConsume;
