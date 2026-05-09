@@ -1018,86 +1018,43 @@ public abstract class Mob extends Char {
 	
 	@SuppressWarnings("unchecked")
 	public Item createLoot() {
-		Item item;
-		if (loot instanceof Generator.Category) {
-
-			item = Generator.randomUsingDefaults( (Generator.Category)loot );
-
-		} else if (loot instanceof Class<?>) {
-
-			if (ExoticPotion.regToExo.containsKey(loot)){
-				if (Random.Float() < ExoticCrystals.consumableExoticChance()){
-					return Generator.random(ExoticPotion.regToExo.get(loot));
-				}
-			} else if (ExoticScroll.regToExo.containsKey(loot)){
-				if (Random.Float() < ExoticCrystals.consumableExoticChance()){
-					return Generator.random(ExoticScroll.regToExo.get(loot));
-				}
-			}
-
-			item = Generator.random( (Class<? extends Item>)loot );
-
-		} else {
-
-			item = (Item)loot;
-
-		}
-		return item;
+		return createLootFrom(loot);
 	}
 
 	@SuppressWarnings("unchecked")
 	public Item createLootOther() {
-		Item item;
-		if (lootOther instanceof Generator.Category) {
-
-			item = Generator.randomUsingDefaults( (Generator.Category)lootOther );
-
-		} else if (lootOther instanceof Class<?>) {
-
-			if (ExoticPotion.regToExo.containsKey(lootOther)){
-				if (Random.Float() < ExoticCrystals.consumableExoticChance()){
-					return Generator.random(ExoticPotion.regToExo.get(lootOther));
-				}
-			} else if (ExoticScroll.regToExo.containsKey(lootOther)){
-				if (Random.Float() < ExoticCrystals.consumableExoticChance()){
-					return Generator.random(ExoticScroll.regToExo.get(lootOther));
-				}
-			}
-
-			item = Generator.random( (Class<? extends Item>)lootOther );
-
-		} else {
-
-			item = (Item)lootOther;
-
-		}
-		return item;
+		return createLootFrom(lootOther);
 	}
 
 	@SuppressWarnings("unchecked")
 	public Item createLootThird() {
+		return createLootFrom(lootThird);
+	}
+
+	@SuppressWarnings("unchecked")
+	private Item createLootFrom(Object lootSlot) {
 		Item item;
-		if (lootThird instanceof Generator.Category) {
+		if (lootSlot instanceof Generator.Category) {
 
-			item = Generator.randomUsingDefaults( (Generator.Category)lootThird );
+			item = Generator.randomUsingDefaults( (Generator.Category)lootSlot );
 
-		} else if (lootThird instanceof Class<?>) {
+		} else if (lootSlot instanceof Class<?>) {
 
-			if (ExoticPotion.regToExo.containsKey(lootThird)){
+			if (ExoticPotion.regToExo.containsKey(lootSlot)){
 				if (Random.Float() < ExoticCrystals.consumableExoticChance()){
-					return Generator.random(ExoticPotion.regToExo.get(lootThird));
+					return Generator.random(ExoticPotion.regToExo.get(lootSlot));
 				}
-			} else if (ExoticScroll.regToExo.containsKey(lootThird)){
+			} else if (ExoticScroll.regToExo.containsKey(lootSlot)){
 				if (Random.Float() < ExoticCrystals.consumableExoticChance()){
-					return Generator.random(ExoticScroll.regToExo.get(lootThird));
+					return Generator.random(ExoticScroll.regToExo.get(lootSlot));
 				}
 			}
 
-			item = Generator.random( (Class<? extends Item>)lootThird );
+			item = Generator.random( (Class<? extends Item>)lootSlot );
 
 		} else {
 
-			item = (Item)lootThird;
+			item = (Item)lootSlot;
 
 		}
 		return item;
