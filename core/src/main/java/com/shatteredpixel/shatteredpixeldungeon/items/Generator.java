@@ -207,11 +207,15 @@ import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.Tomahawk;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.Trident;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.darts.Dart;
 import com.shatteredpixel.shatteredpixeldungeon.plants.Blindweed;
+import com.shatteredpixel.shatteredpixeldungeon.plants.BlandfruitBush;
+import com.shatteredpixel.shatteredpixeldungeon.plants.Dreamfoil;
 import com.shatteredpixel.shatteredpixeldungeon.plants.Earthroot;
 import com.shatteredpixel.shatteredpixeldungeon.plants.Fadeleaf;
 import com.shatteredpixel.shatteredpixeldungeon.plants.Firebloom;
+import com.shatteredpixel.shatteredpixeldungeon.plants.Flytrap;
 import com.shatteredpixel.shatteredpixeldungeon.plants.Icecap;
 import com.shatteredpixel.shatteredpixeldungeon.plants.Mageroyal;
+import com.shatteredpixel.shatteredpixeldungeon.plants.Phaseshift;
 import com.shatteredpixel.shatteredpixeldungeon.plants.PitcherPlant;
 import com.shatteredpixel.shatteredpixeldungeon.plants.Plant;
 import com.shatteredpixel.shatteredpixeldungeon.plants.Rotberry;
@@ -220,6 +224,16 @@ import com.shatteredpixel.shatteredpixeldungeon.plants.Starflower;
 import com.shatteredpixel.shatteredpixeldungeon.plants.Stormvine;
 import com.shatteredpixel.shatteredpixeldungeon.plants.Sungrass;
 import com.shatteredpixel.shatteredpixeldungeon.plants.Swiftthistle;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.Blackberry;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.Blueberry;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.Cloudberry;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.GoldenJelly;
+import com.shatteredpixel.shatteredpixeldungeon.items.nornstone.NornStone;
+import com.shatteredpixel.shatteredpixeldungeon.items.nornstone.BlueNornStone;
+import com.shatteredpixel.shatteredpixeldungeon.items.nornstone.GreenNornStone;
+import com.shatteredpixel.shatteredpixeldungeon.items.nornstone.OrangeNornStone;
+import com.shatteredpixel.shatteredpixeldungeon.items.nornstone.PurpleNornStone;
+import com.shatteredpixel.shatteredpixeldungeon.items.nornstone.YellowNornStone;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.GameMath;
 import com.watabou.utils.Random;
@@ -262,6 +276,13 @@ public class Generator {
 		
 		SCROLL	( 8, 8, Scroll.class ),
 		STONE   ( 1, 1, Runestone.class),
+
+		// Sprouted categories — weight 0 so they don't appear in the normal
+		// random-category pool; mobs reference them directly via Generator.random()
+		MUSHROOM ( 0, 0, Food.class ),
+		BERRY    ( 0, 0, Food.class ),
+		NORNSTONE  ( 0, 0, NornStone.class ),
+		NORNSTONE2 ( 0, 0, NornStone.class ),
 		
 		GOLD	( 10, 10,   Gold.class );
 		
@@ -370,8 +391,13 @@ public class Generator {
 					Earthroot.Seed.class,
 					Mageroyal.Seed.class,
 					Starflower.Seed.class,
-					PitcherPlant.Seed.class};
-			SEED.defaultProbs = new float[]{ 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1 };
+					PitcherPlant.Seed.class,
+					BlandfruitBush.Seed.class,
+					WandOfRegrowth.Dewcatcher.Seed.class,
+					Dreamfoil.Seed.class,
+					Flytrap.Seed.class,
+					Phaseshift.Seed.class};
+			SEED.defaultProbs = new float[]{ 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 1, 1 };
 			SEED.probs = SEED.defaultProbs.clone();
 			
 			SCROLL.classes = new Class<?>[]{
@@ -643,6 +669,45 @@ public class Generator {
 			};
 			TRINKET.defaultProbs = new float[]{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 			TRINKET.probs = TRINKET.defaultProbs.clone();
+
+			// --- Sprouted categories (weight 0 in the main deck; referenced directly by mobs) ---
+
+			MUSHROOM.classes = new Class<?>[]{
+					BlueMilk.class,
+					DeathCap.class,
+					Earthstar.class,
+					JackOLantern.class,
+					PixieParasol.class,
+					GoldenJelly.class
+			};
+			MUSHROOM.probs = new float[]{ 2, 2, 2, 2, 2, 2 };
+
+			BERRY.classes = new Class<?>[]{
+					Blackberry.class,
+					Blueberry.class,
+					Cloudberry.class,
+					Moonberry.class
+			};
+			BERRY.probs = new float[]{ 8, 2, 2, 1 };
+
+			NORNSTONE.classes = new Class<?>[]{
+					BlueNornStone.class,
+					GreenNornStone.class,
+					OrangeNornStone.class,
+					PurpleNornStone.class,
+					YellowNornStone.class
+			};
+			NORNSTONE.probs = new float[]{ 2, 2, 2, 2, 2 };
+
+			// NORNSTONE2 is the same pool minus GreenNornStone (used for non-Huntress hero)
+			NORNSTONE2.classes = new Class<?>[]{
+					BlueNornStone.class,
+					GreenNornStone.class,
+					OrangeNornStone.class,
+					PurpleNornStone.class,
+					YellowNornStone.class
+			};
+			NORNSTONE2.probs = new float[]{ 2, 0, 2, 2, 2 };
 
 			for (Category cat : Category.values()){
 				if (cat.defaultProbs2 != null){
