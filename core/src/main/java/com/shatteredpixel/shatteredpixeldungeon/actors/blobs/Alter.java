@@ -27,6 +27,7 @@ package com.shatteredpixel.shatteredpixeldungeon.actors.blobs;
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.effects.BlobEmitter;
 import com.shatteredpixel.shatteredpixeldungeon.effects.Speck;
+import com.shatteredpixel.shatteredpixeldungeon.levels.Level;
 import com.watabou.utils.Bundle;
 
 public class Alter extends Blob {
@@ -53,7 +54,9 @@ public class Alter extends Blob {
 	}
 
 	@Override
-	public void seed( int cell, int amount ) {
+	public void seed( Level level, int cell, int amount ) {
+		if (cur == null) cur = new int[level.length()];
+		if (off == null) off = new int[cur.length];
 		if (cur != null && pos < cur.length) cur[pos] = 0;
 		pos = cell;
 		if (cur != null && pos < cur.length) {
