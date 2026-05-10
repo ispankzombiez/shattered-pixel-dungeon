@@ -2,7 +2,6 @@ package com.shatteredpixel.shatteredpixeldungeon.levels;
 
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
-import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Bestiary;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
 import com.shatteredpixel.shatteredpixeldungeon.items.Heap;
@@ -198,8 +197,4 @@ abstract class SproutedArenaLevel extends Level {
 		drop(item, randomPrizeCell()).type = Heap.Type.CHEST;
 	}
 
-	@Override
-	public int randomRespawnCell( Char ch ) {
-		return super.randomRespawnCell(ch);
-	}
 }
