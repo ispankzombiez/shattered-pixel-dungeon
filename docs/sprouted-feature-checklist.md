@@ -15,9 +15,9 @@ Use the core backlog below to track **behavior-level parity** work for follow-up
 - [ ] Wire Sprouted map-generation flow into level creation (generation pipeline integration, not just class presence).
 - [ ] Integrate Sprouted depth/branch routing for generated special maps into `Dungeon.newLevel()` selection.
 - [ ] Replace empty Sprouted generation-adjacent level shells with functional generation logic:
-  - [ ] `levels/BattleLevel.java`
+  - [x] `levels/BattleLevel.java`
   - [ ] `levels/CatacombLevel.java`
-  - [ ] `levels/FieldLevel.java`
+  - [x] `levels/FieldLevel.java`
   - [ ] `levels/FortressLevel.java`
   - [ ] `levels/MineLevel.java`
   - [ ] `levels/TownLevel.java`

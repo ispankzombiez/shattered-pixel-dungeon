@@ -350,6 +350,18 @@ public class Dungeon {
 				case 26:
 					level = new LastLevel();
 					break;
+				case 27:
+					level = new FieldLevel();
+					break;
+				case 28:
+					level = new BattleLevel();
+					break;
+				case 29:
+					level = new FishingLevel();
+					break;
+				case 30:
+					level = new VaultLevel();
+					break;
 				default:
 					level = new DeadEndLevel();
 			}
