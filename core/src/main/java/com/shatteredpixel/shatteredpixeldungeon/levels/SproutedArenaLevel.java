@@ -8,6 +8,7 @@ import com.shatteredpixel.shatteredpixeldungeon.items.Heap;
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
 import com.shatteredpixel.shatteredpixeldungeon.levels.features.LevelTransition;
 import com.shatteredpixel.shatteredpixeldungeon.levels.painters.Painter;
+import com.watabou.utils.Point;
 import com.watabou.utils.Random;
 
 abstract class SproutedArenaLevel extends Level {
@@ -37,18 +38,18 @@ abstract class SproutedArenaLevel extends Level {
 
 			if (top < topMost) {
 				topMost = top;
-				exitCell = pointToCell(Random.IntRange(left + 1, right - 1), top);
+				exitCell = pointToCell(new Point(Random.IntRange(left + 1, right - 1), top));
 			}
 		}
 
 		Painter.fill(this, centerX - HUB_RADIUS, centerY - HUB_RADIUS,
 				HUB_RADIUS * 2 + 1, HUB_RADIUS * 2 + 1, Terrain.EMPTY);
 
-		int entranceCell = pointToCell(centerX, centerY);
+		int entranceCell = pointToCell(new Point(centerX, centerY));
 		setTransitionCell(entranceCell, Terrain.ENTRANCE, LevelTransition.Type.REGULAR_ENTRANCE);
 
 		if (exitCell == -1) {
-			exitCell = pointToCell(centerX, 1);
+			exitCell = pointToCell(new Point(centerX, 1));
 		}
 		setTransitionCell(exitCell, Terrain.EXIT, LevelTransition.Type.REGULAR_EXIT);
 
@@ -60,14 +61,14 @@ abstract class SproutedArenaLevel extends Level {
 		int x = x1;
 		int y = y1;
 		while (x != x2) {
-			Painter.set(this, pointToCell(x, y), Terrain.EMPTY);
+			Painter.set(this, pointToCell(new Point(x, y)), Terrain.EMPTY);
 			x += Integer.compare(x2, x);
 		}
 		while (y != y2) {
-			Painter.set(this, pointToCell(x, y), Terrain.EMPTY);
+			Painter.set(this, pointToCell(new Point(x, y)), Terrain.EMPTY);
 			y += Integer.compare(y2, y);
 		}
-		Painter.set(this, pointToCell(x, y), Terrain.EMPTY);
+		Painter.set(this, pointToCell(new Point(x, y)), Terrain.EMPTY);
 	}
 
 	private void setTransitionCell(int cell, int terrain, LevelTransition.Type type) {
@@ -164,7 +165,7 @@ abstract class SproutedArenaLevel extends Level {
 			} while (pos == -1);
 			mob.pos = pos;
 			mobs.add(mob);
-			Actor.occupyCell(mob);
+			occupyCell(mob);
 		}
 	}
 

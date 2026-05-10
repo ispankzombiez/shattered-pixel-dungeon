@@ -53,8 +53,6 @@ public class Dreamfoil extends Plant {
 
 	@Override
 	public void activate( Char ch ) {
-		super.activate( ch );
-
 		if (ch instanceof Mob) {
 			Buff.affect( ch, MagicalSleep.class );
 		} else if (ch instanceof Hero) {
