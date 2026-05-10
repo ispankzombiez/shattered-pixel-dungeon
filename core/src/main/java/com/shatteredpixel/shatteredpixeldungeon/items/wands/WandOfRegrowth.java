@@ -36,6 +36,10 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.NPC;
 import com.shatteredpixel.shatteredpixeldungeon.effects.MagicMissile;
 import com.shatteredpixel.shatteredpixeldungeon.items.Dewdrop;
 import com.shatteredpixel.shatteredpixeldungeon.items.Generator;
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.items.RedDewdrop;
+import com.shatteredpixel.shatteredpixeldungeon.items.VioletDewdrop;
+import com.shatteredpixel.shatteredpixeldungeon.items.YellowDewdrop;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MagesStaff;
 import com.shatteredpixel.shatteredpixeldungeon.levels.Level;
 import com.shatteredpixel.shatteredpixeldungeon.levels.Terrain;
@@ -359,14 +363,28 @@ public class WandOfRegrowth extends Wand {
 
 			for (int i = 0; i < nDrops && !candidates.isEmpty(); i++){
 				Integer c = Random.element(candidates);
+				Item dew = randomDewdrop();
 				if (Dungeon.level.heaps.get(c) == null) {
-					Dungeon.level.drop(new Dewdrop(), c).sprite.drop(pos);
+					Dungeon.level.drop(dew, c).sprite.drop(pos);
 				} else {
-					Dungeon.level.drop(new Dewdrop(), c).sprite.drop(c);
+					Dungeon.level.drop(dew, c).sprite.drop(c);
 				}
 				candidates.remove(c);
 			}
 
+		}
+
+		private Item randomDewdrop(){
+			if (Random.Int(10) == 0){
+				return new VioletDewdrop();
+			}
+			if (Random.Int(5) == 0){
+				return new RedDewdrop();
+			}
+			if (Random.Int(3) == 0){
+				return new YellowDewdrop();
+			}
+			return new Dewdrop();
 		}
 
 		//seed is never dropped, only care about plant class

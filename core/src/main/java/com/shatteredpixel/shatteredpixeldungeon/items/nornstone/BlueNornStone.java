@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.nornstone;
 
-public class BlueNornStone {
+public class BlueNornStone extends NornStone {
 }

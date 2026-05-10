@@ -34,6 +34,10 @@ import com.shatteredpixel.shatteredpixeldungeon.effects.CellEmitter;
 import com.shatteredpixel.shatteredpixeldungeon.effects.particles.LeafParticle;
 import com.shatteredpixel.shatteredpixeldungeon.items.Dewdrop;
 import com.shatteredpixel.shatteredpixeldungeon.items.Generator;
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.items.RedDewdrop;
+import com.shatteredpixel.shatteredpixeldungeon.items.VioletDewdrop;
+import com.shatteredpixel.shatteredpixeldungeon.items.YellowDewdrop;
 import com.shatteredpixel.shatteredpixeldungeon.items.armor.glyphs.Camouflage;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.SandalsOfNature;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Berry;
@@ -156,7 +160,7 @@ public class HighGrass {
 				}
 
 				if (Random.Float() < lootChance) {
-					level.drop(new Dewdrop(), pos).sprite.drop();
+					level.drop(randomDewdrop(naturalismLevel), pos).sprite.drop();
 				}
 			}
 
@@ -187,5 +191,18 @@ public class HighGrass {
 			default:
 				return new Berry();
 		}
+	}
+
+	private static Item randomDewdrop(int naturalismLevel){
+		if (naturalismLevel > 4 && Random.Int(Math.max(1, 100 - naturalismLevel)) == 0){
+			return new VioletDewdrop();
+		}
+		if (naturalismLevel > 2 && Random.Int(Math.max(1, 50 - naturalismLevel)) == 0){
+			return new RedDewdrop();
+		}
+		if (naturalismLevel > 0 && Random.Int(Math.max(1, 30 - naturalismLevel)) == 0){
+			return new YellowDewdrop();
+		}
+		return new Dewdrop();
 	}
 }

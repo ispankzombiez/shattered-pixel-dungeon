@@ -926,9 +926,21 @@ public abstract class Mob extends Char {
 	}
 
 	public float lootChance(){
-		float lootChance = this.lootChance;
+		return lootChance(this.lootChance);
+	}
 
-		float dropBonus = RingOfWealth.dropChanceMultiplier( Dungeon.hero );
+	public float lootChanceOther(){
+		return lootChance(lootChanceOther);
+	}
+
+	public float lootChanceThird(){
+		return lootChance(lootChanceThird);
+	}
+
+	private float lootChance(float chance){
+		float lootChance = chance;
+
+		float dropBonus = RingOfWealth.dropChanceMultiplier(Dungeon.hero);
 
 		Talent.BountyHunterTracker bhTracker = Dungeon.hero.buff(Talent.BountyHunterTracker.class);
 		if (bhTracker != null){
@@ -955,6 +967,18 @@ public abstract class Mob extends Char {
 				Item loot = createLoot();
 				if (loot != null) {
 					Dungeon.level.drop(loot, pos).sprite.drop();
+				}
+			}
+			if (Random.Float() < lootChanceOther()) {
+				Item lootOther = createLootOther();
+				if (lootOther != null) {
+					Dungeon.level.drop(lootOther, pos).sprite.drop();
+				}
+			}
+			if (Random.Float() < lootChanceThird()) {
+				Item lootThird = createLootThird();
+				if (lootThird != null) {
+					Dungeon.level.drop(lootThird, pos).sprite.drop();
 				}
 			}
 		}
@@ -986,32 +1010,51 @@ public abstract class Mob extends Char {
 	}
 	
 	protected Object loot = null;
+	protected Object lootOther = null;
+	protected Object lootThird = null;
 	protected float lootChance = 0;
+	protected float lootChanceOther = 0;
+	protected float lootChanceThird = 0;
 	
 	@SuppressWarnings("unchecked")
 	public Item createLoot() {
+		return createLootFrom(loot);
+	}
+
+	@SuppressWarnings("unchecked")
+	public Item createLootOther() {
+		return createLootFrom(lootOther);
+	}
+
+	@SuppressWarnings("unchecked")
+	public Item createLootThird() {
+		return createLootFrom(lootThird);
+	}
+
+	@SuppressWarnings("unchecked")
+	private Item createLootFrom(Object lootSlot) {
 		Item item;
-		if (loot instanceof Generator.Category) {
+		if (lootSlot instanceof Generator.Category) {
 
-			item = Generator.randomUsingDefaults( (Generator.Category)loot );
+			item = Generator.randomUsingDefaults( (Generator.Category)lootSlot );
 
-		} else if (loot instanceof Class<?>) {
+		} else if (lootSlot instanceof Class<?>) {
 
-			if (ExoticPotion.regToExo.containsKey(loot)){
+			if (ExoticPotion.regToExo.containsKey(lootSlot)){
 				if (Random.Float() < ExoticCrystals.consumableExoticChance()){
-					return Generator.random(ExoticPotion.regToExo.get(loot));
+					return Generator.random(ExoticPotion.regToExo.get(lootSlot));
 				}
-			} else if (ExoticScroll.regToExo.containsKey(loot)){
+			} else if (ExoticScroll.regToExo.containsKey(lootSlot)){
 				if (Random.Float() < ExoticCrystals.consumableExoticChance()){
-					return Generator.random(ExoticScroll.regToExo.get(loot));
+					return Generator.random(ExoticScroll.regToExo.get(lootSlot));
 				}
 			}
 
-			item = Generator.random( (Class<? extends Item>)loot );
+			item = Generator.random( (Class<? extends Item>)lootSlot );
 
 		} else {
 
-			item = (Item)loot;
+			item = (Item)lootSlot;
 
 		}
 		return item;
@@ -1507,4 +1550,3 @@ public abstract class Mob extends Char {
 		heldAllies.clear();
 	}
 }
-
