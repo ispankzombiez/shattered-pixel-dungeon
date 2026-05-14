@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.windows;
 
-public class WndClass {
+import com.shatteredpixel.shatteredpixeldungeon.ui.Window;
+
+public class WndClass extends Window {
 }

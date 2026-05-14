@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.windows;
 
-public class WndOtilukeMessage {
+import com.shatteredpixel.shatteredpixeldungeon.ui.Window;
+
+public class WndOtilukeMessage extends Window {
 }

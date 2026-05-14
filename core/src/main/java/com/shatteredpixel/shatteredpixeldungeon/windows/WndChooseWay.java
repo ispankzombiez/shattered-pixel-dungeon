@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.windows;
 
-public class WndChooseWay {
+import com.shatteredpixel.shatteredpixeldungeon.ui.Window;
+
+public class WndChooseWay extends Window {
 }

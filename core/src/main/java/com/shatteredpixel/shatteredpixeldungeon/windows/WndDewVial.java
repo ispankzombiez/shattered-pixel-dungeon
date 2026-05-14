@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.windows;
 
-public class WndDewVial {
+import com.shatteredpixel.shatteredpixeldungeon.ui.Window;
+
+public class WndDewVial extends Window {
 }

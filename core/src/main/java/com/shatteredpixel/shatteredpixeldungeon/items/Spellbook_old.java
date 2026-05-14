@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-public class Spellbook_old {
+public class Spellbook_old extends Item {
 }

@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.windows;
 
-public class WndAscend {
+import com.shatteredpixel.shatteredpixeldungeon.ui.Window;
+
+public class WndAscend extends Window {
 }

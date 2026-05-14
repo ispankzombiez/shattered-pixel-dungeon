@@ -2,11 +2,10 @@ package com.shatteredpixel.shatteredpixeldungeon.items.rings;
 
 public class RingOfFrost extends Ring {
 
-	@Override
-	protected RingBuff buff() {
-		return new Buff();
-	}
+\t{
+\t\tbuffClass = Buff.class;
+\t}
 
-	public class Buff extends RingBuff {
-	}
+\tpublic class Buff extends RingBuff {
+\t}
 }

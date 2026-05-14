@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.windows;
 
-public class WndTinkerer {
+import com.shatteredpixel.shatteredpixeldungeon.ui.Window;
+
+public class WndTinkerer extends Window {
 }

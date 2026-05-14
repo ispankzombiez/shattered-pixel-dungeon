@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.windows;
 
-public class WndPetHaste {
+import com.shatteredpixel.shatteredpixeldungeon.ui.Window;
+
+public class WndPetHaste extends Window {
 }

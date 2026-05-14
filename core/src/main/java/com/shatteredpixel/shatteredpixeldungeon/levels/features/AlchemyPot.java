@@ -1,13 +1,11 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels.features;
 
-import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
-import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
+import com.shatteredpixel.shatteredpixeldungeon.ShatteredPixelDungeon;
+import com.shatteredpixel.shatteredpixeldungeon.scenes.AlchemyScene;
 
 public class AlchemyPot {
 
 public static void useAlchemy(int pos) {
-if (Dungeon.level.heroFOV[pos]) {
-GameScene.show(new com.shatteredpixel.shatteredpixeldungeon.windows.WndAlchemy());
-}
+ShatteredPixelDungeon.switchScene(AlchemyScene.class);
 }
 }

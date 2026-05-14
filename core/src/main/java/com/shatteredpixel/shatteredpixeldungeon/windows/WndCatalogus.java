@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.windows;
 
-public class WndCatalogus {
+import com.shatteredpixel.shatteredpixeldungeon.ui.Window;
+
+public class WndCatalogus extends Window {
 }

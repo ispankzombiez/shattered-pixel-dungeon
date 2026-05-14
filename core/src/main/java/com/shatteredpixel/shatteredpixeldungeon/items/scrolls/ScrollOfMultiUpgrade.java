@@ -2,8 +2,9 @@ package com.shatteredpixel.shatteredpixeldungeon.items.scrolls;
 
 public class ScrollOfMultiUpgrade extends Scroll {
 
-	@Override
-	public void doRead() {
-		collect();
-	}
+\t@Override
+\tpublic void doRead() {
+\t\tidentify();
+\t\tupdateQuickslot();
+\t}
 }

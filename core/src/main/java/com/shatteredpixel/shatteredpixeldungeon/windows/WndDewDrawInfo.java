@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.windows;
 
-public class WndDewDrawInfo {
+import com.shatteredpixel.shatteredpixeldungeon.ui.Window;
+
+public class WndDewDrawInfo extends Window {
 }

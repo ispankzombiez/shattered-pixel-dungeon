@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.windows;
 
-public class WndLevelUp {
+import com.shatteredpixel.shatteredpixeldungeon.ui.Window;
+
+public class WndLevelUp extends Window {
 }
