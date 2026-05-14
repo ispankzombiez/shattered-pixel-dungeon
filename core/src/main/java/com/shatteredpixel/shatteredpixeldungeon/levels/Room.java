@@ -52,9 +52,14 @@ public boolean contains(int x, int y) {
 return x >= left && x <= right && y >= top && y <= bottom;
 }
 
-public static Room randomRoom(int mapWidth, int mapHeight, int minWidth, int maxWidth, int minHeight, int maxHeight, int borderPadding) {
-int roomWidth = Random.IntRange(Math.max(3, minWidth), Math.max(3, maxWidth));
-int roomHeight = Random.IntRange(Math.max(3, minHeight), Math.max(3, maxHeight));
+	public static Room randomRoom(int mapWidth, int mapHeight, int minWidth, int maxWidth, int minHeight, int maxHeight, int borderPadding) {
+		int roomMinWidth = Math.max(3, Math.min(minWidth, maxWidth));
+		int roomMaxWidth = Math.max(3, Math.max(minWidth, maxWidth));
+		int roomMinHeight = Math.max(3, Math.min(minHeight, maxHeight));
+		int roomMaxHeight = Math.max(3, Math.max(minHeight, maxHeight));
+
+		int roomWidth = Random.IntRange(roomMinWidth, roomMaxWidth);
+		int roomHeight = Random.IntRange(roomMinHeight, roomMaxHeight);
 
 int minLeft = Math.max(1, borderPadding);
 int maxLeft = Math.max(minLeft, mapWidth - roomWidth - borderPadding - 1);

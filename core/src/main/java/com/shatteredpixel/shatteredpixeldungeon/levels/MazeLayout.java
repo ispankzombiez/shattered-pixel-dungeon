@@ -17,12 +17,12 @@ this.height = height;
 this.open = open;
 }
 
-public static MazeLayout generate(int width, int height) {
-if (width < 5 || height < 5) {
-throw new IllegalArgumentException("Maze must be at least 5x5");
-}
-if (width % 2 == 0) width--;
-if (height % 2 == 0) height--;
+	public static MazeLayout generate(int width, int height) {
+		if (width % 2 == 0) width--;
+		if (height % 2 == 0) height--;
+		if (width < 5 || height < 5) {
+			throw new IllegalArgumentException("Maze must be at least 5x5");
+		}
 
 boolean[] open = new boolean[width * height];
 carveMaze(width, height, open);
