@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.bags;
 
-public class Quiver {
+import com.shatteredpixel.shatteredpixeldungeon.items.bags.Bag;
+
+public class Quiver extends Bag {
 }

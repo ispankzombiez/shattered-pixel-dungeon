@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.bags;
 
-public class KeyRing {
+import com.shatteredpixel.shatteredpixeldungeon.items.bags.Bag;
+
+public class KeyRing extends Bag {
 }

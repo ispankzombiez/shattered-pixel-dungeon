@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class ThiefBossLevel {
+public class ThiefBossLevel extends PrisonBossLevel {
 }

@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class GraveProtectorSprite {
+public class GraveProtectorSprite extends UndeadSprite {
 }

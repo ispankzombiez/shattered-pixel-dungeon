@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class PoisonGooSprite {
+public class PoisonGooSprite extends GooSprite {
 }

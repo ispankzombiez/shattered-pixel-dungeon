@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.bags;
 
-public class AnkhChain {
+import com.shatteredpixel.shatteredpixeldungeon.items.bags.Bag;
+
+public class AnkhChain extends Bag {
 }

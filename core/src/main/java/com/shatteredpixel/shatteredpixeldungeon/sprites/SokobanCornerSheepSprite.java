@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class SokobanCornerSheepSprite {
+public class SokobanCornerSheepSprite extends SheepSprite {
 }

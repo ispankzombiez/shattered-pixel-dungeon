@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class SeekingClusterBombSprite {
+public class SeekingClusterBombSprite extends BeeSprite {
 }

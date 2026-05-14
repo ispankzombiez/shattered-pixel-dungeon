@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.journalpages;
 
-public class JournalPage {
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+
+public class JournalPage extends Item {
 }

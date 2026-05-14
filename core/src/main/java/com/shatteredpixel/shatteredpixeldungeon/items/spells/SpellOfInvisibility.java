@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.spells;
 
-public class SpellOfInvisibility {
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+
+public class SpellOfInvisibility extends Item {
 }

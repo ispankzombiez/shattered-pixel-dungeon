@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.bags;
 
-public class SeedPouch {
+import com.shatteredpixel.shatteredpixeldungeon.items.bags.Bag;
+
+public class SeedPouch extends Bag {
 }

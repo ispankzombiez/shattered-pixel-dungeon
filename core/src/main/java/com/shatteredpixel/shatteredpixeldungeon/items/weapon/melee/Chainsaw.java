@@ -1,4 +1,8 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee;
 
-public class Chainsaw {
+public class Chainsaw extends MeleeWeapon {
+
+	{
+		tier = 2;
+	}
 }

@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class CrabBossLevel {
+public class CrabBossLevel extends SewerBossLevel {
 }

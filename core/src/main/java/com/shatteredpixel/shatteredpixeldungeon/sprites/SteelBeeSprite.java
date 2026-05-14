@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class SteelBeeSprite {
+public class SteelBeeSprite extends BeeSprite {
 }

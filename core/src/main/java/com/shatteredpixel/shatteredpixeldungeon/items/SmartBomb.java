@@ -1,4 +1,6 @@
-package com.shatteredpixel.shatteredpixeldungeon.items;
+package items;
 
-public class SmartBomb {
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+
+public class SmartBomb extends Item {
 }

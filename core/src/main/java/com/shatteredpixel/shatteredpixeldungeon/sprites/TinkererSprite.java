@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class TinkererSprite {
+public class TinkererSprite extends ShopkeeperSprite {
 }

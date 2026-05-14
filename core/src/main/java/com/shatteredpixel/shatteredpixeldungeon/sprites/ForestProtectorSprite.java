@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class ForestProtectorSprite {
+public class ForestProtectorSprite extends BatSprite {
 }

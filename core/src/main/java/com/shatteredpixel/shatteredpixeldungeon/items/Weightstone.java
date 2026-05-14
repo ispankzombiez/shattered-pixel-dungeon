@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-public class Weightstone {
+public class Weightstone extends Item {
 }

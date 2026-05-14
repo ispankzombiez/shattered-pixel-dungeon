@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class FairySprite {
+public class FairySprite extends BatSprite {
 }

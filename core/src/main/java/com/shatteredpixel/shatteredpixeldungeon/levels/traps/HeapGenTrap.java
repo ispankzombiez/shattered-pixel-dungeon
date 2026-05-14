@@ -1,4 +1,8 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels.traps;
 
-public class HeapGenTrap {
+public class HeapGenTrap extends Trap {
+
+@Override
+public void activate() {
+}
 }

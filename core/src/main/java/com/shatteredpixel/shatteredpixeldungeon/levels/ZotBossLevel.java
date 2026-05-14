@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class ZotBossLevel {
+public class ZotBossLevel extends HallsBossLevel {
 }

@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class DwarfLichSprite {
+public class DwarfLichSprite extends WarlockSprite {
 }

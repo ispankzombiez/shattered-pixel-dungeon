@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class LitTowerSprite {
+public class LitTowerSprite extends GolemSprite {
 }

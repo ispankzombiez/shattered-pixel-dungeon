@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.spells;
 
-public class SpellOfAmok {
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+
+public class SpellOfAmok extends Item {
 }

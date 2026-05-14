@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class FossilSkeletonSprite {
+public class FossilSkeletonSprite extends SkeletonSprite {
 }

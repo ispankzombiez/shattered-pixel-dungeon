@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.spells;
 
-public class SpellOfLevitation {
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+
+public class SpellOfLevitation extends Item {
 }

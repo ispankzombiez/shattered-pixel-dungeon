@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class OrbOfZotSprite {
+public class OrbOfZotSprite extends EyeSprite {
 }

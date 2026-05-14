@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class SkeletonBossLevel {
+public class SkeletonBossLevel extends CavesBossLevel {
 }

@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class RottingFistSprite {
+public class RottingFistSprite extends FistSprite {
 }

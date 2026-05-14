@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-public class TenguKey {
+import com.shatteredpixel.shatteredpixeldungeon.items.keys.Key;
+
+public class TenguKey extends Key {
 }

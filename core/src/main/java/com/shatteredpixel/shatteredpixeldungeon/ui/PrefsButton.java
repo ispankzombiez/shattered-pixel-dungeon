@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.ui;
 
-public class PrefsButton {
+public class PrefsButton extends Button {
 }

@@ -1,4 +1,6 @@
-package com.shatteredpixel.shatteredpixeldungeon.items;
+package items;
 
-public class StoneOre {
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+
+public class StoneOre extends Item {
 }

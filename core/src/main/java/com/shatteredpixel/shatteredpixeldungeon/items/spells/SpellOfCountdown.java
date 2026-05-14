@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.spells;
 
-public class SpellOfCountdown {
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+
+public class SpellOfCountdown extends Item {
 }

@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class DwarfKingTombSprite {
+public class DwarfKingTombSprite extends GolemSprite {
 }

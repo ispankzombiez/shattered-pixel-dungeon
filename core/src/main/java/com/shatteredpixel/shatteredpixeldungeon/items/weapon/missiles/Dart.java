@@ -1,4 +1,8 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles;
 
-public class Dart {
+public class Dart extends MissileWeapon {
+
+	{
+		tier = 1;
+	}
 }

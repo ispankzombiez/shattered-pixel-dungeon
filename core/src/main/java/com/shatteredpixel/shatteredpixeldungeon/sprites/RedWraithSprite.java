@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class RedWraithSprite {
+public class RedWraithSprite extends WraithSprite {
 }

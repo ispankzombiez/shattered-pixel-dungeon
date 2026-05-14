@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.journalpages;
 
-public class DragonCave {
+public class DragonCave extends JournalPage {
 }

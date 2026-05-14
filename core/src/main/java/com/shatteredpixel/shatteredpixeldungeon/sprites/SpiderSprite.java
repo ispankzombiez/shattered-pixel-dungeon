@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class SpiderSprite {
+public class SpiderSprite extends SpinnerSprite {
 }

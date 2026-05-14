@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.ui;
 
-public class SpellButton {
+public class SpellButton extends Button {
 }

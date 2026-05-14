@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.spells;
 
-public class SpellOfHaste {
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+
+public class SpellOfHaste extends Item {
 }

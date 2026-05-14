@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class MossySkeletonSprite {
+public class MossySkeletonSprite extends SkeletonSprite {
 }

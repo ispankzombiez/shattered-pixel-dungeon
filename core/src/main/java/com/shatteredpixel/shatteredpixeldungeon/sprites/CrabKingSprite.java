@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class CrabKingSprite {
+public class CrabKingSprite extends CrabSprite {
 }

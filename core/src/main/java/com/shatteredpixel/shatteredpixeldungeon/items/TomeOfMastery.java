@@ -1,4 +1,6 @@
-package com.shatteredpixel.shatteredpixeldungeon.items;
+package items;
 
-public class TomeOfMastery {
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+
+public class TomeOfMastery extends Item {
 }

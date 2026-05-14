@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class FishProtectorSprite {
+public class FishProtectorSprite extends BatSprite {
 }

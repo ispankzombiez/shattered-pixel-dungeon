@@ -1,4 +1,8 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels.traps;
 
-public class PoisonTrap {
+public class PoisonTrap extends Trap {
+
+@Override
+public void activate() {
+}
 }

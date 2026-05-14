@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class SokobanSentinelSprite {
+public class SokobanSentinelSprite extends GolemSprite {
 }

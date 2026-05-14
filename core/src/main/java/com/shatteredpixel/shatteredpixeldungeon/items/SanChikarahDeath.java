@@ -1,4 +1,6 @@
-package com.shatteredpixel.shatteredpixeldungeon.items;
+package items;
 
-public class SanChikarahDeath {
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+
+public class SanChikarahDeath extends Item {
 }

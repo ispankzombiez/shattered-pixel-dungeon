@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.quest;
 
-public class RatSkull {
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+
+public class RatSkull extends Item {
 }

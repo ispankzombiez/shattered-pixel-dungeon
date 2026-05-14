@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class SafeLevel {
+public class SafeLevel extends LastShopLevel {
 }

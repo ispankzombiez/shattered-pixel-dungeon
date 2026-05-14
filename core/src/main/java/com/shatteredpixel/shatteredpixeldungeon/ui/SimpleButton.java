@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.ui;
 
-public class SimpleButton {
+public class SimpleButton extends Button {
 }

@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class VaultProtectorSprite {
+public class VaultProtectorSprite extends GolemSprite {
 }

@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class ZotSprite {
+public class ZotSprite extends YogSprite {
 }

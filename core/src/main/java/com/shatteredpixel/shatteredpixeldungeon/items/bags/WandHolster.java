@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.bags;
 
-public class WandHolster {
+import com.shatteredpixel.shatteredpixeldungeon.items.bags.Bag;
+
+public class WandHolster extends Bag {
 }

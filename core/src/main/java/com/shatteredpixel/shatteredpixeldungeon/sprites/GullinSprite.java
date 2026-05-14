@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class GullinSprite {
+public class GullinSprite extends BruteSprite {
 }

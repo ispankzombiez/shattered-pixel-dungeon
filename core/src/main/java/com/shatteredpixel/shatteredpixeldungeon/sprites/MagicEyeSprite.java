@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class MagicEyeSprite {
+public class MagicEyeSprite extends EyeSprite {
 }

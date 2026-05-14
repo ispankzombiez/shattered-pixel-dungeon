@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-public class SewersKey {
+import com.shatteredpixel.shatteredpixeldungeon.items.keys.Key;
+
+public class SewersKey extends Key {
 }

@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class KupuaSprite {
+public class KupuaSprite extends BatSprite {
 }

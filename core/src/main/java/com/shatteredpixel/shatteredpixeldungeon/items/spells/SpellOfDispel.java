@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.spells;
 
-public class SpellOfDispel {
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+
+public class SpellOfDispel extends Item {
 }

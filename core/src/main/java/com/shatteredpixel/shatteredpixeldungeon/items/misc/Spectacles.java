@@ -1,4 +1,6 @@
-package com.shatteredpixel.shatteredpixeldungeon.items.misc;
+package items.misc;
 
-public class Spectacles {
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+
+public class Spectacles extends Item {
 }

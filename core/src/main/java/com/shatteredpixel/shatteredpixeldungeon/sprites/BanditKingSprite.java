@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class BanditKingSprite {
+public class BanditKingSprite extends BruteSprite {
 }

@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class BrownBatSprite {
+public class BrownBatSprite extends BatSprite {
 }

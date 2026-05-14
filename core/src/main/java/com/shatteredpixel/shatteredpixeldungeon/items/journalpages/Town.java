@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.journalpages;
 
-public class Town {
+public class Town extends JournalPage {
 }

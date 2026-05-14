@@ -1,4 +1,6 @@
-package com.shatteredpixel.shatteredpixeldungeon.items;
+package items;
 
-public class ShadowDragonEgg {
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+
+public class ShadowDragonEgg extends Item {
 }

@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.spells;
 
-public class SpellOfMagicMissile {
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+
+public class SpellOfMagicMissile extends Item {
 }

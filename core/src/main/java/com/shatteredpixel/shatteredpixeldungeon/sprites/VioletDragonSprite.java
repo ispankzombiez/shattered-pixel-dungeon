@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class VioletDragonSprite {
+public class VioletDragonSprite extends BatSprite {
 }

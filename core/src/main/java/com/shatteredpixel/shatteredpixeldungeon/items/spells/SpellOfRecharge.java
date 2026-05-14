@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.spells;
 
-public class SpellOfRecharge {
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+
+public class SpellOfRecharge extends Item {
 }

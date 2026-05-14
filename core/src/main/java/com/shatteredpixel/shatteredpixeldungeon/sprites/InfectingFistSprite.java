@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class InfectingFistSprite {
+public class InfectingFistSprite extends FistSprite {
 }

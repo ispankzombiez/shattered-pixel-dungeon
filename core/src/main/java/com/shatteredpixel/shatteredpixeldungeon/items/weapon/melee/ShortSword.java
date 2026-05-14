@@ -1,4 +1,8 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee;
 
-public class ShortSword {
+public class ShortSword extends MeleeWeapon {
+
+	{
+		tier = 2;
+	}
 }

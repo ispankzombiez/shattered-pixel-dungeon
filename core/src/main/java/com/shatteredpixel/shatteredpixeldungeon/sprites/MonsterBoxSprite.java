@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class MonsterBoxSprite {
+public class MonsterBoxSprite extends GolemSprite {
 }

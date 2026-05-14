@@ -1,4 +1,8 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles;
 
-public class Boomerang {
+public class Boomerang extends MissileWeapon {
+
+	{
+		tier = 1;
+	}
 }

@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-public class SteelHoneypot {
+public class SteelHoneypot extends Item {
 }
