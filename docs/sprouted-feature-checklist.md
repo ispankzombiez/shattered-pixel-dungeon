@@ -9,23 +9,23 @@ Use the core backlog below to track **behavior-level parity** work for follow-up
 
 ## Core Map Generation Parity Backlog (behavior, not just class paths)
 
-- [ ] Implement `levels/Layouts.java` with Sprouted-style layout definitions and selection logic.
-- [ ] Implement `levels/MazeLayout.java` maze generation logic (carving, connectivity, and constraints).
-- [ ] Implement `levels/Room.java` as Sprouted map-generation room data (not an empty placeholder).
-- [ ] Wire Sprouted map-generation flow into level creation (generation pipeline integration, not just class presence).
-- [ ] Integrate Sprouted depth/branch routing for generated special maps into `Dungeon.newLevel()` selection.
-- [ ] Replace empty Sprouted generation-adjacent level shells with functional generation logic:
+- [x] Implement `levels/Layouts.java` with Sprouted-style layout definitions and selection logic.
+- [x] Implement `levels/MazeLayout.java` maze generation logic (carving, connectivity, and constraints).
+- [x] Implement `levels/Room.java` as Sprouted map-generation room data (not an empty placeholder).
+- [x] Wire Sprouted map-generation flow into level creation (generation pipeline integration, not just class presence).
+- [x] Integrate Sprouted depth/branch routing for generated special maps into `Dungeon.newLevel()` selection.
+- [x] Replace empty Sprouted generation-adjacent level shells with functional generation logic:
   - [x] `levels/BattleLevel.java`
-  - [ ] `levels/CatacombLevel.java`
+  - [x] `levels/CatacombLevel.java`
   - [x] `levels/FieldLevel.java`
-  - [ ] `levels/FortressLevel.java`
-  - [ ] `levels/MineLevel.java`
-  - [ ] `levels/TownLevel.java`
-  - [ ] `levels/TownLayouts.java`
-  - [ ] `levels/TenguDenLevel.java`
-  - [ ] `levels/TenguHideoutLevel.java`
-  - [ ] `levels/SokobanLayouts.java`
-  - [ ] `levels/SokobanLayouts2.java`
+  - [x] `levels/FortressLevel.java`
+  - [x] `levels/MineLevel.java`
+  - [x] `levels/TownLevel.java`
+  - [x] `levels/TownLayouts.java`
+  - [x] `levels/TenguDenLevel.java`
+  - [x] `levels/TenguHideoutLevel.java`
+  - [x] `levels/SokobanLayouts.java`
+  - [x] `levels/SokobanLayouts2.java`
 
 ## actors → animate
 

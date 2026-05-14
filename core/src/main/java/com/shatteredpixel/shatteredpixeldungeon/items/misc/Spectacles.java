@@ -1,4 +1,4 @@
-package items.misc;
+package com.shatteredpixel.shatteredpixeldungeon.items.misc;
 
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
 
