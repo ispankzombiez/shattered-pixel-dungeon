@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class TownLevel {
+public class TownLevel extends LastShopLevel {
 }

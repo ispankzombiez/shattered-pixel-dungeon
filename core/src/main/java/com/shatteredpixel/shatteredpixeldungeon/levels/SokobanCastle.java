@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class SokobanCastle {
+public class SokobanCastle extends CatacombLevel {
 }

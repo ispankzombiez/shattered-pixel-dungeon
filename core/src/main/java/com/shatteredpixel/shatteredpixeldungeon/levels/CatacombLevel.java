@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class CatacombLevel {
+public class CatacombLevel extends HallsLevel {
 }

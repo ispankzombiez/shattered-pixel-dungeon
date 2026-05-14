@@ -61,6 +61,7 @@ import com.shatteredpixel.shatteredpixeldungeon.levels.CityBossLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.CityLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.DeadEndLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.FieldLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.Layouts;
 import com.shatteredpixel.shatteredpixeldungeon.levels.FishingLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.HallsBossLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.HallsLevel;
@@ -302,8 +303,10 @@ public class Dungeon {
 		Dungeon.level = null;
 		Actor.clear();
 		
-		Level level;
-		if (branch == 0) {
+		Level level = Layouts.branchLevel(depth, branch);
+		if (level != null) {
+			//handled by sprouted branch routing
+		} else if (branch == 0) {
 			switch (depth) {
 				case 1:
 				case 2:

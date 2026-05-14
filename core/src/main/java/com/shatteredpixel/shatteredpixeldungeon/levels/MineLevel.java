@@ -1,4 +1,4 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class MineLevel {
+public class MineLevel extends MiningLevel {
 }
