@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class FishProtectorSprite extends BatSprite {
+// Fish protector — inherits all animations from PiranhaSprite.
+public class FishProtectorSprite extends PiranhaSprite {
 }

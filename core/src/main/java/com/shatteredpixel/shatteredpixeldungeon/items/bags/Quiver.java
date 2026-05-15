@@ -1,6 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.bags;
 
-import com.shatteredpixel.shatteredpixeldungeon.items.bags.Bag;
-
+// Bag stub — stores a category of items.
 public class Quiver extends Bag {
 }

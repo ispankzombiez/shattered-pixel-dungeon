@@ -1,9 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class SokobanIntroLevel extends TenguDenLevel {
-
-@Override
-protected int mobTarget() {
-return 8;
-}
+// Introductory Sokoban puzzle level.
+public class SokobanIntroLevel extends RegularLevel {
 }

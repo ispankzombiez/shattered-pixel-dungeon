@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-public class SanChikarahTranscend extends Item {
+// SanChikarah in its transcendent form.
+public class SanChikarahTranscend extends SanChikarah {
 }

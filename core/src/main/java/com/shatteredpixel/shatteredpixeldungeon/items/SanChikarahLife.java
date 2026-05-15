@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-public class SanChikarahLife extends Item {
+// SanChikarah attuned to life energy.
+public class SanChikarahLife extends SanChikarah {
 }

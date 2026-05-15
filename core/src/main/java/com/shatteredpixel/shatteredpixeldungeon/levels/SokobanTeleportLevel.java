@@ -1,9 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class SokobanTeleportLevel extends TenguHideoutLevel {
-
-@Override
-protected int mobTarget() {
-return 14;
-}
+// Sokoban level with teleporter mechanics.
+public class SokobanTeleportLevel extends RegularLevel {
 }

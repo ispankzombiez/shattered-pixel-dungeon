@@ -1,10 +1,11 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.scrolls;
 
+// Scroll stub — override doRead() for full effect.
 public class ScrollOfMultiUpgrade extends Scroll {
 
-\t@Override
-\tpublic void doRead() {
-\t\tidentify();
-\t\tupdateQuickslot();
-\t}
+    @Override
+    public void doRead() {
+        identify();
+        updateQuickslot();
+    }
 }
