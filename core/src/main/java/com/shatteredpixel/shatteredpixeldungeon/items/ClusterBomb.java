@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-public class ClusterBomb extends Item {
+import com.shatteredpixel.shatteredpixeldungeon.items.bombs.Bomb;
+
+public class ClusterBomb extends Bomb {
 }

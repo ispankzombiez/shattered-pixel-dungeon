@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-public class SeekingBombItem extends Item {
+import com.shatteredpixel.shatteredpixeldungeon.items.bombs.Bomb;
+
+public class SeekingBombItem extends Bomb {
 }
