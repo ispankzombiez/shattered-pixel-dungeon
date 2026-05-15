@@ -624,3 +624,40 @@ Use the core backlog below to track **behavior-level parity** work for follow-up
 - [x] `windows/WndTinkerer.java`
 - [x] `windows/WndTinkerer2.java`
 - [x] `windows/WndTinkerer3.java`
+
+## Behavior-Level Parity Additions (implemented in latest sessions)
+
+### Spell implementations (32 classes)
+- [x] All `SpellOf*` classes now extend `Spell` (not `Item`) with functional `onCast(Hero)` logic
+- [x] `SpellOfAmok`/`SpellOfAmok2` — inflicts Amok on visible mobs
+- [x] `SpellOfBlink` — teleports hero via ScrollOfTeleportation logic
+- [x] `SpellOfHaste`, `SpellOfLevitation`, `SpellOfInvisibility`, `SpellOfRegen`, `SpellOfArmor` — buff spells
+- [x] `SpellOfFireblast/bolt/storm`, `SpellOfIceblast/bolt/storm`, `SpellOfLightningblast/bolt/storm` — elemental spells
+- [x] `SpellOfCharm`, `SpellOfFright`, `SpellOfSleep`, `SpellOfSlowing`, `SpellOfRoot`, `SpellOfDeath` — mob debuffs
+
+### Trap implementations (9 classes)
+- [x] `FleecingTrap` — steals gold from hero
+- [x] `ParalyticTrap` — paralyzes hero
+- [x] `LightningTrap` — adds lightning blob
+- [x] `PoisonTrap` — applies poison cloud
+- [x] `FireTrap` — adds fire blob
+- [x] `HeapGenTrap` — generates loot heap
+- [x] `SokobanPortalTrap`/`ActivatePortalTrap` — toggle portals in Sokoban
+- [x] `ChangeSheepTrap` — transforms mobs to sheep
+
+### Item parent-class fixes
+- [x] `AdamantArmor` → extends `Armor` (tier 6)
+- [x] `AdamantRing` → extends `Ring` with RingBuff
+- [x] `AdamantWand` → extends `Wand` with onZap()
+- [x] `AdamantWeapon` → extends `MeleeWeapon` (tier 6)
+- [x] `DwarfHammer` → extends `MeleeWeapon` (tier 4)
+- [x] `Rice`, `Mushroom`, `PuddingCup` → extend `Food` with energy values
+- [x] All bomb stubs extend `bombs.Bomb`
+- [x] All bag stubs extend `Bag`
+- [x] All key stubs extend `Key`
+- [x] NornStone variants extend `NornStone`
+- [x] JournalPage variants extend `JournalPage`
+- [x] Relic weapons extend `RelicMeleeWeapon`
+
+### Item image/property assignments
+- [x] `DewVial`, `OrbOfZot`, `LloydsBeacon`, `Palantir`, `ReturnBeacon`, `TownReturnBeacon`, `Weightstone`, `StoneOre`, `ConchShell`, `SteelHoneypot`, `Whistle`, `GreaterStylus`, `OtilukesJournal`, `LevelDewdrop`, `BookOfDead/Life/Transcendence`, `ArmorKit`, `SanChikarah`, `TomeOfMastery`, `Bone`, `AncientCoin`, `ShadowDragonEgg`, `EasterEgg` all have correct image references
