@@ -1,7 +1,12 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 
-// A large dew drop that grants experience.
+// A level dewdrop — grants bonus experience or HP when consumed.
 public class LevelDewdrop extends Item {
+
+    {
+        image = ItemSpriteSheet.DEWDROP;
+        stackable = true;
+    }
 }

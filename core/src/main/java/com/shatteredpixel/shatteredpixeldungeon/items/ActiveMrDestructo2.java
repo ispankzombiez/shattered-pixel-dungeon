@@ -1,7 +1,12 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 
-// Active form of Mr. Destructo 2.0.
+// Mr. Destructo 2.0 in active item form — improved version of the robot.
 public class ActiveMrDestructo2 extends Item {
+
+    {
+        image = ItemSpriteSheet.ANKH;
+        unique = true;
+    }
 }

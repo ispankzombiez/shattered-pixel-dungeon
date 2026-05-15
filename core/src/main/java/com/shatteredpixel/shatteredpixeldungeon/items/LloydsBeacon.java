@@ -1,7 +1,13 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 
-// Lloyd's Beacon — marks and teleports to a location.
+// Sprouted-style Lloyd's Beacon — marks a return point and teleports back.
+// The full Shattered artifact implementation is in items.artifacts.LloydsBeacon.
 public class LloydsBeacon extends Item {
+
+    {
+        image = ItemSpriteSheet.BEACON;
+        unique = true;
+    }
 }

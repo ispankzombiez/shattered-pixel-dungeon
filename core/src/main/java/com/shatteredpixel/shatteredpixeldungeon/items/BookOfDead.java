@@ -1,7 +1,12 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 
-// A tome of death magic.
+// The Book of the Dead — a tome of dark necromantic power.
 public class BookOfDead extends Item {
+
+    {
+        image = ItemSpriteSheet.ARTIFACT_TOME;
+        unique = true;
+    }
 }

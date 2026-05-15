@@ -1,7 +1,14 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.Food;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 
-// A food item.
-public class PuddingCup extends Item {
+// A sweet pudding cup — a rare dungeon treat.
+public class PuddingCup extends Food {
+
+    {
+        image = ItemSpriteSheet.OVERPRICED;
+        energy = Food.FOOD_VAL;
+        stackable = true;
+    }
 }

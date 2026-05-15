@@ -1,7 +1,11 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 
-// A sea shell that summons aquatic aid.
+// A large conch shell — can be used as a horn or a container.
 public class ConchShell extends Item {
+
+    {
+        image = ItemSpriteSheet.HONEYPOT;
+    }
 }

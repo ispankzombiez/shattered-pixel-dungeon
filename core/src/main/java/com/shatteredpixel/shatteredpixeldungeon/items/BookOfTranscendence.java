@@ -1,7 +1,12 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 
-// A tome of transcendent power.
+// The Book of Transcendence — unlocks ultimate hero mastery.
 public class BookOfTranscendence extends Item {
+
+    {
+        image = ItemSpriteSheet.ARTIFACT_TOME;
+        unique = true;
+    }
 }

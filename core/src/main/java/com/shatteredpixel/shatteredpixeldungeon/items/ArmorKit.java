@@ -1,7 +1,12 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 
-// A kit for upgrading armor.
+// An armor kit — upgrades or repairs a piece of armor.
 public class ArmorKit extends Item {
+
+    {
+        image = ItemSpriteSheet.KIT;
+        unique = true;
+    }
 }
