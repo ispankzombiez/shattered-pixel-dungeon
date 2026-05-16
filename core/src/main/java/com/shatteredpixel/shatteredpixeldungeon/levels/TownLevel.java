@@ -1,13 +1,25 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
 import com.shatteredpixel.shatteredpixeldungeon.Assets;
+import com.shatteredpixel.shatteredpixeldungeon.Statistics;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.Shopkeeper;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.Tinkerer4;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.Tinkerer5;
+import com.shatteredpixel.shatteredpixeldungeon.items.Generator;
+import com.shatteredpixel.shatteredpixeldungeon.items.Heap;
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfHealing;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfIdentify;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.shatteredpixel.shatteredpixeldungeon.levels.painters.Painter;
 import com.shatteredpixel.shatteredpixeldungeon.levels.painters.SewerPainter;
+import com.watabou.utils.Bundle;
+import com.watabou.utils.Point;
+import com.watabou.utils.Random;
+
+import java.util.ArrayList;
 
 public class TownLevel extends SewerLevel {
 
@@ -16,6 +28,10 @@ color1 = 0x48763c;
 color2 = 0x59994a;
 viewDistance = 12;
 }
+
+private static final int STOCK_PER_SHOPKEEPER = 6;
+private static final String STOCKED_FOR_DEPTH = "stocked_for_depth";
+private int stockedForDepth = -1;
 
 @Override
 public String tilesTex() {
@@ -55,6 +71,29 @@ protected void createMobs() {
 	placeNPCAtGeneration(new Tinkerer5());
 }
 
+@Override
+protected void createItems() {
+	restockTownShops(true);
+}
+
+@Override
+public void press(int cell, Char ch) {
+	super.press(cell, ch);
+	restockTownShops(false);
+}
+
+@Override
+public void storeInBundle(Bundle bundle) {
+	super.storeInBundle(bundle);
+	bundle.put(STOCKED_FOR_DEPTH, stockedForDepth);
+}
+
+@Override
+public void restoreFromBundle(Bundle bundle) {
+	super.restoreFromBundle(bundle);
+	stockedForDepth = bundle.getInt(STOCKED_FOR_DEPTH);
+}
+
 /**
  * Places {@code npc} at a valid cell during level generation.
  * Explicitly calls {@code super.randomRespawnCell()} to use the standard room-based
@@ -67,6 +106,74 @@ private void placeNPCAtGeneration(Mob npc) {
 		npc.pos = pos;
 		mobs.add(npc);
 		occupyCell(npc);
+	}
+}
+
+private void restockTownShops(boolean force) {
+	int deepest = Math.max(1, Statistics.deepestFloor);
+	if (!force && deepest <= stockedForDepth) {
+		return;
+	}
+
+	for (Mob mob : mobs) {
+		if (!(mob instanceof Shopkeeper)) {
+			continue;
+		}
+		fillStockNear(mob.pos, STOCK_PER_SHOPKEEPER);
+	}
+	stockedForDepth = deepest;
+}
+
+private void fillStockNear(int centerCell, int targetItems) {
+	Point center = cellToPoint(centerCell);
+	ArrayList<Integer> candidates = new ArrayList<>();
+	for (int dy = -4; dy <= 4; dy++) {
+		for (int dx = -4; dx <= 4; dx++) {
+			if (dx == 0 && dy == 0) {
+				continue;
+			}
+			int x = center.x + dx;
+			int y = center.y + dy;
+			if (x <= 0 || y <= 0 || x >= width() - 1 || y >= height() - 1) {
+				continue;
+			}
+			int cell = pointToCell(new Point(x, y));
+			if (!passable[cell] || solid[cell] || map[cell] == Terrain.ENTRANCE || map[cell] == Terrain.EXIT) {
+				continue;
+			}
+			if (heaps.get(cell) != null || findMob(cell) != null) {
+				continue;
+			}
+			candidates.add(cell);
+		}
+	}
+
+	Random.shuffle(candidates);
+	int placed = 0;
+	for (int cell : candidates) {
+		Heap heap = drop(storeItem(), cell);
+		heap.type = Heap.Type.FOR_SALE;
+		if (++placed >= targetItems) {
+			break;
+		}
+	}
+}
+
+private Item storeItem() {
+	switch (Random.Int(7)) {
+		case 0:
+			return new ScrollOfUpgrade();
+		case 1:
+			return new ScrollOfIdentify();
+		case 2:
+		case 3:
+			return new PotionOfHealing();
+		case 4:
+			return Generator.randomUsingDefaults(Generator.Category.POTION);
+		case 5:
+			return Generator.randomUsingDefaults(Generator.Category.SCROLL);
+		default:
+			return Generator.random(Generator.Category.SEED);
 	}
 }
 

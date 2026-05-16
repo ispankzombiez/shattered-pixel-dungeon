@@ -28,8 +28,8 @@ Priority legend: **P0** progression blocker, **P1** major branch parity, **P2** 
  - [x] CatacombLevel: PEDESTAL entrance/exit, CHASM→EMPTY, SanChikarahDeath drop at exit, sink drip visuals
  - [x] MineLevel: Tinkerer2 NPC spawn
  - [x] Dungeon: sanchikarahlife/sanchikarahdeath flags added with full bundle persistence
- - [ ] TownLevel: storeRefresh() depth-gated shop inventory
- - [ ] FortressLevel/CatacombLevel: SanChikarah flags cleared when item is picked up (SanChikarahLife/Death.doPickUp)
- - [ ] Tinkerer NPC interact() dialogs (all five tinkerers)
+ - [x] TownLevel: storeRefresh() depth-gated shop inventory
+ - [x] FortressLevel/CatacombLevel: SanChikarah flags cleared when item is picked up (SanChikarahLife/Death.doPickUp)
+ - [x] Tinkerer NPC interact() dialogs (all five tinkerers)
 | P2-02 | Full Sokoban puzzle accuracy | Symbol stamping only | Solve-specific puzzle entities, states, and completion rules | Sokoban levels + Sokoban NPC/mob/trap classes | P1-02 | Puzzle completion behavior and fail/retry flow match Sprouted reference |
 | P2-03 | Full non-map parity (quests/resources/pets/crafting loops) | Partial/unknown in several subsystems | Behavior audit and implementation per subsystem | Quest/resource/pet/crafting classes across `core/src/main/java/...` | P0/P1 complete | All audit items are marked behavior-verified with deterministic seeds |
