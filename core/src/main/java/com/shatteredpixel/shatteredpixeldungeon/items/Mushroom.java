@@ -8,7 +8,7 @@ import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 public class Mushroom extends Food {
 
     {
-        image = ItemSpriteSheet.BLANDFRUIT;
+        image = ItemSpriteSheet.BLANDFRUIT; // placeholder — no dedicated mushroom sprite yet
         energy = Hunger.HUNGRY / 2;
         stackable = true;
     }

@@ -14,6 +14,7 @@ public class Spectacles extends MiscEquippable {
 
     @Override
     public boolean doEquip(Hero hero) {
+        identify();
         return true;
     }
 }
