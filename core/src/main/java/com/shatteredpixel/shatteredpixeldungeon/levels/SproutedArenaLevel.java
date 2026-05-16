@@ -25,8 +25,8 @@ abstract class SproutedArenaLevel extends Level {
 		int topMost = Integer.MAX_VALUE;
 		int exitCell = -1;
 		int roomCount = Math.max(8, Math.round(mapSize / 4f));
-		int roomMin = Math.max(6, mapSize / 8);
-		int roomMax = Math.max(roomMin + 1, mapSize / 4);
+		int roomMin = Math.max(6, Math.round(mapSize / 8f));
+		int roomMax = Math.max(roomMin + 1, Math.round(mapSize / 4f));
 
 		for (int i = 0; i < roomCount; i++) {
 			int roomWidth = Random.IntRange(roomMin, roomMax);

@@ -93,6 +93,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 public abstract class RegularLevel extends Level {
+
+	private static final float ROOM_SIZE_UPGRADE_THRESHOLD = 1.30f;
 	
 	protected ArrayList<Room> rooms;
 	private transient MapSizeProfiles.Profile mapSizeProfile;
@@ -139,7 +141,9 @@ public abstract class RegularLevel extends Level {
 			do {
 				s = StandardRoom.createRoom();
 			} while (!s.setSizeCat( standards-i ));
-			if (profile.roomCountMultiplier >= 1.30f && s.sizeCat == StandardRoom.SizeCategory.NORMAL && Random.Int(3) == 0){
+			if (profile.roomCountMultiplier >= ROOM_SIZE_UPGRADE_THRESHOLD
+					&& s.sizeCat == StandardRoom.SizeCategory.NORMAL
+					&& Random.Int(3) == 0){
 				s.setSizeCat(1, StandardRoom.SizeCategory.values().length - 1);
 			}
 			i += s.sizeFactor()-1;
