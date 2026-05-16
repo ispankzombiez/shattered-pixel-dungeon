@@ -9,7 +9,8 @@ public class TenguHideoutLevel extends TenguDenLevel {
 
 @Override
 protected boolean build() {
-setSize(33, 33);
+int size = Math.max(33, levelSize());
+setSize(size, size);
 Painter.fill(this, 0, 0, width(), height(), Terrain.WALL);
 
 MazeLayout maze = MazeLayout.generate(width() - 2, height() - 2);

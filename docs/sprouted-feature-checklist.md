@@ -7,6 +7,16 @@ This checklist is generated from source comparison between:
 This checklist primarily tracks **path-level parity** (whether matching class paths exist).
 Use the core backlog below to track **behavior-level parity** work for follow-up updates.
 
+## Parity status model
+
+- **Implemented path**: class/path exists in repository.
+- **Wired/in use**: feature is actively exercised by generation/progression flow.
+- **Behavior parity verified**: deterministic behavior matches Sprouted reference.
+
+See:
+- `docs/sprouted-parity-scope.md`
+- `docs/sprouted-behavior-backlog.md`
+
 ## Core Map Generation Parity Backlog (behavior, not just class paths)
 
 - [x] Implement `levels/Layouts.java` with Sprouted-style layout definitions and selection logic.

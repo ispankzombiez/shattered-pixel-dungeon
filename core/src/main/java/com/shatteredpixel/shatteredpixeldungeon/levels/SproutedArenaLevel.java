@@ -13,21 +13,24 @@ import com.watabou.utils.Random;
 
 abstract class SproutedArenaLevel extends Level {
 
-	private static final int LEVEL_SIZE = 32;
 	private static final int HUB_RADIUS = 2;
 
 	@Override
 	protected boolean build() {
-		setSize(LEVEL_SIZE, LEVEL_SIZE);
+		int mapSize = levelSize();
+		setSize(mapSize, mapSize);
 
 		int centerX = width() / 2;
 		int centerY = height() / 2;
 		int topMost = Integer.MAX_VALUE;
 		int exitCell = -1;
+		int roomCount = Math.max(8, Math.round(mapSize / 4f));
+		int roomMin = Math.max(6, Math.round(mapSize / 8f));
+		int roomMax = Math.max(roomMin + 1, Math.round(mapSize / 4f));
 
-		for (int i = 0; i < 8; i++) {
-			int roomWidth = Random.IntRange(6, 10);
-			int roomHeight = Random.IntRange(6, 10);
+		for (int i = 0; i < roomCount; i++) {
+			int roomWidth = Random.IntRange(roomMin, roomMax);
+			int roomHeight = Random.IntRange(roomMin, roomMax);
 			int left = Random.IntRange(1, width() - roomWidth - 2);
 			int top = Random.IntRange(1, height() - roomHeight - 2);
 			int right = left + roomWidth - 1;
@@ -182,7 +185,7 @@ abstract class SproutedArenaLevel extends Level {
 		int cell;
 		int tries = 0;
 		do {
-			if (++tries > 60) {
+			if (++tries > Math.max(60, levelSize() * 2)) {
 				return entrance();
 			}
 			cell = Random.Int(length());
@@ -196,6 +199,10 @@ abstract class SproutedArenaLevel extends Level {
 
 	protected void dropPrize(Item item) {
 		drop(item, randomPrizeCell()).type = Heap.Type.CHEST;
+	}
+
+	protected int levelSize() {
+		return MapSizeProfiles.arenaSizeFor(this);
 	}
 
 }

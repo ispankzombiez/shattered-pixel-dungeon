@@ -30,6 +30,14 @@ break;
 return null;
 }
 
+public static boolean hasBranchRoute(int depth, int branch) {
+	return branchLevel(depth, branch) != null;
+}
+
+public static boolean isSproutedBranch(int branch) {
+	return branch == 2 || branch == 3;
+}
+
 public static Room randomArenaRoom(int mapWidth, int mapHeight) {
 return Room.randomRoom(mapWidth, mapHeight, 6, 10, 6, 10, 2);
 }

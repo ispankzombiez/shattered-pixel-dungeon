@@ -77,7 +77,11 @@ public abstract class RegularPainter extends Painter {
 	}
 
 	protected int padding(Level level){
-		return level.feeling == Level.Feeling.CHASM ? 2 : 1;
+		int base = level.feeling == Level.Feeling.CHASM ? 2 : 1;
+		if (level instanceof com.shatteredpixel.shatteredpixeldungeon.levels.RegularLevel) {
+			base += ((com.shatteredpixel.shatteredpixeldungeon.levels.RegularLevel) level).extraMapPadding();
+		}
+		return base;
 	}
 	
 	@Override
