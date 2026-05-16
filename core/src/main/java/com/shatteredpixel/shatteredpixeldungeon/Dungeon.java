@@ -217,6 +217,10 @@ public class Dungeon {
 	public static long seed;
 	public static long lastPlayed;
 
+	// Sprouted branch quest-artifact flags. True once each piece has been dropped on its floor.
+	public static boolean sanchikarahlife;
+	public static boolean sanchikarahdeath;
+
 	//we initialize the seed separately so that things like interlevelscene can access it early
 	public static void initSeed(){
 		if (daily) {
@@ -270,6 +274,9 @@ public class Dungeon {
 
 		gold = 0;
 		energy = 0;
+
+		sanchikarahlife = false;
+		sanchikarahdeath = false;
 
 		droppedItems = new SparseArray<>();
 
@@ -642,6 +649,8 @@ public class Dungeon {
 	private static final String CHAPTERS	= "chapters";
 	private static final String QUESTS		= "quests";
 	private static final String BADGES		= "badges";
+	private static final String SANCHIKARAHLIFE  = "sanchikarahlife";
+	private static final String SANCHIKARAHDEATH = "sanchikarahdeath";
 	
 	public static void saveGame( int save ) {
 		try {
@@ -662,6 +671,9 @@ public class Dungeon {
 
 			bundle.put( GOLD, gold );
 			bundle.put( ENERGY, energy );
+
+			bundle.put( SANCHIKARAHLIFE, sanchikarahlife );
+			bundle.put( SANCHIKARAHDEATH, sanchikarahdeath );
 
 			for (int d : droppedItems.keyArray()) {
 				bundle.put(Messages.format(DROPPED, d), droppedItems.get(d));
@@ -839,6 +851,9 @@ public class Dungeon {
 
 		gold = bundle.getInt( GOLD );
 		energy = bundle.getInt( ENERGY );
+
+		sanchikarahlife  = bundle.getBoolean( SANCHIKARAHLIFE );
+		sanchikarahdeath = bundle.getBoolean( SANCHIKARAHDEATH );
 
 		Statistics.restoreFromBundle( bundle );
 		Generator.restoreFromBundle( bundle );

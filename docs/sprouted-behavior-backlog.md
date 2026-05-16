@@ -23,5 +23,13 @@ Priority legend: **P0** progression blocker, **P1** major branch parity, **P2** 
 | ID | Source behavior | Current behavior | Missing logic | Affected files | Dependencies | Acceptance criteria |
 |---|---|---|---|---|---|---|
 | P2-01 | Behavior-accurate Town/Mine/Fortress/Catacomb generation/events | Mostly chapter inheritance + painter tweaks | Replace inherited generation with branch-authentic events and pacing | `core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/levels/TownLevel.java`, `.../MineLevel.java`, `.../FortressLevel.java`, `.../CatacombLevel.java` | P1-01/P1-03 | Branch levels match Sprouted event cadence and unique interactions |
+ - [x] TownLevel: safe hub (randomRespawnCell=-1), NPC spawning (Shopkeeper×2, Tinkerer4, Tinkerer5)
+ - [x] FortressLevel: PEDESTAL entrance/exit, CHASM→EMPTY, SanChikarahLife drop at exit, Tinkerer3 NPC spawn
+ - [x] CatacombLevel: PEDESTAL entrance/exit, CHASM→EMPTY, SanChikarahDeath drop at exit, sink drip visuals
+ - [x] MineLevel: Tinkerer2 NPC spawn
+ - [x] Dungeon: sanchikarahlife/sanchikarahdeath flags added with full bundle persistence
+ - [ ] TownLevel: storeRefresh() depth-gated shop inventory
+ - [ ] FortressLevel/CatacombLevel: SanChikarah flags cleared when item is picked up (SanChikarahLife/Death.doPickUp)
+ - [ ] Tinkerer NPC interact() dialogs (all five tinkerers)
 | P2-02 | Full Sokoban puzzle accuracy | Symbol stamping only | Solve-specific puzzle entities, states, and completion rules | Sokoban levels + Sokoban NPC/mob/trap classes | P1-02 | Puzzle completion behavior and fail/retry flow match Sprouted reference |
 | P2-03 | Full non-map parity (quests/resources/pets/crafting loops) | Partial/unknown in several subsystems | Behavior audit and implementation per subsystem | Quest/resource/pet/crafting classes across `core/src/main/java/...` | P0/P1 complete | All audit items are marked behavior-verified with deterministic seeds |
