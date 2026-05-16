@@ -46,8 +46,9 @@ public class Tinkerer4 extends NPC {
 			return true;
 		}
 		sprite.turnTo(pos, Dungeon.hero.pos);
-		GameScene.show(new WndQuest(this, first ? TXT_DUNGEON : TXT_DUNGEON2));
+		boolean wasFirst = first;
 		first = false;
+		GameScene.show(new WndQuest(this, wasFirst ? TXT_DUNGEON : TXT_DUNGEON2));
 		return true;
 	}
 }

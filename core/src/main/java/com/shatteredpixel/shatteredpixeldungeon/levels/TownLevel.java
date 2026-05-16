@@ -29,8 +29,8 @@ color2 = 0x59994a;
 viewDistance = 12;
 }
 
-private static final int STOCK_PER_SHOPKEEPER = 6;
-private static final int STORE_ITEM_TYPE_COUNT = 7;
+private static final int ITEMS_PER_SHOPKEEPER = 6;
+private static final int STORE_ITEM_TYPE_COUNT = 8;
 private static final String STOCKED_FOR_DEPTH = "stocked_for_depth";
 private int stockedForDepth = -1;
 
@@ -120,7 +120,7 @@ private void restockTownShops(boolean force) {
 		if (!(mob instanceof Shopkeeper)) {
 			continue;
 		}
-		fillStockNear(mob.pos, STOCK_PER_SHOPKEEPER);
+		fillStockNear(mob.pos, ITEMS_PER_SHOPKEEPER);
 	}
 	stockedForDepth = deepest;
 }
@@ -173,6 +173,8 @@ private Item storeItem() {
 			return Generator.randomUsingDefaults(Generator.Category.POTION);
 		case 5:
 			return Generator.randomUsingDefaults(Generator.Category.SCROLL);
+		case 6:
+			return Generator.randomUsingDefaults(Generator.Category.FOOD);
 		default:
 			return Generator.random(Generator.Category.SEED);
 	}
