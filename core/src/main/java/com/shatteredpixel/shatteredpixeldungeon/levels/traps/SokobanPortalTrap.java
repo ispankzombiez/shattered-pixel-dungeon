@@ -31,7 +31,9 @@ import com.watabou.utils.Bundle;
 public class SokobanPortalTrap extends Trap {
 
 	private static final String ARMED = "armed";
+	private static final String DESTINATION_POS = "destination_pos";
 	private boolean armed;
+	private int destinationPos = -1;
 
 	{
 		color = VIOLET;
@@ -50,25 +52,41 @@ public class SokobanPortalTrap extends Trap {
 			return;
 		}
 
-		if (!ScrollOfTeleportation.teleportToLocation(ch, Dungeon.level.exit)) {
+		boolean teleported = false;
+		if (destinationPos >= 0) {
+			teleported = ScrollOfTeleportation.teleportToLocation(ch, destinationPos);
+		}
+		if (!teleported) {
+			teleported = ScrollOfTeleportation.teleportToLocation(ch, Dungeon.level.exit);
+		}
+		if (!teleported) {
 			ScrollOfTeleportation.teleportChar(ch);
 		}
 		armed = false;
 	}
 
-	public void armPortal() {
+	public void armPortal(int destinationPos) {
 		armed = true;
+		if (destinationPos >= 0) {
+			this.destinationPos = destinationPos;
+		}
+	}
+
+	public void setDestination(int destinationPos) {
+		this.destinationPos = destinationPos;
 	}
 
 	@Override
 	public void storeInBundle(Bundle bundle) {
 		super.storeInBundle(bundle);
 		bundle.put(ARMED, armed);
+		bundle.put(DESTINATION_POS, destinationPos);
 	}
 
 	@Override
 	public void restoreFromBundle(Bundle bundle) {
 		super.restoreFromBundle(bundle);
 		armed = bundle.getBoolean(ARMED);
+		destinationPos = bundle.contains(DESTINATION_POS) ? bundle.getInt(DESTINATION_POS) : -1;
 	}
 }

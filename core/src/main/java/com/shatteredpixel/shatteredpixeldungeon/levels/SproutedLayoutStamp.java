@@ -7,14 +7,23 @@ import com.shatteredpixel.shatteredpixeldungeon.levels.traps.ActivatePortalTrap;
 import com.shatteredpixel.shatteredpixeldungeon.levels.traps.SokobanPortalTrap;
 import com.watabou.utils.Point;
 
+import java.util.ArrayList;
+
 public final class SproutedLayoutStamp {
+
+	public static final class LayoutMetadata {
+		public final ArrayList<Integer> portalCells = new ArrayList<>();
+		public final ArrayList<Integer> switchCells = new ArrayList<>();
+		public final ArrayList<Integer> destinationCells = new ArrayList<>();
+	}
 
 	private SproutedLayoutStamp() {
 	}
 
-	public static void centerStamp(Level level, String[] layout, boolean sokobanPortals) {
+	public static LayoutMetadata centerStamp(Level level, String[] layout, boolean sokobanPortals) {
+		LayoutMetadata metadata = new LayoutMetadata();
 		if (layout == null || layout.length == 0) {
-			return;
+			return metadata;
 		}
 
 		int layoutH = layout.length;
@@ -57,12 +66,20 @@ public final class SproutedLayoutStamp {
 						level.map[cell] = Terrain.TRAP;
 						if (sokobanPortals) {
 							level.setTrap(new SokobanPortalTrap().reveal(), cell);
+							metadata.portalCells.add(cell);
 						}
 						break;
 					case 'v':
 						level.map[cell] = Terrain.TRAP;
 						if (sokobanPortals) {
 							level.setTrap(new ActivatePortalTrap().reveal(), cell);
+							metadata.switchCells.add(cell);
+						}
+						break;
+					case 'd':
+						level.map[cell] = Terrain.EMPTY;
+						if (sokobanPortals) {
+							metadata.destinationCells.add(cell);
 						}
 						break;
 					default:
@@ -70,6 +87,7 @@ public final class SproutedLayoutStamp {
 				}
 			}
 		}
+		return metadata;
 	}
 
 	/**

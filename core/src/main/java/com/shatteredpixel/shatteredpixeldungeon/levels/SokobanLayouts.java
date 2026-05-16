@@ -21,10 +21,31 @@ private static final String[][] LAYOUTS = new String[][]{
 }
 };
 
+private static final String[][] TELEPORT_LAYOUTS = new String[][]{
+{
+"#######",
+"#d.t..#",
+"#.#v#.#",
+"#..b..#",
+"#######"
+},
+{
+"#######",
+"#..t.d#",
+"#.#v#.#",
+"#..b..#",
+"#######"
+}
+};
+
 private SokobanLayouts() {
 }
 
 public static String[] randomLayout() {
 return Random.element(LAYOUTS).clone();
+}
+
+public static String[] randomTeleportLayout() {
+return Random.element(TELEPORT_LAYOUTS).clone();
 }
 }

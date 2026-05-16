@@ -35,5 +35,6 @@ Priority legend: **P0** progression blocker, **P1** major branch parity, **P2** 
  - [x] Sokoban sheep interactions: push/swap/stop behaviors for SheepSokoban, SheepSokobanCorner, SheepSokobanSwitch, SheepSokobanStop
  - [x] ChangeSheepTrap sheep-morph cycle: SheepSokoban → SheepSokobanCorner → SheepSokobanStop and SheepSokobanSwitch → SheepSokoban
  - [x] Sokoban portal activation wiring: switch traps (`v`) arm portal traps (`t`), and armed portals teleport hero to level exit
- - [ ] Per-floor Sokoban completion rules and full destination-mapped portal networks
+ - [x] Per-floor Sokoban completion rules on teleport/vault floors: exits stay locked until all Sokoban portal switches are consumed
+ - [x] Destination-mapped portal networks: layout `d` markers pair switches to specific portal destinations by authored order
 | P2-03 | Full non-map parity (quests/resources/pets/crafting loops) | Partial/unknown in several subsystems | Behavior audit and implementation per subsystem | Quest/resource/pet/crafting classes across `core/src/main/java/...` | P0/P1 complete | All audit items are marked behavior-verified with deterministic seeds |

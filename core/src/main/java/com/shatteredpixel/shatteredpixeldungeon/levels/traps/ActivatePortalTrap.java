@@ -27,8 +27,16 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.SheepSokoban;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.SheepSokobanCorner;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.SheepSokobanSwitch;
+import com.shatteredpixel.shatteredpixeldungeon.levels.SproutedSokobanLevel;
+import com.watabou.utils.Bundle;
 
 public class ActivatePortalTrap extends Trap {
+
+	private static final String LINKED_PORTAL_POS = "linked_portal_pos";
+	private static final String DESTINATION_POS = "destination_pos";
+
+	private int linkedPortalPos = -1;
+	private int destinationPos = -1;
 
 	{
 		color = VIOLET;
@@ -36,16 +44,49 @@ public class ActivatePortalTrap extends Trap {
 		disarmedByActivation = false;
 	}
 
+	public void linkToPortal(int portalPos, int destinationPos) {
+		this.linkedPortalPos = portalPos;
+		this.destinationPos = destinationPos;
+	}
+
 	@Override
 	public void activate() {
 		Char ch = Actor.findChar(pos);
 		if (ch instanceof SheepSokoban || ch instanceof SheepSokobanCorner || ch instanceof SheepSokobanSwitch) {
-			for (Trap trap : Dungeon.level.traps.valueList()) {
-				if (trap instanceof SokobanPortalTrap) {
-					((SokobanPortalTrap) trap).armPortal();
+			if (linkedPortalPos >= 0) {
+				Trap linkedTrap = Dungeon.level.traps.get(linkedPortalPos);
+				if (linkedTrap instanceof SokobanPortalTrap) {
+					((SokobanPortalTrap) linkedTrap).armPortal(destinationPos);
+				}
+			} else {
+				for (Trap trap : Dungeon.level.traps.valueList()) {
+					if (trap instanceof SokobanPortalTrap) {
+						((SokobanPortalTrap) trap).armPortal(-1);
+					}
 				}
 			}
 			disarm();
+			if (Dungeon.level instanceof SproutedSokobanLevel) {
+				((SproutedSokobanLevel) Dungeon.level).onSokobanSwitchTriggered();
+			}
+		}
+	}
+
+	@Override
+	public void storeInBundle(Bundle bundle) {
+		super.storeInBundle(bundle);
+		bundle.put(LINKED_PORTAL_POS, linkedPortalPos);
+		bundle.put(DESTINATION_POS, destinationPos);
+	}
+
+	@Override
+	public void restoreFromBundle(Bundle bundle) {
+		super.restoreFromBundle(bundle);
+		if (bundle.contains(LINKED_PORTAL_POS)) {
+			linkedPortalPos = bundle.getInt(LINKED_PORTAL_POS);
+		}
+		if (bundle.contains(DESTINATION_POS)) {
+			destinationPos = bundle.getInt(DESTINATION_POS);
 		}
 	}
 }
