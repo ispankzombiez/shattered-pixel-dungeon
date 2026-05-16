@@ -1,4 +1,7 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-public class Spellbook {
+import com.shatteredpixel.shatteredpixeldungeon.items.bags.Bag;
+
+// A spellbook bag for scrolls and spell items.
+public class Spellbook extends Bag {
 }

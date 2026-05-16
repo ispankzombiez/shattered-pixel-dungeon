@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class BanditKingSprite {
+// Bandit King boss — inherits all animations from ThiefSprite.
+public class BanditKingSprite extends ThiefSprite {
 }

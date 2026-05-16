@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class VioletDragonSprite {
+// Violet dragon — inherits all animations from BatSprite.
+public class VioletDragonSprite extends BatSprite {
 }

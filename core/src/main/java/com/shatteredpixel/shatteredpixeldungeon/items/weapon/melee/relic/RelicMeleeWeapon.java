@@ -1,4 +1,10 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.relic;
 
-public class RelicMeleeWeapon {
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MeleeWeapon;
+
+public class RelicMeleeWeapon extends MeleeWeapon {
+
+	{
+		tier = 4;
+	}
 }

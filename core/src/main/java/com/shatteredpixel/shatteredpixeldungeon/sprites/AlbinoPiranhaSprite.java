@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class AlbinoPiranhaSprite {
+// Albino piranha — inherits all animations from PiranhaSprite.
+public class AlbinoPiranhaSprite extends PiranhaSprite {
 }

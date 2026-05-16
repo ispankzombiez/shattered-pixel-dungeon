@@ -1,4 +1,9 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee;
 
-public class ShortSword {
+// Melee weapon stub.
+public class ShortSword extends MeleeWeapon {
+
+    {
+        tier = 2;
+    }
 }

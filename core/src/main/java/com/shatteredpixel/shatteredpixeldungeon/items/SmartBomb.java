@@ -1,4 +1,7 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-public class SmartBomb {
+import com.shatteredpixel.shatteredpixeldungeon.items.bombs.Bomb;
+
+// Avoids harming the hero.
+public class SmartBomb extends Bomb {
 }

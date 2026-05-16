@@ -1,4 +1,22 @@
 package com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs;
 
-public class SheepSokobanSwitch extends Sheep {
+import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.SokobanSheepSwitchSprite;
+
+public class SheepSokobanSwitch extends NPC {
+
+	{
+		spriteClass = SokobanSheepSwitchSprite.class;
+
+		HP = HT = 1;
+		EXP = 0;
+
+		alignment = Alignment.NEUTRAL;
+		state = PASSIVE;
+	}
+
+	@Override
+	protected boolean interact(Char c) {
+		return true;
+	}
 }

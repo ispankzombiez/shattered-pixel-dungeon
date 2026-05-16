@@ -1,4 +1,9 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles;
 
-public class IncendiaryShuriken {
+// Missile weapon stub.
+public class IncendiaryShuriken extends MissileWeapon {
+
+    {
+        tier = 1;
+    }
 }

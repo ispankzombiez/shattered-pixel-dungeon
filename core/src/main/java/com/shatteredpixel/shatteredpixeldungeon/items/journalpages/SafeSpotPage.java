@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.journalpages;
 
-public class SafeSpotPage {
+// Journal page stub.
+public class SafeSpotPage extends JournalPage {
 }

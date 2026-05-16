@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class DemonGooSprite {
+// Demon goo — inherits all animations from GooSprite.
+public class DemonGooSprite extends GooSprite {
 }

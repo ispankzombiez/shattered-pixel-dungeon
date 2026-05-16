@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class GnollArcherSprite {
+// Gnoll archer — inherits all animations from GnollSprite.
+public class GnollArcherSprite extends GnollSprite {
 }

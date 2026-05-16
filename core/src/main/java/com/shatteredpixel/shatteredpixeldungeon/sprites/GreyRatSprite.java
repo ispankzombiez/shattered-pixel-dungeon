@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class GreyRatSprite {
+// Grey rat — inherits all animations from RatSprite.
+public class GreyRatSprite extends RatSprite {
 }

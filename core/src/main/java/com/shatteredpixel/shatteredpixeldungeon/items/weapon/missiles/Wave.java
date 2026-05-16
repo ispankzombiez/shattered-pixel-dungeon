@@ -1,4 +1,9 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles;
 
-public class Wave {
+// Missile weapon stub.
+public class Wave extends MissileWeapon {
+
+    {
+        tier = 2;
+    }
 }

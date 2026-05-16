@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class SeekingClusterBombSprite {
+// Seeking cluster bomb — inherits all animations from BeeSprite.
+public class SeekingClusterBombSprite extends BeeSprite {
 }

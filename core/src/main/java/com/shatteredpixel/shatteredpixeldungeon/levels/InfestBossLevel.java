@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class InfestBossLevel {
+// Boss level for Gullin — reuses CavesBossLevel layout.
+public class InfestBossLevel extends CavesBossLevel {
 }

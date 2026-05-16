@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class GreyOniSprite {
+// Grey oni — inherits all animations from BruteSprite.
+public class GreyOniSprite extends BruteSprite {
 }

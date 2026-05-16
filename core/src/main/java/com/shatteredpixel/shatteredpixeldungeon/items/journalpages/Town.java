@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.journalpages;
 
-public class Town {
+// Journal page stub.
+public class Town extends JournalPage {
 }

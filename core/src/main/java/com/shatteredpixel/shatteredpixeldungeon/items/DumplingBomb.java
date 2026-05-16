@@ -1,4 +1,7 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-public class DumplingBomb extends Item {
+import com.shatteredpixel.shatteredpixeldungeon.items.bombs.Bomb;
+
+// Creates dumplings on detonation.
+public class DumplingBomb extends Bomb {
 }

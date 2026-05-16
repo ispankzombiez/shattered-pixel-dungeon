@@ -1,4 +1,11 @@
 package com.shatteredpixel.shatteredpixeldungeon.windows;
 
-public class WndBlacksmith2 {
+import com.shatteredpixel.shatteredpixeldungeon.ui.Window;
+
+// Extended blacksmith shop window.
+public class WndBlacksmith2 extends Window {
+
+    public WndBlacksmith2() {
+        super();
+    }
 }

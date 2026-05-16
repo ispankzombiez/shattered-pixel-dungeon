@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class DewProtectorSprite {
+// Dew protector — inherits all animations from GolemSprite.
+public class DewProtectorSprite extends GolemSprite {
 }

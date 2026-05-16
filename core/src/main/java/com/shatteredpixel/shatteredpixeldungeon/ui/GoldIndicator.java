@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.ui;
 
-public class GoldIndicator {
+// Displays the hero's current gold count in the HUD. Inherits display logic from CurrencyIndicator.
+public class GoldIndicator extends CurrencyIndicator {
 }

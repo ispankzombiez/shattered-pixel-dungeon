@@ -1,4 +1,10 @@
 package com.shatteredpixel.shatteredpixeldungeon.scenes;
 
-public class IntroScene {
+// Intro/opening cinematic scene. Full implementation to be added.
+public class IntroScene extends PixelScene {
+
+    @Override
+    public void create() {
+        super.create();
+    }
 }

@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.journalpages;
 
-public class Vault {
+// Journal page stub.
+public class Vault extends JournalPage {
 }

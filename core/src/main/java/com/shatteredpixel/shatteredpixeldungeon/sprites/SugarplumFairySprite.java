@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class SugarplumFairySprite {
+// Sugarplum fairy — inherits all animations from BatSprite.
+public class SugarplumFairySprite extends BatSprite {
 }

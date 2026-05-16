@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class PoisonGooSprite {
+// Poison goo — inherits all animations from GooSprite.
+public class PoisonGooSprite extends GooSprite {
 }

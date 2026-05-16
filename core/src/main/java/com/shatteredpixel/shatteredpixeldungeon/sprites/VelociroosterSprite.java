@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class VelociroosterSprite {
+// Velocirooster — inherits all animations from RatSprite.
+public class VelociroosterSprite extends RatSprite {
 }

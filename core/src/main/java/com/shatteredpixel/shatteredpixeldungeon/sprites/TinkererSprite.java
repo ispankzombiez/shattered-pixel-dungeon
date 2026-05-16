@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class TinkererSprite {
+// Tinkerer NPC — inherits all animations from ShopkeeperSprite.
+public class TinkererSprite extends ShopkeeperSprite {
 }

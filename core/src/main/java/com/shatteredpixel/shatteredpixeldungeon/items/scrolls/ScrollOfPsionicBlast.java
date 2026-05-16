@@ -1,4 +1,11 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.scrolls;
 
-public class ScrollOfPsionicBlast {
+// Scroll stub — override doRead() for full effect.
+public class ScrollOfPsionicBlast extends Scroll {
+
+    @Override
+    public void doRead() {
+        identify();
+        updateQuickslot();
+    }
 }

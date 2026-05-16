@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.journalpages;
 
-public class Sokoban3 {
+// Journal page stub.
+public class Sokoban3 extends JournalPage {
 }

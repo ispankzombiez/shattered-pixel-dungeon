@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class SentinelSprite {
+// Sentinel — inherits all animations from GolemSprite.
+public class SentinelSprite extends GolemSprite {
 }

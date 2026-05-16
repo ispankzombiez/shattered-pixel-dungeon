@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class ZotPhaseSprite {
+// Zot phase — inherits all animations from YogSprite.
+public class ZotPhaseSprite extends YogSprite {
 }

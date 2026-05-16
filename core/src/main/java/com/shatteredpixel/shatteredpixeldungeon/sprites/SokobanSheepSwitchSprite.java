@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class SokobanSheepSwitchSprite {
+// Sokoban sheep switch — inherits all animations from SheepSprite.
+public class SokobanSheepSwitchSprite extends SheepSprite {
 }

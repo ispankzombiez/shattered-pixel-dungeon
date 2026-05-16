@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class BlueWraithSprite {
+// Blue wraith — inherits all animations from WraithSprite.
+public class BlueWraithSprite extends WraithSprite {
 }

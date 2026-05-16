@@ -1,4 +1,7 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-public class HolyHandGrenade extends Item {
+import com.shatteredpixel.shatteredpixeldungeon.items.bombs.Bomb;
+
+// Sacred explosive against unholy creatures.
+public class HolyHandGrenade extends Bomb {
 }

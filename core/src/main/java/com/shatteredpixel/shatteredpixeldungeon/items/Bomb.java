@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-public class Bomb {
+import com.shatteredpixel.shatteredpixeldungeon.items.bombs.Bomb;
+
+public class Bomb extends com.shatteredpixel.shatteredpixeldungeon.items.bombs.Bomb {
 }

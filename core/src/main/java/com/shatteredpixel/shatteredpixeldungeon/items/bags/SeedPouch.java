@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.bags;
 
-public class SeedPouch {
+// Bag stub — stores a category of items.
+public class SeedPouch extends Bag {
 }

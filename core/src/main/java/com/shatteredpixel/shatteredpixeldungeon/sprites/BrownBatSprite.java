@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class BrownBatSprite {
+// Brown bat — inherits all animations from BatSprite.
+public class BrownBatSprite extends BatSprite {
 }

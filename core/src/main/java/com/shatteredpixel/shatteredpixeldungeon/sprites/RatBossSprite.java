@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class RatBossSprite {
+// Rat boss — inherits all animations from RatSprite.
+public class RatBossSprite extends RatSprite {
 }

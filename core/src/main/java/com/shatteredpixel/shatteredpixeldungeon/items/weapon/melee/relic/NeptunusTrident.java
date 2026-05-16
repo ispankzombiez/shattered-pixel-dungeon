@@ -1,4 +1,9 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.relic;
 
-public class NeptunusTrident {
+// Relic weapon stub.
+public class NeptunusTrident extends RelicMeleeWeapon {
+
+    {
+        tier = 5;
+    }
 }

@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class OrbOfZotSprite {
+// Orb of Zot — inherits all animations from EyeSprite.
+public class OrbOfZotSprite extends EyeSprite {
 }

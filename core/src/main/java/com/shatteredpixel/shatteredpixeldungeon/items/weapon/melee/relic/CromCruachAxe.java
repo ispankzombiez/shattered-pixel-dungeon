@@ -1,4 +1,9 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.relic;
 
-public class CromCruachAxe {
+// Relic weapon stub.
+public class CromCruachAxe extends RelicMeleeWeapon {
+
+    {
+        tier = 5;
+    }
 }

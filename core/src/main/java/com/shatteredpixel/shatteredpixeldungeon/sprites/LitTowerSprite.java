@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class LitTowerSprite {
+// Lit tower — inherits all animations from GolemSprite.
+public class LitTowerSprite extends GolemSprite {
 }

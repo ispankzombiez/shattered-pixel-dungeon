@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class SokobanVaultLevel {
+// Sokoban level guarding the vault.
+public class SokobanVaultLevel extends RegularLevel {
 }

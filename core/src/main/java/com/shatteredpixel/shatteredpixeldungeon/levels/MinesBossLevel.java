@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class MinesBossLevel {
+// Boss level set in the mines.
+public class MinesBossLevel extends MineLevel {
 }

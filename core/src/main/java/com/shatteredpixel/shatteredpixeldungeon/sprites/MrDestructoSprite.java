@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class MrDestructoSprite {
+// Mr. Destructo — inherits all animations from GolemSprite.
+public class MrDestructoSprite extends GolemSprite {
 }

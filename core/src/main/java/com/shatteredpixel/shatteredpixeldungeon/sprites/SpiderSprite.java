@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class SpiderSprite {
+// Spider — inherits all animations from SpinnerSprite.
+public class SpiderSprite extends SpinnerSprite {
 }

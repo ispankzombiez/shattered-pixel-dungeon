@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class AssassinSprite {
+// Assassin — inherits all animations from ThiefSprite.
+public class AssassinSprite extends ThiefSprite {
 }

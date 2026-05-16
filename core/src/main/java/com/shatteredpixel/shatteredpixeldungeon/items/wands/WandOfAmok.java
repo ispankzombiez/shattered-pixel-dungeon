@@ -1,4 +1,15 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.wands;
 
-public class WandOfAmok {
+import com.shatteredpixel.shatteredpixeldungeon.mechanics.Ballistica;
+
+public class WandOfAmok extends Wand {
+
+	@Override
+	public void onZap(Ballistica attack) {
+	}
+
+	@Override
+	public void fx(Ballistica shoot, com.watabou.utils.Callback callback) {
+		callback.call();
+	}
 }

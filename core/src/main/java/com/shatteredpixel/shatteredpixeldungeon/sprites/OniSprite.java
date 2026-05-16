@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class OniSprite {
+// Oni — inherits all animations from BruteSprite.
+public class OniSprite extends BruteSprite {
 }

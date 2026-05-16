@@ -1,4 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.misc;
 
-public class MiscEquippable {
+import com.shatteredpixel.shatteredpixeldungeon.items.EquipableItem;
+
+public abstract class MiscEquippable extends EquipableItem {
 }

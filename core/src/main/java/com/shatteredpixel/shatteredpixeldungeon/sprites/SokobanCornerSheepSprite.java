@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class SokobanCornerSheepSprite {
+// Sokoban corner sheep — inherits all animations from SheepSprite.
+public class SokobanCornerSheepSprite extends SheepSprite {
 }

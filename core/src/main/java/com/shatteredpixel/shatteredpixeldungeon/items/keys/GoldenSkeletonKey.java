@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.keys;
 
-public class GoldenSkeletonKey {
+// A golden skeleton key that opens any skeleton-key-compatible lock.
+public class GoldenSkeletonKey extends Key {
 }

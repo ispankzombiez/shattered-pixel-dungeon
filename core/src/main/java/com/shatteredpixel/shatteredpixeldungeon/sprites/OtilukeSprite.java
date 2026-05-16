@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class OtilukeSprite {
+// Otiluke boss — inherits all animations from WarlockSprite.
+public class OtilukeSprite extends WarlockSprite {
 }

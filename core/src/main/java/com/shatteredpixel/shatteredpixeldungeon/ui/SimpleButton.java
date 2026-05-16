@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.ui;
 
-public class SimpleButton {
+// A minimal button with no extra behaviour — used as a base or plain click target.
+public class SimpleButton extends Button {
 }

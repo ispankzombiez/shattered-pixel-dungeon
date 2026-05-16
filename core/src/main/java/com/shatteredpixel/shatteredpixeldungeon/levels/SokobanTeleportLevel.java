@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class SokobanTeleportLevel {
+// Sokoban level with teleporter mechanics.
+public class SokobanTeleportLevel extends RegularLevel {
 }

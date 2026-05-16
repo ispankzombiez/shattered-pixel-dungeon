@@ -1,4 +1,9 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee;
 
-public class Knuckles {
+// Melee weapon stub.
+public class Knuckles extends MeleeWeapon {
+
+    {
+        tier = 1;
+    }
 }

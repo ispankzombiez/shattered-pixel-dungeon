@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class DwarfLichSprite {
+// Dwarf lich — inherits all animations from SkeletonSprite.
+public class DwarfLichSprite extends SkeletonSprite {
 }

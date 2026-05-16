@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class InfectingFistSprite {
+// Infecting fist boss appendage — inherits all animations from FistSprite.
+public class InfectingFistSprite extends FistSprite {
 }

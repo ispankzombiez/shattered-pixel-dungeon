@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class SkeletonBossLevel {
+// Boss level for the Skeleton King — reuses CavesBossLevel layout.
+public class SkeletonBossLevel extends CavesBossLevel {
 }

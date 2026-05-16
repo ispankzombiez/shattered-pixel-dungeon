@@ -1,6 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.rings;
 
-public class RingOfMagic extends Ring {
+public class RingOfDisintegration extends Ring {
 
 \t{
 \t\tbuffClass = Buff.class;

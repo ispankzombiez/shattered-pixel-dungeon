@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-public class SanChikarahDeath {
+// SanChikarah attuned to death energy.
+public class SanChikarahDeath extends SanChikarah {
 }

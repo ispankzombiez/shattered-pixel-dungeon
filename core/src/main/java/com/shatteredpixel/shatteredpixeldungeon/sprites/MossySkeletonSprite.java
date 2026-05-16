@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class MossySkeletonSprite {
+// Mossy skeleton — inherits all animations from SkeletonSprite.
+public class MossySkeletonSprite extends SkeletonSprite {
 }

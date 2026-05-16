@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class ShellSprite {
+// Shell mob — inherits all animations from CrabSprite.
+public class ShellSprite extends CrabSprite {
 }

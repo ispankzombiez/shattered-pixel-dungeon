@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class SokobanIntroLevel {
+// Introductory Sokoban puzzle level.
+public class SokobanIntroLevel extends RegularLevel {
 }

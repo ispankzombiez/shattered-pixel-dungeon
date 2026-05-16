@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class CrabKingSprite {
+// Crab King boss — inherits all animations from CrabSprite.
+public class CrabKingSprite extends CrabSprite {
 }

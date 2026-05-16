@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class GoldThiefSprite {
+// Gold thief — inherits all animations from ThiefSprite.
+public class GoldThiefSprite extends ThiefSprite {
 }

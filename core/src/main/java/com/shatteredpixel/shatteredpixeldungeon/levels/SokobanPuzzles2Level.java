@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class SokobanPuzzles2Level {
+// Second set of Sokoban puzzles.
+public class SokobanPuzzles2Level extends RegularLevel {
 }

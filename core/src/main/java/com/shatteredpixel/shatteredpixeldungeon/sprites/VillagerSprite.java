@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class VillagerSprite {
+// Villager NPC — inherits all animations from ShopkeeperSprite.
+public class VillagerSprite extends ShopkeeperSprite {
 }

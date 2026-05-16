@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class PlantSprite {
+// Plant mob — inherits all animations from UndeadSprite.
+public class PlantSprite extends UndeadSprite {
 }

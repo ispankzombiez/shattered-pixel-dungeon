@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.bags;
 
-public class SpellBook {
+// Bag stub — stores a category of items.
+public class SpellBook extends Bag {
 }

@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class SafeLevel {
+// A safe room level with no hostile mobs.
+public class SafeLevel extends LastShopLevel {
 }

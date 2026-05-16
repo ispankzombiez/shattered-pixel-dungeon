@@ -1,4 +1,9 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee;
 
-public class AssassinsKnife {
+// Melee weapon stub.
+public class AssassinsKnife extends MeleeWeapon {
+
+    {
+        tier = 1;
+    }
 }

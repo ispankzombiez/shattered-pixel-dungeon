@@ -1,4 +1,9 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.relic;
 
-public class LokisFlail {
+// Relic weapon stub.
+public class LokisFlail extends RelicMeleeWeapon {
+
+    {
+        tier = 4;
+    }
 }

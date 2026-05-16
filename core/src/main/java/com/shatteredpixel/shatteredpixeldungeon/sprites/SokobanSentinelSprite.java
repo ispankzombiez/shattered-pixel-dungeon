@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class SokobanSentinelSprite {
+// Sokoban sentinel — inherits all animations from GolemSprite.
+public class SokobanSentinelSprite extends GolemSprite {
 }

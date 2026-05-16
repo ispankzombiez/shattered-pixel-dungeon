@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class SteelBeeSprite {
+// Steel bee — inherits all animations from BeeSprite.
+public class SteelBeeSprite extends BeeSprite {
 }

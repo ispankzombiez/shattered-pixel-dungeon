@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
-public class SokobanCastle {
+// Sokoban castle level — reuses CatacombLevel layout.
+public class SokobanCastle extends CatacombLevel {
 }

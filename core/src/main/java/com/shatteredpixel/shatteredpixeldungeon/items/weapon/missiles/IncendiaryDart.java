@@ -1,4 +1,9 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles;
 
-public class IncendiaryDart {
+// Missile weapon stub.
+public class IncendiaryDart extends MissileWeapon {
+
+    {
+        tier = 1;
+    }
 }

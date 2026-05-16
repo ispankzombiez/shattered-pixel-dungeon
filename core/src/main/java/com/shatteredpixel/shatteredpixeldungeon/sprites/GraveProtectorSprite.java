@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class GraveProtectorSprite {
+// Grave protector — inherits all animations from UndeadSprite.
+public class GraveProtectorSprite extends UndeadSprite {
 }

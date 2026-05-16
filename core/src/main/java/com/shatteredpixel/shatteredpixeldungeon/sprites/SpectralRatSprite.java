@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class SpectralRatSprite {
+// Spectral rat — inherits all animations from WraithSprite.
+public class SpectralRatSprite extends WraithSprite {
 }

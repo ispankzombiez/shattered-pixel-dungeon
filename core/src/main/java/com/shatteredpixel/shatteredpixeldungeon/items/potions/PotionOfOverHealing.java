@@ -1,4 +1,12 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.potions;
 
-public class PotionOfOverHealing {
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
+
+// Potion stub — override apply() for full effect.
+public class PotionOfOverHealing extends Potion {
+
+    @Override
+    public void apply(Hero hero) {
+        identify();
+    }
 }

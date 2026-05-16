@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class ForestProtectorSprite {
+// Forest protector — inherits all animations from PlantSprite.
+public class ForestProtectorSprite extends PlantSprite {
 }

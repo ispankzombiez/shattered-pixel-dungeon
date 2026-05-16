@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class KupuaSprite {
+// Kupua — inherits all animations from BatSprite.
+public class KupuaSprite extends BatSprite {
 }

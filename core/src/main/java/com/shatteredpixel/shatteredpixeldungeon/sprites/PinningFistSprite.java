@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class PinningFistSprite {
+// Pinning fist boss appendage — inherits all animations from FistSprite.
+public class PinningFistSprite extends FistSprite {
 }

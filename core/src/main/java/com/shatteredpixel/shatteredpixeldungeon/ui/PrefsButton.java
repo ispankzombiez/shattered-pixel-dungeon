@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.ui;
 
-public class PrefsButton {
+// Button that opens the preferences / settings screen.
+public class PrefsButton extends Button {
 }

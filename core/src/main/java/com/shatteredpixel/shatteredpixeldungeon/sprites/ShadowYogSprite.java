@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class ShadowYogSprite {
+// Shadow Yog — inherits all animations from YogSprite.
+public class ShadowYogSprite extends YogSprite {
 }

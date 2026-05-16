@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.keys;
 
-public class SkeletonKey {
+// A skeleton key — used to unlock special locked doors.
+public class SkeletonKey extends Key {
 }

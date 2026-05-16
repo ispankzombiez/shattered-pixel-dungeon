@@ -1,4 +1,9 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.armor;
 
-public class MetalUnderwear {
+// Metal underwear — minimal but surprisingly protective.
+public class MetalUnderwear extends Armor {
+
+    {
+        tier = 1;
+    }
 }

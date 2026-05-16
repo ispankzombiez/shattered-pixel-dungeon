@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class BrokenRobotSprite {
+// Broken robot — inherits all animations from GolemSprite.
+public class BrokenRobotSprite extends GolemSprite {
 }

@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class FairySprite {
+// Fairy — inherits all animations from BatSprite.
+public class FairySprite extends BatSprite {
 }

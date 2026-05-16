@@ -1,4 +1,5 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
-public class FossilSkeletonSprite {
+// Fossil skeleton — inherits all animations from SkeletonSprite.
+public class FossilSkeletonSprite extends SkeletonSprite {
 }
