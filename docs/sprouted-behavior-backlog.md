@@ -32,4 +32,7 @@ Priority legend: **P0** progression blocker, **P1** major branch parity, **P2** 
  - [x] FortressLevel/CatacombLevel: SanChikarah flags cleared when item is picked up (SanChikarahLife/Death.doPickUp)
  - [x] Tinkerer NPC interact() dialogs (all five tinkerers)
 | P2-02 | Full Sokoban puzzle accuracy | Symbol stamping only | Solve-specific puzzle entities, states, and completion rules | Sokoban levels + Sokoban NPC/mob/trap classes | P1-02 | Puzzle completion behavior and fail/retry flow match Sprouted reference |
+ - [x] Sokoban sheep interactions: push/swap/stop behaviors for SheepSokoban, SheepSokobanCorner, SheepSokobanSwitch, SheepSokobanStop
+ - [x] ChangeSheepTrap sheep-morph cycle: SheepSokoban → SheepSokobanCorner → SheepSokobanStop and SheepSokobanSwitch → SheepSokoban
+ - [ ] Sokoban portal activation/goal-state wiring and per-floor completion rules
 | P2-03 | Full non-map parity (quests/resources/pets/crafting loops) | Partial/unknown in several subsystems | Behavior audit and implementation per subsystem | Quest/resource/pet/crafting classes across `core/src/main/java/...` | P0/P1 complete | All audit items are marked behavior-verified with deterministic seeds |
