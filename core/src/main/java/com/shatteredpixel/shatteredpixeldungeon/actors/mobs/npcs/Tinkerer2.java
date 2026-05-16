@@ -16,7 +16,7 @@ public class Tinkerer2 extends NPC {
 	}
 
 	@Override
-	protected boolean interact(Char c) {
+	public boolean interact(Char c) {
 		return true;
 	}
 }

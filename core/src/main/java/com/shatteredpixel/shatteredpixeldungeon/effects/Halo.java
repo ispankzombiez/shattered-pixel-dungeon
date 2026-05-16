@@ -13,8 +13,9 @@ public class Halo extends Image {
         flare = new Flare(8, 24).color(0xFFFFAA, true).show(this, 0);
     }
 
-    public Halo brightness(float value) {
+    @Override
+    public void brightness(float value) {
         if (flare != null) flare.am = value;
-        return this;
+        super.brightness(value);
     }
 }

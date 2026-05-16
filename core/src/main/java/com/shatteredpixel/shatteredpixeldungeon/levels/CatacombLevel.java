@@ -1,6 +1,8 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
 import com.shatteredpixel.shatteredpixeldungeon.Assets;
+import com.shatteredpixel.shatteredpixeldungeon.levels.painters.HallsPainter;
+import com.shatteredpixel.shatteredpixeldungeon.levels.painters.Painter;
 
 public class CatacombLevel extends HallsLevel {
 
@@ -20,12 +22,10 @@ return Assets.Environment.WATER_HALLS;
 }
 
 @Override
-protected float waterFill() {
-return 0.15f;
-}
-
-@Override
-protected float grassFill() {
-return 0.10f;
+protected Painter painter() {
+    return new HallsPainter()
+            .setWater(0.15f, 6)
+            .setGrass(0.10f, 3)
+            .setTraps(nTraps(), trapClasses(), trapChances());
 }
 }

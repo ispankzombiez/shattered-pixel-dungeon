@@ -1,6 +1,8 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
 import com.shatteredpixel.shatteredpixeldungeon.Assets;
+import com.shatteredpixel.shatteredpixeldungeon.levels.painters.CityPainter;
+import com.shatteredpixel.shatteredpixeldungeon.levels.painters.Painter;
 
 public class FortressLevel extends CityLevel {
 
@@ -20,12 +22,10 @@ return Assets.Environment.WATER_CITY;
 }
 
 @Override
-protected float waterFill() {
-return 0.10f;
-}
-
-@Override
-protected float grassFill() {
-return 0.05f;
+protected Painter painter() {
+    return new CityPainter()
+            .setWater(0.10f, 4)
+            .setGrass(0.05f, 3)
+            .setTraps(nTraps(), trapClasses(), trapChances());
 }
 }

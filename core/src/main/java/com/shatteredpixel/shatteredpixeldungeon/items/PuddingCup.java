@@ -1,5 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Hunger;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Food;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 
@@ -8,7 +9,7 @@ public class PuddingCup extends Food {
 
     {
         image = ItemSpriteSheet.OVERPRICED;
-        energy = Food.FOOD_VAL;
+        energy = Hunger.HUNGRY;
         stackable = true;
     }
 }
