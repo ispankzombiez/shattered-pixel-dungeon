@@ -1,9 +1,21 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels.validation;
 
 import com.shatteredpixel.shatteredpixeldungeon.levels.Layouts;
+import com.shatteredpixel.shatteredpixeldungeon.levels.Level;
 import com.shatteredpixel.shatteredpixeldungeon.levels.SokobanLayouts;
 import com.shatteredpixel.shatteredpixeldungeon.levels.SokobanLayouts2;
+import com.shatteredpixel.shatteredpixeldungeon.levels.SokobanIntroLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.SokobanPuzzles2Level;
+import com.shatteredpixel.shatteredpixeldungeon.levels.SokobanPuzzlesLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.SokobanTeleportLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.SokobanVaultLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.TenguDenLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.TenguHideoutLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.TownLayouts;
+import com.shatteredpixel.shatteredpixeldungeon.levels.TownLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.CatacombLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.FortressLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.MineLevel;
 import com.watabou.utils.Random;
 
 public class SproutedSeedRegressionChecks {
@@ -26,17 +38,38 @@ public class SproutedSeedRegressionChecks {
 		String firstSokoban2 = seededLayoutHash(9999L, LayoutType.SOKOBAN_2);
 		String secondSokoban2 = seededLayoutHash(9999L, LayoutType.SOKOBAN_2);
 		assertEquals(firstSokoban2, secondSokoban2, "Sokoban2 layout selection must be deterministic for a fixed seed");
+
+		String firstTeleport = seededLayoutHash(2468L, LayoutType.SOKOBAN_TELEPORT);
+		String secondTeleport = seededLayoutHash(2468L, LayoutType.SOKOBAN_TELEPORT);
+		assertEquals(firstTeleport, secondTeleport, "Sokoban teleport layout selection must be deterministic for a fixed seed");
+
+		String firstVault = seededLayoutHash(8642L, LayoutType.SOKOBAN_VAULT);
+		String secondVault = seededLayoutHash(8642L, LayoutType.SOKOBAN_VAULT);
+		assertEquals(firstVault, secondVault, "Sokoban vault layout selection must be deterministic for a fixed seed");
 	}
 
 	private static void verifyBranchRoutes() {
-		for (int depth = 24; depth <= 30; depth++) {
-			if (!Layouts.hasBranchRoute(depth, 2)) {
-				throw new IllegalStateException("Missing required branch 2 route at depth " + depth);
-			}
-		}
-		if (!Layouts.hasBranchRoute(24, 3) || !Layouts.hasBranchRoute(25, 3)) {
-			throw new IllegalStateException("Missing required branch 3 routes at depths 24/25");
-		}
+		assertRoute(11, 2, MineLevel.class);
+		assertRoute(14, 2, MineLevel.class);
+		assertRoute(16, 2, FortressLevel.class);
+		assertRoute(19, 2, FortressLevel.class);
+		assertRoute(20, 2, CatacombLevel.class);
+		assertRoute(22, 2, CatacombLevel.class);
+		assertRoute(23, 2, TownLevel.class);
+		assertRoute(24, 2, TenguDenLevel.class);
+		assertRoute(25, 2, TenguHideoutLevel.class);
+		assertRoute(26, 2, SokobanIntroLevel.class);
+		assertRoute(27, 2, SokobanPuzzlesLevel.class);
+		assertRoute(28, 2, SokobanPuzzles2Level.class);
+		assertRoute(29, 2, SokobanTeleportLevel.class);
+		assertRoute(30, 2, SokobanVaultLevel.class);
+		assertMissingRoute(15, 2);
+		assertMissingRoute(31, 2);
+
+		assertRoute(24, 3, TownLevel.class);
+		assertRoute(25, 3, TenguHideoutLevel.class);
+		assertMissingRoute(23, 3);
+		assertMissingRoute(26, 3);
 	}
 
 	private static String seededLayoutHash(long seed, LayoutType layoutType) {
@@ -54,6 +87,12 @@ public class SproutedSeedRegressionChecks {
 				case SOKOBAN_2:
 					layout = SokobanLayouts2.randomLayout();
 					break;
+				case SOKOBAN_TELEPORT:
+					layout = SokobanLayouts.randomTeleportLayout();
+					break;
+				case SOKOBAN_VAULT:
+					layout = SokobanLayouts2.randomVaultLayout();
+					break;
 				default:
 					throw new IllegalStateException("Unexpected layout type: " + layoutType);
 			}
@@ -69,9 +108,26 @@ public class SproutedSeedRegressionChecks {
 		}
 	}
 
+	private static void assertRoute(int depth, int branch, Class<? extends Level> expectedType) {
+		Level level = Layouts.branchLevel(depth, branch);
+		if (level == null || level.getClass() != expectedType) {
+			throw new IllegalStateException("Expected branch " + branch + " depth " + depth
+					+ " to map to " + expectedType.getSimpleName()
+					+ " but got " + (level == null ? "null" : level.getClass().getSimpleName()));
+		}
+	}
+
+	private static void assertMissingRoute(int depth, int branch) {
+		if (Layouts.hasBranchRoute(depth, branch)) {
+			throw new IllegalStateException("Expected no Sprouted branch route for branch " + branch + " depth " + depth);
+		}
+	}
+
 	private enum LayoutType {
 		TOWN,
 		SOKOBAN_1,
-		SOKOBAN_2
+		SOKOBAN_2,
+		SOKOBAN_TELEPORT,
+		SOKOBAN_VAULT
 	}
 }

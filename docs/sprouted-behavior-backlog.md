@@ -9,6 +9,8 @@ Priority legend: **P0** progression blocker, **P1** major branch parity, **P2** 
 | P0-01 | Branch routes always resolve to intended Sprouted map classes | Missing route falls through to generic handling | Explicit failure guard + telemetry for missing routes | `core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/Dungeon.java`, `core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/levels/Layouts.java` | None | Invalid Sprouted branch depth can no longer silently route to unrelated flow |
 | P0-02 | Large Sprouted-style floors by branch/depth | Implicit map size from room packing only | Explicit map-size profiles and scaled generation knobs | `core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/levels/MapSizeProfiles.java`, `.../RegularLevel.java`, `.../painters/RegularPainter.java`, `.../SproutedArenaLevel.java`, `.../TenguHideoutLevel.java` | P0-01 | Representative floors produce larger maps without generation soft-locks |
 | P0-03 | Deterministic parity checks available | No dedicated parity regression runner | Seed-based deterministic checks task | `core/build.gradle`, `core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/levels/validation/SproutedSeedRegressionChecks.java` | P0-01 | `:core:sproutedSeedChecks` runs and validates deterministic branch/layout invariants |
+ - [x] P0-01: `Dungeon.newLevel()` now reports invalid Sprouted branch routes and falls back to `DeadEndLevel` instead of silently using unrelated flow
+ - [x] P0-03: `:core:sproutedSeedChecks` exists and validates deterministic Town/Sokoban/teleport/vault layout selection plus exact Sprouted branch route mappings
 
 ## P1 – Major branch parity
 
