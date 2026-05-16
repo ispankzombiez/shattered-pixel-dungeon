@@ -30,6 +30,7 @@ viewDistance = 12;
 }
 
 private static final int STOCK_PER_SHOPKEEPER = 6;
+private static final int STORE_ITEM_TYPE_COUNT = 7;
 private static final String STOCKED_FOR_DEPTH = "stocked_for_depth";
 private int stockedForDepth = -1;
 
@@ -160,7 +161,7 @@ private void fillStockNear(int centerCell, int targetItems) {
 }
 
 private Item storeItem() {
-	switch (Random.Int(7)) {
+	switch (Random.Int(STORE_ITEM_TYPE_COUNT)) {
 		case 0:
 			return new ScrollOfUpgrade();
 		case 1:

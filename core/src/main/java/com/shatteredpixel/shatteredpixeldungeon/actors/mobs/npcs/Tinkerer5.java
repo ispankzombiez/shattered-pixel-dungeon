@@ -52,10 +52,10 @@ public class Tinkerer5 extends NPC {
 		sprite.turnTo(pos, Dungeon.hero.pos);
 		if (first) {
 			first = false;
-			GameScene.show(new WndQuest(this, TXT_DUNGEON3));
 			if (Dungeon.hero.belongings.getItem(TownReturnBeacon.class) == null) {
 				Dungeon.level.drop(new TownReturnBeacon(), Dungeon.hero.pos);
 			}
+			GameScene.show(new WndQuest(this, TXT_DUNGEON3));
 		} else {
 			GameScene.show(new WndQuest(this, Random.Int(2) == 0 ? TXT_DUNGEON : TXT_DUNGEON2));
 		}
