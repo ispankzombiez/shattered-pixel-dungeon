@@ -1,6 +1,8 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
 import com.shatteredpixel.shatteredpixeldungeon.Assets;
+import com.shatteredpixel.shatteredpixeldungeon.levels.painters.CavesPainter;
+import com.shatteredpixel.shatteredpixeldungeon.levels.painters.Painter;
 
 public class MineLevel extends CavesLevel {
 
@@ -20,12 +22,10 @@ return Assets.Environment.WATER_CAVES;
 }
 
 @Override
-protected float waterFill() {
-return 0.20f;
-}
-
-@Override
-protected float grassFill() {
-return 0.10f;
+protected Painter painter() {
+    return new CavesPainter()
+            .setWater(0.20f, 6)
+            .setGrass(0.10f, 3)
+            .setTraps(nTraps(), trapClasses(), trapChances());
 }
 }

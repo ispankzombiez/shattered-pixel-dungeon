@@ -25,7 +25,6 @@ public class Dewcatcher extends Plant {
         {
             image = ItemSpriteSheet.SEED_SUNGRASS; // placeholder sprite
             plantClass = Dewcatcher.class;
-            alchemyClass = Dewcatcher.class;
         }
     }
 }

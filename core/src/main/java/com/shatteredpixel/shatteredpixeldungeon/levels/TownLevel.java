@@ -1,6 +1,8 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
 import com.shatteredpixel.shatteredpixeldungeon.Assets;
+import com.shatteredpixel.shatteredpixeldungeon.levels.painters.Painter;
+import com.shatteredpixel.shatteredpixeldungeon.levels.painters.SewerPainter;
 
 public class TownLevel extends SewerLevel {
 
@@ -21,12 +23,10 @@ return Assets.Environment.WATER_SEWERS;
 }
 
 @Override
-protected float waterFill() {
-return 0.05f;
-}
-
-@Override
-protected float grassFill() {
-return 0.30f;
+protected Painter painter() {
+    return new SewerPainter()
+            .setWater(0.05f, 5)
+            .setGrass(0.30f, 4)
+            .setTraps(nTraps(), trapClasses(), trapChances());
 }
 }

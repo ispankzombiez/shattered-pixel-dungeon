@@ -28,6 +28,8 @@ import com.shatteredpixel.shatteredpixeldungeon.ui.BuffIndicator;
 
 public class Amok extends FlavourBuff {
 
+	public static final float DURATION = 5f;
+
 	{
 		type = buffType.NEGATIVE;
 		announced = true;

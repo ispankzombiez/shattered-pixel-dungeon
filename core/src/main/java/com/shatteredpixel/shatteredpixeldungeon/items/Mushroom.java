@@ -1,5 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Hunger;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Food;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 
@@ -7,8 +8,8 @@ import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 public class Mushroom extends Food {
 
     {
-        image = ItemSpriteSheet.MUSHROOM_WINE;
-        energy = Food.FOOD_VAL / 2;
+        image = ItemSpriteSheet.BLANDFRUIT;
+        energy = Hunger.HUNGRY / 2;
         stackable = true;
     }
 }
