@@ -21,22 +21,31 @@
 
 package com.shatteredpixel.shatteredpixeldungeon.levels.traps;
 
+import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
-import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfTeleportation;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.SheepSokoban;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.SheepSokobanCorner;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.SheepSokobanSwitch;
 
 public class ActivatePortalTrap extends Trap {
 
 	{
 		color = VIOLET;
 		shape = STARS;
+		disarmedByActivation = false;
 	}
 
 	@Override
 	public void activate() {
 		Char ch = Actor.findChar(pos);
-		if (ch != null) {
-			ScrollOfTeleportation.teleportChar(ch);
+		if (ch instanceof SheepSokoban || ch instanceof SheepSokobanCorner || ch instanceof SheepSokobanSwitch) {
+			for (Trap trap : Dungeon.level.traps.valueList()) {
+				if (trap instanceof SokobanPortalTrap) {
+					((SokobanPortalTrap) trap).armPortal();
+				}
+			}
+			disarm();
 		}
 	}
 }

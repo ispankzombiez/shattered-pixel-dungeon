@@ -21,22 +21,50 @@
 
 package com.shatteredpixel.shatteredpixeldungeon.levels.traps;
 
+import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfTeleportation;
+import com.watabou.utils.Bundle;
 
 public class SokobanPortalTrap extends Trap {
+
+	private static final String ARMED = "armed";
+	private boolean armed;
 
 	{
 		color = VIOLET;
 		shape = STARS;
+		disarmedByActivation = false;
 	}
 
 	@Override
 	public void activate() {
 		Char ch = Actor.findChar(pos);
-		if (ch != null) {
+		if (!(ch instanceof Hero) || !armed) {
+			return;
+		}
+
+		if (!ScrollOfTeleportation.teleportToLocation(ch, Dungeon.level.exit)) {
 			ScrollOfTeleportation.teleportChar(ch);
 		}
+		armed = false;
+	}
+
+	public void armPortal() {
+		armed = true;
+	}
+
+	@Override
+	public void storeInBundle(Bundle bundle) {
+		super.storeInBundle(bundle);
+		bundle.put(ARMED, armed);
+	}
+
+	@Override
+	public void restoreFromBundle(Bundle bundle) {
+		super.restoreFromBundle(bundle);
+		armed = bundle.getBoolean(ARMED);
 	}
 }

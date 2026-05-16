@@ -1,6 +1,9 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
+import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.SheepSokoban;
+import com.shatteredpixel.shatteredpixeldungeon.levels.traps.ActivatePortalTrap;
 import com.shatteredpixel.shatteredpixeldungeon.levels.traps.SokobanPortalTrap;
 import com.watabou.utils.Point;
 
@@ -43,12 +46,23 @@ public final class SproutedLayoutStamp {
 						level.map[cell] = Terrain.GRASS;
 						break;
 					case 'b':
-						level.map[cell] = Terrain.STATUE;
+						if (sokobanPortals) {
+							level.map[cell] = Terrain.EMPTY;
+							placeNPCAt(level, new SheepSokoban(), cell);
+						} else {
+							level.map[cell] = Terrain.STATUE;
+						}
 						break;
 					case 't':
-						level.map[cell] = Terrain.INACTIVE_TRAP;
+						level.map[cell] = Terrain.TRAP;
 						if (sokobanPortals) {
 							level.setTrap(new SokobanPortalTrap().reveal(), cell);
+						}
+						break;
+					case 'v':
+						level.map[cell] = Terrain.TRAP;
+						if (sokobanPortals) {
+							level.setTrap(new ActivatePortalTrap().reveal(), cell);
 						}
 						break;
 					default:
@@ -82,6 +96,14 @@ public final class SproutedLayoutStamp {
 	public static void placeNPC(Level level, Mob npc) {
 		int pos = level.randomRespawnCell(npc);
 		if (pos != -1) {
+			npc.pos = pos;
+			level.mobs.add(npc);
+			level.occupyCell(npc);
+		}
+	}
+
+	private static void placeNPCAt(Level level, Mob npc, int pos) {
+		if (pos >= 0 && pos < level.length() && Actor.findChar(pos) == null) {
 			npc.pos = pos;
 			level.mobs.add(npc);
 			level.occupyCell(npc);
