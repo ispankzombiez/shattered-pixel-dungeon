@@ -36,14 +36,8 @@ protected Painter painter() {
 protected boolean build() {
 	boolean built = super.build();
 	if (built) {
-		// Sprouted: entrance and exit appear as pedestals; chasms are filled.
-		for (int i = 0; i < length(); i++) {
-			if (map[i] == Terrain.ENTRANCE || map[i] == Terrain.EXIT) {
-				map[i] = Terrain.PEDESTAL;
-			} else if (map[i] == Terrain.CHASM) {
-				map[i] = Terrain.EMPTY;
-			}
-		}
+		// Sprouted: entrance/exit rendered as pedestals; chasms filled.
+		SproutedLayoutStamp.applyBranchTerrainOverrides(this);
 	}
 	return built;
 }

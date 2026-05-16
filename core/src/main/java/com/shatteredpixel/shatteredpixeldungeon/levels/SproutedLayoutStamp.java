@@ -1,5 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
 import com.shatteredpixel.shatteredpixeldungeon.levels.traps.SokobanPortalTrap;
 import com.watabou.utils.Point;
 
@@ -54,6 +55,36 @@ public final class SproutedLayoutStamp {
 						break;
 				}
 			}
+		}
+	}
+
+	/**
+	 * Converts ENTRANCE and EXIT terrain to PEDESTAL (Sprouted branch-level visual),
+	 * and fills CHASM tiles with EMPTY (Sprouted branch floors have no pits).
+	 * The transitions list is unaffected so level routing continues to work normally.
+	 */
+	public static void applyBranchTerrainOverrides(Level level) {
+		for (int i = 0; i < level.length(); i++) {
+			int tile = level.map[i];
+			if (tile == Terrain.ENTRANCE || tile == Terrain.EXIT) {
+				level.map[i] = Terrain.PEDESTAL;
+			} else if (tile == Terrain.CHASM) {
+				level.map[i] = Terrain.EMPTY;
+			}
+		}
+	}
+
+	/**
+	 * Places {@code npc} at a valid passable cell inside {@code level} and adds it to the mob list.
+	 * Uses the provided {@code level}'s {@link Level#randomRespawnCell} to find a position.
+	 * Does nothing if no valid cell is found.
+	 */
+	public static void placeNPC(Level level, Mob npc) {
+		int pos = level.randomRespawnCell(npc);
+		if (pos != -1) {
+			npc.pos = pos;
+			level.mobs.add(npc);
+			level.occupyCell(npc);
 		}
 	}
 }

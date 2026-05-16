@@ -47,15 +47,21 @@ protected boolean build() {
 @Override
 protected void createMobs() {
 	// Town is a safe hub; spawn Sprouted town NPCs instead of combat mobs.
-	spawnTownNPC(new Shopkeeper());
-	spawnTownNPC(new Shopkeeper());
-	spawnTownNPC(new Tinkerer4());
-	spawnTownNPC(new Tinkerer5());
+	// placeNPCAtGeneration() uses the parent's respawn-cell logic (not the
+	// -1 override below) so that NPCs get valid starting positions.
+	placeNPCAtGeneration(new Shopkeeper());
+	placeNPCAtGeneration(new Shopkeeper());
+	placeNPCAtGeneration(new Tinkerer4());
+	placeNPCAtGeneration(new Tinkerer5());
 }
 
-private void spawnTownNPC(Mob npc) {
-	// Use the parent's randomRespawnCell to find a valid position,
-	// bypassing our override that always returns -1.
+/**
+ * Places {@code npc} at a valid cell during level generation.
+ * Explicitly calls {@code super.randomRespawnCell()} to use the standard room-based
+ * placement logic even though {@link #randomRespawnCell} is overridden to return -1
+ * at runtime (preventing mob respawning in the safe town hub).
+ */
+private void placeNPCAtGeneration(Mob npc) {
 	int pos = super.randomRespawnCell(npc);
 	if (pos != -1) {
 		npc.pos = pos;
