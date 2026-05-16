@@ -6,9 +6,9 @@ This repository now targets **strict Sprouted behavior parity** for Sprouted bra
 
 ## Frozen reference
 
-- Source repository: `dachhack/SproutedPixelDungeon-Gradle`
+- Source repository: `esunsatyr/SproutedPixelDungeon-Gradle` (public mirror of dachhack history)
 - Freeze timestamp: `2026-05-16T21:53:07Z`
-- Frozen ref: `UNRESOLVED_TAG_OR_COMMIT` (must be replaced with exact tag/commit SHA once available)
+- Frozen ref: `846f4797130f41502c765a9655e8a132eebc6103`
 
 ## Acceptance criteria
 
