@@ -103,6 +103,7 @@ public final class SproutedLayoutStamp {
 	}
 
 	private static void placeNPCAt(Level level, Mob npc, int pos) {
+		// Layout stamps are best-effort; skip placement if cell is invalid/occupied.
 		if (pos >= 0 && pos < level.length() && Actor.findChar(pos) == null) {
 			npc.pos = pos;
 			level.mobs.add(npc);

@@ -42,6 +42,7 @@ public class SokobanPortalTrap extends Trap {
 	@Override
 	public void activate() {
 		Char ch = Actor.findChar(pos);
+		// Sprouted portal goals are hero-only progression mechanics.
 		if (!(ch instanceof Hero)) {
 			return;
 		}
