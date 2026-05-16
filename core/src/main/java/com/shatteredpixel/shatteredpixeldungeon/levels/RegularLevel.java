@@ -95,6 +95,7 @@ import java.util.Iterator;
 public abstract class RegularLevel extends Level {
 	
 	protected ArrayList<Room> rooms;
+	private transient MapSizeProfiles.Profile mapSizeProfile;
 	
 	protected Builder builder;
 	
@@ -122,6 +123,7 @@ public abstract class RegularLevel extends Level {
 	}
 	
 	protected ArrayList<Room> initRooms() {
+		MapSizeProfiles.Profile profile = mapSizeProfile();
 		ArrayList<Room> initRooms = new ArrayList<>();
 		initRooms.add ( roomEntrance = EntranceRoom.createEntrance());
 		initRooms.add( roomExit = ExitRoom.createExit());
@@ -131,11 +133,15 @@ public abstract class RegularLevel extends Level {
 		if (feeling == Feeling.LARGE){
 			standards = (int)Math.ceil(standards * 1.5f);
 		}
+		standards = Math.max(2, Math.round(standards * profile.roomCountMultiplier));
 		for (int i = 0; i < standards; i++) {
 			StandardRoom s;
 			do {
 				s = StandardRoom.createRoom();
 			} while (!s.setSizeCat( standards-i ));
+			if (profile.roomCountMultiplier >= 1.30f && s.sizeCat == StandardRoom.SizeCategory.NORMAL && Random.Int(3) == 0){
+				s.setSizeCat(1, StandardRoom.SizeCategory.values().length - 1);
+			}
 			i += s.sizeFactor()-1;
 			initRooms.add(s);
 		}
@@ -148,6 +154,7 @@ public abstract class RegularLevel extends Level {
 		if (feeling == Feeling.LARGE){
 			specials++;
 		}
+		specials = Math.max(1, Math.round(specials * profile.roomCountMultiplier));
 		SpecialRoom.initForFloor();
 		for (int i = 0; i < specials; i++) {
 			SpecialRoom s = SpecialRoom.createRoom();
@@ -191,7 +198,9 @@ public abstract class RegularLevel extends Level {
 	protected abstract Painter painter();
 	
 	protected int nTraps() {
-		return Random.NormalIntRange( 2, 3 + (Dungeon.depth/5) );
+		MapSizeProfiles.Profile profile = mapSizeProfile();
+		int base = Random.NormalIntRange( 2, 3 + (Dungeon.depth/5) );
+		return Math.max(1, Math.round(base * profile.trapMultiplier));
 	}
 	
 	protected Class<?>[] trapClasses(){
@@ -209,11 +218,12 @@ public abstract class RegularLevel extends Level {
 			else                            return 10;
 		}
 
+		MapSizeProfiles.Profile profile = mapSizeProfile();
 		int mobs = 3 + Dungeon.depth % 5 + Random.Int(3);
 		if (feeling == Feeling.LARGE){
 			mobs = (int)Math.ceil(mobs * 1.33f);
 		}
-		return mobs;
+		return Math.max(1, Math.round(mobs * profile.mobMultiplier));
 	}
 	
 	@Override
@@ -261,7 +271,7 @@ public abstract class RegularLevel extends Level {
 			}
 			roomToSpawn = stdRoomIter.next();
 
-			int tries = 30;
+			int tries = spawnRetryLimit();
 			do {
 				mob.pos = pointToCell(roomToSpawn.random());
 				tries--;
@@ -283,7 +293,7 @@ public abstract class RegularLevel extends Level {
 				if (Dungeon.depth > 1 && mobsToSpawn > 0 && Random.Int(4) == 0){
 					mob = createMob();
 
-					tries = 30;
+					tries = spawnRetryLimit();
 					do {
 						mob.pos = pointToCell(roomToSpawn.random());
 						tries--;
@@ -319,10 +329,11 @@ public abstract class RegularLevel extends Level {
 	public int randomRespawnCell( Char ch ) {
 		int count = 0;
 		int cell = -1;
+		int maxTries = spawnRetryLimit();
 
 		while (true) {
 
-			if (++count > 30) {
+			if (++count > maxTries) {
 				return -1;
 			}
 
@@ -350,10 +361,11 @@ public abstract class RegularLevel extends Level {
 		
 		int count = 0;
 		int cell = -1;
+		int maxTries = spawnRetryLimit();
 		
 		while (true) {
 			
-			if (++count > 30) {
+			if (++count > maxTries) {
 				return -1;
 			}
 			
@@ -377,11 +389,13 @@ public abstract class RegularLevel extends Level {
 	protected void createItems() {
 		
 		// drops 3/4/5 items 60%/30%/10% of the time
+		MapSizeProfiles.Profile profile = mapSizeProfile();
 		int nItems = 3 + Random.chances(new float[]{6, 3, 1});
 
 		if (feeling == Feeling.LARGE){
 			nItems += 2;
 		}
+		nItems = Math.max(1, Math.round(nItems * profile.itemMultiplier));
 		
 		for (int i=0; i < nItems; i++) {
 
@@ -477,8 +491,8 @@ public abstract class RegularLevel extends Level {
 					losBlocking[cell] = false;
 				}
 				drop( new Torch(), cell );
-				//add a second torch to help with the larger floor
-				if (feeling == Feeling.LARGE){
+				//add a second torch to help with larger floors
+				if (feeling == Feeling.LARGE || profile.itemMultiplier > 1.15f){
 					cell = randomDropCell();
 					if (map[cell] == Terrain.HIGH_GRASS || map[cell] == Terrain.FURROWED_GRASS) {
 						map[cell] = Terrain.GRASS;
@@ -702,6 +716,21 @@ public abstract class RegularLevel extends Level {
 	
 	public ArrayList<Room> rooms() {
 		return new ArrayList<>(rooms);
+	}
+
+	public int extraMapPadding() {
+		return mapSizeProfile().extraPadding;
+	}
+
+	private int spawnRetryLimit() {
+		return mapSizeProfile().spawnRetryLimit;
+	}
+
+	private MapSizeProfiles.Profile mapSizeProfile() {
+		if (mapSizeProfile == null) {
+			mapSizeProfile = MapSizeProfiles.forLevel(this);
+		}
+		return mapSizeProfile;
 	}
 	
 	protected Room randomRoom( Class<?extends Room> type ) {

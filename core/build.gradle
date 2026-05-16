@@ -7,3 +7,10 @@ dependencies {
     api project(':SPD-classes')
     implementation project(':services')
 }
+
+tasks.register("sproutedSeedChecks", JavaExec) {
+	group = "verification"
+	description = "Runs deterministic Sprouted branch/layout seed regression checks."
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = "com.shatteredpixel.shatteredpixeldungeon.levels.validation.SproutedSeedRegressionChecks"
+}

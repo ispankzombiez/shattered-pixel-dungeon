@@ -306,6 +306,10 @@ public class Dungeon {
 		Level level = Layouts.branchLevel(depth, branch);
 		if (level != null) {
 			//handled by sprouted branch routing
+		} else if (Layouts.isSproutedBranch(branch)) {
+			level = new DeadEndLevel();
+			ShatteredPixelDungeon.reportException(new IllegalStateException(
+					"Missing Sprouted branch route for depth=" + depth + " branch=" + branch));
 		} else if (branch == 0) {
 			switch (depth) {
 				case 1:

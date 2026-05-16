@@ -29,4 +29,13 @@ protected Painter painter() {
             .setGrass(0.30f, 4)
             .setTraps(nTraps(), trapClasses(), trapChances());
 }
+
+@Override
+protected boolean build() {
+	boolean built = super.build();
+	if (built) {
+		SproutedLayoutStamp.centerStamp(this, TownLayouts.randomLayout(), false);
+	}
+	return built;
+}
 }
