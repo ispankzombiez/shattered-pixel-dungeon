@@ -2,6 +2,9 @@
 
 Priority legend: **P0** progression blocker, **P1** major branch parity, **P2** content parity/polish.
 
+Session-level rollup checklist:
+- `docs/sprouted-master-checklist.md`
+
 ## P0 – Progression blockers
 
 | ID | Source behavior | Current behavior | Missing logic | Affected files | Dependencies | Acceptance criteria |
