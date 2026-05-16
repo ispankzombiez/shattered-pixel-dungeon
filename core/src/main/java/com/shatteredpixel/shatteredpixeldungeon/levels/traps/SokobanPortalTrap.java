@@ -42,7 +42,10 @@ public class SokobanPortalTrap extends Trap {
 	@Override
 	public void activate() {
 		Char ch = Actor.findChar(pos);
-		if (!(ch instanceof Hero) || !armed) {
+		if (!(ch instanceof Hero)) {
+			return;
+		}
+		if (!armed) {
 			return;
 		}
 
