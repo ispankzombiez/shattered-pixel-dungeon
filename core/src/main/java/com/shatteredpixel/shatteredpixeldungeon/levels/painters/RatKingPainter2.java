@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class RatKingPainter2 extends Painter {
 
-\t@Override
-\tpublic boolean paint(Level level, ArrayList<Room> rooms) {
-\t\treturn true;
-\t}
+	@Override
+	public boolean paint(Level level, ArrayList<Room> rooms) {
+		return true;
+	}
 }
