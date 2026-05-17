@@ -108,7 +108,7 @@ public abstract class Mob extends Char {
 
 	private static final float DEW_DROP_CHANCE_NORMAL = 0.2f;
 	private static final float DEW_DROP_CHANCE_MINIBOSS = 0.5f;
-	private static final float DEW_DROP_CHANCE_BOSS = 1f;
+	private static final float BOSS_DEW_DROP_CHANCE = 1f;
 
 	private static final float BOSS_VIOLET_THRESHOLD = 0.10f;
 	private static final float BOSS_RED_THRESHOLD = 0.35f;
@@ -1003,9 +1003,7 @@ public abstract class Mob extends Char {
 			}
 			if (Random.Float() < dewLootChance()) {
 				Item dewLoot = createDewLoot();
-				if (dewLoot != null) {
-					Dungeon.level.drop(dewLoot, pos).sprite.drop();
-				}
+				Dungeon.level.drop(dewLoot, pos).sprite.drop();
 			}
 		}
 		
@@ -1036,7 +1034,7 @@ public abstract class Mob extends Char {
 	}
 
 	protected float dewLootChance() {
-		if (properties.contains(Property.BOSS)) return DEW_DROP_CHANCE_BOSS;
+		if (properties.contains(Property.BOSS)) return BOSS_DEW_DROP_CHANCE;
 		if (properties.contains(Property.MINIBOSS)) return DEW_DROP_CHANCE_MINIBOSS;
 		return DEW_DROP_CHANCE_NORMAL;
 	}
