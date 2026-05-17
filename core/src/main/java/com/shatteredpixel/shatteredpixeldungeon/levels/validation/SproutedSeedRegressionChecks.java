@@ -1,5 +1,10 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels.validation;
 
+import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
+import com.shatteredpixel.shatteredpixeldungeon.items.SanChikarahDeath;
+import com.shatteredpixel.shatteredpixeldungeon.items.SanChikarahLife;
+import com.shatteredpixel.shatteredpixeldungeon.items.SanChikarahTranscend;
 import com.shatteredpixel.shatteredpixeldungeon.levels.Layouts;
 import com.shatteredpixel.shatteredpixeldungeon.levels.Level;
 import com.shatteredpixel.shatteredpixeldungeon.levels.SokobanLayouts;
@@ -27,13 +32,18 @@ import com.shatteredpixel.shatteredpixeldungeon.levels.SokobanCastle;
 import com.shatteredpixel.shatteredpixeldungeon.levels.ThiefBossLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.VaultLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.ZotBossLevel;
+import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 public class SproutedSeedRegressionChecks {
 
 	public static void main(String[] args) {
 		verifyDeterministicLayouts();
 		verifyBranchRoutes();
+		verifyProgressionFlagsAndEvents();
 		System.out.println("Sprouted seed regression checks passed.");
 	}
 
@@ -100,6 +110,69 @@ public class SproutedSeedRegressionChecks {
 		assertClassNeverMappedInLayouts(VaultLevel.class);
 	}
 
+	private static void verifyProgressionFlagsAndEvents() {
+		verifyDungeonProgressionFlagBundleRoundTrip();
+		verifySanChikarahMergeEvent();
+	}
+
+	private static void verifyDungeonProgressionFlagBundleRoundTrip() {
+		boolean oldLife = Dungeon.sanchikarahlife;
+		boolean oldDeath = Dungeon.sanchikarahdeath;
+		boolean oldAltar = Dungeon.nornAltarDone;
+
+		try {
+			String lifeKey = getPrivateStaticString(Dungeon.class, "SANCHIKARAHLIFE");
+			String deathKey = getPrivateStaticString(Dungeon.class, "SANCHIKARAHDEATH");
+			String altarKey = getPrivateStaticString(Dungeon.class, "NORN_ALTAR_DONE");
+
+			assertEquals("sanchikarahlife", lifeKey, "Dungeon save-key for SanChikarahLife flag must remain stable");
+			assertEquals("sanchikarahdeath", deathKey, "Dungeon save-key for SanChikarahDeath flag must remain stable");
+			assertEquals("nornaltardone", altarKey, "Dungeon save-key for Norn altar flag must remain stable");
+
+			Dungeon.sanchikarahlife = true;
+			Dungeon.sanchikarahdeath = false;
+			Dungeon.nornAltarDone = true;
+
+			Bundle bundle = new Bundle();
+			bundle.put(lifeKey, Dungeon.sanchikarahlife);
+			bundle.put(deathKey, Dungeon.sanchikarahdeath);
+			bundle.put(altarKey, Dungeon.nornAltarDone);
+
+			Dungeon.sanchikarahlife = false;
+			Dungeon.sanchikarahdeath = true;
+			Dungeon.nornAltarDone = false;
+
+			Dungeon.sanchikarahlife = bundle.getBoolean(lifeKey);
+			Dungeon.sanchikarahdeath = bundle.getBoolean(deathKey);
+			Dungeon.nornAltarDone = bundle.getBoolean(altarKey);
+
+			assertBooleanEquals(true, Dungeon.sanchikarahlife, "SanChikarahLife progression flag must round-trip through bundle persistence");
+			assertBooleanEquals(false, Dungeon.sanchikarahdeath, "SanChikarahDeath progression flag must round-trip through bundle persistence");
+			assertBooleanEquals(true, Dungeon.nornAltarDone, "Norn altar completion flag must round-trip through bundle persistence");
+		} finally {
+			Dungeon.sanchikarahlife = oldLife;
+			Dungeon.sanchikarahdeath = oldDeath;
+			Dungeon.nornAltarDone = oldAltar;
+		}
+	}
+
+	private static void verifySanChikarahMergeEvent() {
+		Hero hero = new Hero();
+		assertBooleanEquals(true, new SanChikarahLife().collect(hero.belongings.backpack),
+				"SanChikarahLife must be collectable for merge regression check");
+		assertBooleanEquals(true, new SanChikarahDeath().collect(hero.belongings.backpack),
+				"SanChikarahDeath must be collectable for merge regression check");
+
+		invokeSanChikarahTryMerge(hero);
+
+		if (hero.belongings.getItem(SanChikarahLife.class) != null || hero.belongings.getItem(SanChikarahDeath.class) != null) {
+			throw new IllegalStateException("SanChikarah fragments should be consumed by merge event");
+		}
+		if (hero.belongings.getItem(SanChikarahTranscend.class) == null) {
+			throw new IllegalStateException("SanChikarah merge event must produce SanChikarahTranscend");
+		}
+	}
+
 	private static String seededLayoutHash(long seed, LayoutType layoutType) {
 		Random.resetGenerators();
 		Random.pushGenerator(seed);
@@ -151,6 +224,12 @@ public class SproutedSeedRegressionChecks {
 		}
 	}
 
+	private static void assertBooleanEquals(boolean expected, boolean actual, String message) {
+		if (expected != actual) {
+			throw new IllegalStateException(message + " [expected=" + expected + ", actual=" + actual + "]");
+		}
+	}
+
 	private static void assertClassNeverMappedInLayouts(Class<? extends Level> type) {
 		for (int branch = 0; branch <= 3; branch++) {
 			for (int depth = 1; depth <= 40; depth++) {
@@ -182,6 +261,26 @@ public class SproutedSeedRegressionChecks {
 		if (matches != 1) {
 			throw new IllegalStateException("Expected exactly one mapping for " + type.getSimpleName()
 					+ " in Layouts.branchLevel(), but found " + matches);
+		}
+	}
+
+	private static String getPrivateStaticString(Class<?> owner, String fieldName) {
+		try {
+			Field field = owner.getDeclaredField(fieldName);
+			field.setAccessible(true);
+			return (String) field.get(null);
+		} catch (ReflectiveOperationException e) {
+			throw new IllegalStateException("Could not access private static field " + owner.getSimpleName() + "." + fieldName, e);
+		}
+	}
+
+	private static void invokeSanChikarahTryMerge(Hero hero) {
+		try {
+			Method method = SanChikarahLife.class.getDeclaredMethod("tryMerge", Hero.class);
+			method.setAccessible(true);
+			method.invoke(null, hero);
+		} catch (ReflectiveOperationException e) {
+			throw new IllegalStateException("Could not invoke SanChikarahLife.tryMerge for regression check", e);
 		}
 	}
 

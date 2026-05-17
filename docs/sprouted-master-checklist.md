@@ -29,7 +29,7 @@ Update this file at the end of each work session.
 - [x] P3-02: Route/retire unrouted special levels — VaultLevel already routed; DragonCaveLevel/ZotBossLevel/SokobanCastle/SafeLevel/SafeLevel1 documented with SPROUTED_RESERVED comments
 - [x] P3-03: Verify Tinkerer1 (depth 11) → Tinkerer2 (depth 12-14) narrative arc in Mine branch
 - [x] P4-01: Add route-audit regression checks so documented reserved/reachable status cannot drift from runtime routing
-- [ ] P4-02: Add deterministic regression checks for key Sprouted progression flags/events (post-parity hardening)
+- [x] P4-02: Add deterministic regression checks for key Sprouted progression flags/events (post-parity hardening)
 
 ## P2-03 Non-map subsystem detailed breakdown
 
@@ -101,3 +101,6 @@ Update this file at the end of each work session.
 
 - [x] 2026-05-17 (session 11): Implemented P4-01 in `SproutedSeedRegressionChecks` by adding deterministic route-audit assertions: `InfestBossLevel` must remain mapped exactly at branch 2 depth 15, and documented SPROUTED_RESERVED wrappers/levels plus `VaultLevel` must remain unmapped in `Layouts.branchLevel()`.
   - Next priority: Implement P4-02 deterministic checks for key Sprouted progression flags/events.
+
+- [x] 2026-05-17 (session 12): Implemented P4-02 in `SproutedSeedRegressionChecks` with deterministic progression checks for `Dungeon` Sprouted quest flags (`sanchikarahlife`, `sanchikarahdeath`, `nornaltardone`) bundle key stability/round-trip persistence and SanChikarah fragment merge event integrity (`Life` + `Death` => `Transcend`).
+  - Next priority: Define and start the next post-parity hardening wave after P4 completion.
