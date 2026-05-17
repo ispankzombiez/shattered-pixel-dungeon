@@ -81,11 +81,11 @@ protected void createItems() {
 	restockTownShops(true);
 }
 
-@Override
-public void press(int cell, Char ch) {
-	super.press(cell, ch);
-	restockTownShops(false);
-}
+	@Override
+	public void occupyCell(Char ch) {
+		super.occupyCell(ch);
+		restockTownShops(false);
+	}
 
 @Override
 public void storeInBundle(Bundle bundle) {
