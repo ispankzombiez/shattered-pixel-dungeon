@@ -4,6 +4,9 @@ This checklist is generated from source comparison between:
 - `dachhack/SproutedPixelDungeon-Gradle` (Sprouted reference)
 - `ispankzombiez/shattered-pixel-dungeon` (current repo)
 
+Session-level rollup checklist:
+- `docs/sprouted-master-checklist.md`
+
 This checklist primarily tracks **path-level parity** (whether matching class paths exist).
 Use the core backlog below to track **behavior-level parity** work for follow-up updates.
 

@@ -21,13 +21,21 @@
 
 package com.shatteredpixel.shatteredpixeldungeon.levels.traps;
 
+import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Amok;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Slow;
+import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.SheepSokoban;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.SheepSokobanCorner;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.SheepSokobanStop;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.SheepSokobanSwitch;
+import com.shatteredpixel.shatteredpixeldungeon.effects.CellEmitter;
+import com.shatteredpixel.shatteredpixeldungeon.effects.Speck;
+import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
 
 public class ChangeSheepTrap extends Trap {
+
+	private static final float SPAWN_DELAY = 0.2f;
 
 	{
 		color = GREEN;
@@ -36,11 +44,25 @@ public class ChangeSheepTrap extends Trap {
 
 	@Override
 	public void activate() {
-		if (Actor.findChar(pos) instanceof Mob) {
-			Mob mob = (Mob) Actor.findChar(pos);
-			Buff.affect(mob, Amok.class, Amok.DURATION);
-			Buff.affect(mob, Slow.class, Slow.DURATION);
-			Buff.prolong(mob, Trap.HazardAssistTracker.class, HazardAssistTracker.DURATION);
+		Char ch = Actor.findChar(pos);
+		if (ch instanceof SheepSokoban) {
+			transform((Mob) ch, new SheepSokobanCorner());
+		} else if (ch instanceof SheepSokobanCorner) {
+			transform((Mob) ch, new SheepSokobanStop());
+		} else if (ch instanceof SheepSokobanSwitch) {
+			transform((Mob) ch, new SheepSokoban());
 		}
+	}
+
+	private void transform(Mob from, Mob to) {
+		int cell = from.pos;
+		Actor.remove(from);
+		Dungeon.level.mobs.remove(from);
+		if (from.sprite != null) {
+			from.sprite.killAndErase();
+		}
+		to.pos = cell;
+		GameScene.add(to, SPAWN_DELAY);
+		CellEmitter.get(cell).burst(Speck.factory(Speck.WOOL), 4);
 	}
 }

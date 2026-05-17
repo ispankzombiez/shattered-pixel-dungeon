@@ -1,6 +1,7 @@
 package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
 
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.items.Gold;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.ThiefKingSprite;
 import com.watabou.utils.Random;
 
@@ -17,6 +18,9 @@ public class ThiefKing extends Mob {
 		maxLvl = -2;
 
 		properties.add(Property.BOSS);
+
+		loot = new Gold(250);
+		lootChance = 1f;
 	}
 
 	@Override

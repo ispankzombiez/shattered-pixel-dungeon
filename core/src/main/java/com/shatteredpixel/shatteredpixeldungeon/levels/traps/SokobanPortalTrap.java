@@ -21,22 +21,72 @@
 
 package com.shatteredpixel.shatteredpixeldungeon.levels.traps;
 
+import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfTeleportation;
+import com.watabou.utils.Bundle;
 
 public class SokobanPortalTrap extends Trap {
+
+	private static final String ARMED = "armed";
+	private static final String DESTINATION_POS = "destination_pos";
+	private boolean armed;
+	private int destinationPos = -1;
 
 	{
 		color = VIOLET;
 		shape = STARS;
+		disarmedByActivation = false;
 	}
 
 	@Override
 	public void activate() {
 		Char ch = Actor.findChar(pos);
-		if (ch != null) {
+		// Sprouted portal goals are hero-only progression mechanics.
+		if (!(ch instanceof Hero)) {
+			return;
+		}
+		if (!armed) {
+			return;
+		}
+
+		boolean teleported = false;
+		if (destinationPos >= 0) {
+			teleported = ScrollOfTeleportation.teleportToLocation(ch, destinationPos);
+		}
+		if (!teleported) {
+			teleported = ScrollOfTeleportation.teleportToLocation(ch, Dungeon.level.exit);
+		}
+		if (!teleported) {
 			ScrollOfTeleportation.teleportChar(ch);
 		}
+		armed = false;
+	}
+
+	public void armPortal(int destinationPos) {
+		armed = true;
+		if (destinationPos >= 0) {
+			this.destinationPos = destinationPos;
+		}
+	}
+
+	public void setDestination(int destinationPos) {
+		this.destinationPos = destinationPos;
+	}
+
+	@Override
+	public void storeInBundle(Bundle bundle) {
+		super.storeInBundle(bundle);
+		bundle.put(ARMED, armed);
+		bundle.put(DESTINATION_POS, destinationPos);
+	}
+
+	@Override
+	public void restoreFromBundle(Bundle bundle) {
+		super.restoreFromBundle(bundle);
+		armed = bundle.getBoolean(ARMED);
+		destinationPos = bundle.contains(DESTINATION_POS) ? bundle.getInt(DESTINATION_POS) : -1;
 	}
 }
