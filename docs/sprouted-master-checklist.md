@@ -28,6 +28,8 @@ Update this file at the end of each work session.
 - [x] P3-01: Route boss floors into Layouts.branchLevel() at correct branch depths (InfestBossLevel at depth 15)
 - [x] P3-02: Route/retire unrouted special levels — VaultLevel already routed; DragonCaveLevel/ZotBossLevel/SokobanCastle/SafeLevel/SafeLevel1 documented with SPROUTED_RESERVED comments
 - [x] P3-03: Verify Tinkerer1 (depth 11) → Tinkerer2 (depth 12-14) narrative arc in Mine branch
+- [ ] P4-01: Add route-audit regression checks so documented reserved/reachable status cannot drift from runtime routing
+- [ ] P4-02: Add deterministic regression checks for key Sprouted progression flags/events (post-parity hardening)
 
 ## P2-03 Non-map subsystem detailed breakdown
 
@@ -93,3 +95,6 @@ Update this file at the end of each work session.
 - [x] 2026-05-17 (session 8): Closed P3-02 and P3-03. Confirmed VaultLevel is already routed (Dungeon.java branch 1 quest). Added SPROUTED_RESERVED documentation to DragonCaveLevel (Mine dragon encounter, reserved for depth 12/13), ZotBossLevel (Catacomb boss, reserved for depth 23 pending depth-range shift), SokobanCastle (post-Sokoban castle challenge, reserved for depth 31), SafeLevel (pre-Mine safe floor, reserved for depth 10), and SafeLevel1 (second safe floor variant, reserved for future use). Verified Tinkerer1/2 NPC arc is correct: Tinkerer1 intro dialog at depth 11, Tinkerer2 mushroom-trade dialog at depths 12-14. All P0/P1/P2/P3 checklist items now complete.
 
 - [x] 2026-05-17 (session 9): Closed the remaining unchecked P3-01 sub-items in the behavior backlog. Verified `MinesBossLevel` is a legacy duplicate relative to routed `InfestBossLevel` (branch 2 depth 15). Verified `SkeletonBossLevel`, `CrabBossLevel`, and `ThiefBossLevel` are currently unrouted by both standard branch 0 and Sprouted branch flows; documented all four classes with SPROUTED_RESERVED comments for intentional future expansion usage.
+
+- [x] 2026-05-17 (session 10): Continued checklist progression after P0-P3 completion by opening a post-parity hardening wave (P4) in `docs/sprouted-behavior-backlog.md`. Added two next targets: (1) route-audit regression checks for documented reserved/reachable level wrappers, and (2) deterministic regression checks for key Sprouted progression flags/events.
+  - Next priority: Implement P4-01 route-audit assertions in `SproutedSeedRegressionChecks`.

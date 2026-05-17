@@ -64,3 +64,13 @@ Session-level rollup checklist:
  - [x] Tinkerer1 dialog verified: "Oh wow, have you seen this dungeon? I'm scouting it and looking for toadstool mushrooms." (correct intro arc)
  - [x] Tinkerer2 dialog verified: mushroom-present prompt offers trade (1 Mushroom → random Potion); no-mushroom prompt sends player to look for mushrooms (correct follow-through)
  - [x] MineLevel.createItems(): depth==11 → Tinkerer1, depth 12-14 → Tinkerer2 (correct placement logic)
+
+## P4 – Post-parity hardening (next wave)
+
+| ID | Goal | Current status | Needed work | Affected files | Acceptance criteria |
+|---|---|---|---|---|---|
+| P4-01 | In-game route validation for all documented SPROUTED_RESERVED levels/wrappers | Routing intent is documented in code/comments | Add a deterministic route-audit check that asserts each documented reserved class is either reachable by explicit route or explicitly tagged reserved | `core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/levels/validation/SproutedSeedRegressionChecks.java`, reserved level wrapper classes | Seed checks fail if reserved/reachable documentation drifts from runtime routing |
+| P4-02 | Strengthen Sprouted regression confidence beyond route/layout mapping | Deterministic checks cover route/layout invariants only | Add deterministic assertions for a small set of key Sprouted gameplay flags/events (e.g. altar completion persistence, SanChikarah fragment merge state persistence) | `core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/levels/validation/SproutedSeedRegressionChecks.java`, relevant dungeon flag classes | A seed regression task catches regressions in key parity-critical flags/events |
+
+- [ ] P4-01: Implement route-audit assertions for documented reserved/reachable level wrappers
+- [ ] P4-02: Add deterministic regression checks for key Sprouted progression flags/events
