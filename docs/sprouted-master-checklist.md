@@ -30,31 +30,31 @@ Update this file at the end of each work session.
 - [x] `FishingBomb` — `explode()` override paralysis-stuns all chars standing on water tiles in blast range
 - [x] `HolyHandGrenade` — `explode()` override deals 50% bonus damage to DEMONIC/UNDEAD chars (matches HolyBomb pattern)
 - [x] `SanChikarahTranscend` — `AC_INVOKE` fully heals hero + applies 60 turns of Bless; consumed on use
+- [x] `StoneOre` — `value()` = 50 gold/unit; `isIdentified()`/`isUpgradable()` correct; sells at shops
 
 ### SanChikarah merge mechanic — DONE
-- [x] `SanChikarahLife.doPickUp()` calls `tryMerge()` after collecting — if hero already has SanChikarahDeath, detaches both and gives SanChikarahTranscend
-- [x] `SanChikarahDeath.doPickUp()` calls `tryMerge()` symmetrically
+- [x] `SanChikarahLife.doPickUp()` calls `tryMerge()` after collecting
+- [x] `SanChikarahDeath.doPickUp()` calls `tryMerge()` symmetrically — both fragments → `SanChikarahTranscend`
 
-### Items — still need behavior
-- [ ] `StoneOre` — raw ore with no crafting use; needs recipe or shop-sale context
+### Quest / progression loop items — DONE THIS SESSION
+- [x] **Norn stone altar in Town**: `NornStoneAltar` NPC added to `TownLevel.createMobs()`; WndOptions confirms 3-stone deposit → `ScrollOfUpgrade` reward; `Dungeon.nornAltarDone` flag stored/restored/reset
+- [x] **Tinkerer2 mushroom trade**: `Tinkerer2.interact()` now checks for `Mushroom` in inventory; WndOptions offer → 1 Mushroom consumed → random Potion dropped
 
 ### Mobs missing loot/behavior
 - [x] `Gullin` — drops a random `NornStone` at 50% chance
 - [ ] Verify other Sprouted mobs have correct drop tables (audit needed)
 
-### Quest / progression loop items
-- [ ] **Norn stone altar in Town**: Tinkerer5 references "temple east of town, 3 Norn stones → reward" — altar room, stone counter, reward item needed
-- [ ] **Tinkerer mushroom trade**: Tinkerer2 says "bring me toadstool mushrooms" — needs actual trade window (offer `Mushroom` → receive item)
-- [ ] **Mushroom** — currently only has food value; confirm if it should have special properties
-
 ### NPC interaction completeness
 - [x] Tinkerer1–5 interact dialogs (complete)
+- [x] Tinkerer2 mushroom trade interaction (implemented)
 - [ ] Shopkeeper×2 in Town — confirm inventory set via `storeRefresh()` covers all relevant tiers
-- [ ] Tinkerer2 mushroom trade interaction (not just dialog)
 
 ### Crafting / Generator
-- [ ] `Generator.NORNSTONE` category — verify it's in `Generator` and used by any room/chest tables
+- [x] `Generator.NORNSTONE` category — verified in `Generator`, wired with all 5 color variants and equal probs
 - [ ] Verify `NornStone` color variants have distinct effects or confirm generic value-only design is correct
+
+### Items — still pending deeper design
+- [ ] `Mushroom` — currently only has food value; confirm if it should have special properties beyond trade use
 
 ## End-of-session update checklist (run every session)
 
@@ -65,10 +65,10 @@ Update this file at the end of each work session.
 ## Session log
 
 - [x] 2026-05-16 (session 1): Added this master checklist; synced status with current Sprouted feature checklist + behavior backlog and recent P2-02/P0-03 updates.
-  - Next priority: P0-02 and P1-03 map-size/pacing parity tuning.
 
-- [x] 2026-05-17 (session 2): Fixed `SproutedArenaLevel.createMobs()` soft-lock; implemented `TownReturnBeacon.execute()` (town teleport); added `NornStone.randomNornStone()` factory and wired it as `Gullin` loot at 50%; marked P0-02 and P1-03 complete; expanded P2-03 with detailed subsystem audit.
-  - Next priority: SanChikarah merge mechanic + Norn stone altar + FishingBomb/HolyHandGrenade special effects.
+- [x] 2026-05-17 (session 2): Fixed `SproutedArenaLevel.createMobs()` soft-lock; implemented `TownReturnBeacon.execute()`; added `NornStone.randomNornStone()` factory and wired it as `Gullin` loot at 50%; marked P0-02 and P1-03 complete; expanded P2-03 with detailed subsystem audit.
 
-- [x] 2026-05-17 (session 3): Implemented FishingBomb water-stun (Paralysis on water-tile chars); HolyHandGrenade 50% bonus DEMONIC/UNDEAD damage; SanChikarah merge mechanic (Life + Death → Transcend on pick-up); SanChikarahTranscend AC_INVOKE (full heal + 60t Bless, consumed on use).
-  - Next priority: Norn stone altar (Town temple room counting 3 stones → reward), Tinkerer2 mushroom trade, StoneOre crafting context.
+- [x] 2026-05-17 (session 3): Implemented FishingBomb water-stun; HolyHandGrenade 50% bonus DEMONIC/UNDEAD damage; SanChikarah merge mechanic; SanChikarahTranscend AC_INVOKE (full heal + 60t Bless, consumed on use).
+
+- [x] 2026-05-17 (session 4): Implemented NornStoneAltar NPC (3 stones → ScrollOfUpgrade, with Dungeon.nornAltarDone flag); Tinkerer2 mushroom trade (WndOptions, 1 Mushroom → random Potion); StoneOre value() = 50/unit; Generator.NORNSTONE verified complete.
+  - Next priority: NornStone color-variant distinct effects audit; Shopkeeper inventory tier audit; mob drop-table audit.

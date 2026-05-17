@@ -221,6 +221,9 @@ public class Dungeon {
 	public static boolean sanchikarahlife;
 	public static boolean sanchikarahdeath;
 
+	// True once the NornStoneAltar quest has been completed (3 stones deposited).
+	public static boolean nornAltarDone;
+
 	//we initialize the seed separately so that things like interlevelscene can access it early
 	public static void initSeed(){
 		if (daily) {
@@ -277,6 +280,7 @@ public class Dungeon {
 
 		sanchikarahlife = false;
 		sanchikarahdeath = false;
+		nornAltarDone = false;
 
 		droppedItems = new SparseArray<>();
 
@@ -651,6 +655,7 @@ public class Dungeon {
 	private static final String BADGES		= "badges";
 	private static final String SANCHIKARAHLIFE  = "sanchikarahlife";
 	private static final String SANCHIKARAHDEATH = "sanchikarahdeath";
+	private static final String NORN_ALTAR_DONE  = "nornaltardone";
 	
 	public static void saveGame( int save ) {
 		try {
@@ -674,6 +679,7 @@ public class Dungeon {
 
 			bundle.put( SANCHIKARAHLIFE, sanchikarahlife );
 			bundle.put( SANCHIKARAHDEATH, sanchikarahdeath );
+			bundle.put( NORN_ALTAR_DONE, nornAltarDone );
 
 			for (int d : droppedItems.keyArray()) {
 				bundle.put(Messages.format(DROPPED, d), droppedItems.get(d));
@@ -854,6 +860,7 @@ public class Dungeon {
 
 		sanchikarahlife  = bundle.getBoolean( SANCHIKARAHLIFE );
 		sanchikarahdeath = bundle.getBoolean( SANCHIKARAHDEATH );
+		nornAltarDone    = bundle.getBoolean( NORN_ALTAR_DONE );
 
 		Statistics.restoreFromBundle( bundle );
 		Generator.restoreFromBundle( bundle );

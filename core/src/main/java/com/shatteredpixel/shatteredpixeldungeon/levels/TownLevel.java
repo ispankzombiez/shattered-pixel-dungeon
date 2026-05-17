@@ -4,6 +4,7 @@ import com.shatteredpixel.shatteredpixeldungeon.Assets;
 import com.shatteredpixel.shatteredpixeldungeon.Statistics;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.NornStoneAltar;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.Shopkeeper;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.Tinkerer4;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.Tinkerer5;
@@ -70,6 +71,7 @@ protected void createMobs() {
 	placeNPCAtGeneration(new Shopkeeper());
 	placeNPCAtGeneration(new Tinkerer4());
 	placeNPCAtGeneration(new Tinkerer5());
+	placeNPCAtGeneration(new NornStoneAltar());
 }
 
 @Override
