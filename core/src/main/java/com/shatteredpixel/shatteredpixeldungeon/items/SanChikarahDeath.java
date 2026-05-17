@@ -10,6 +10,7 @@ public class SanChikarahDeath extends SanChikarah {
 	public boolean doPickUp(Hero hero, int pos) {
 		if (super.doPickUp(hero, pos)) {
 			Dungeon.sanchikarahdeath = false;
+			SanChikarahLife.tryMerge(hero);
 			return true;
 		}
 		return false;
