@@ -106,6 +106,22 @@ import java.util.HashSet;
 
 public abstract class Mob extends Char {
 
+	private static final float DEW_DROP_CHANCE_NORMAL = 0.2f;
+	private static final float DEW_DROP_CHANCE_MINIBOSS = 0.5f;
+	private static final float DEW_DROP_CHANCE_BOSS = 1f;
+
+	private static final float BOSS_VIOLET_THRESHOLD = 0.10f;
+	private static final float BOSS_RED_THRESHOLD = 0.35f;
+	private static final float BOSS_YELLOW_THRESHOLD = 0.75f;
+
+	private static final float MINIBOSS_VIOLET_THRESHOLD = 0.03f;
+	private static final float MINIBOSS_RED_THRESHOLD = 0.15f;
+	private static final float MINIBOSS_YELLOW_THRESHOLD = 0.50f;
+
+	private static final float NORMAL_VIOLET_THRESHOLD = 0.005f;
+	private static final float NORMAL_RED_THRESHOLD = 0.03f;
+	private static final float NORMAL_YELLOW_THRESHOLD = 0.18f;
+
 	{
 		actPriority = MOB_PRIO;
 		
@@ -1020,28 +1036,28 @@ public abstract class Mob extends Char {
 	}
 
 	protected float dewLootChance() {
-		if (properties.contains(Property.BOSS)) return 1f;
-		if (properties.contains(Property.MINIBOSS)) return 0.5f;
-		return 0.2f;
+		if (properties.contains(Property.BOSS)) return DEW_DROP_CHANCE_BOSS;
+		if (properties.contains(Property.MINIBOSS)) return DEW_DROP_CHANCE_MINIBOSS;
+		return DEW_DROP_CHANCE_NORMAL;
 	}
 
 	protected Item createDewLoot() {
 		float roll = Random.Float();
 		if (properties.contains(Property.BOSS)) {
-			if (roll < 0.10f) return new VioletDewdrop();
-			if (roll < 0.35f) return new RedDewdrop();
-			if (roll < 0.75f) return new YellowDewdrop();
+			if (roll < BOSS_VIOLET_THRESHOLD) return new VioletDewdrop();
+			if (roll < BOSS_RED_THRESHOLD) return new RedDewdrop();
+			if (roll < BOSS_YELLOW_THRESHOLD) return new YellowDewdrop();
 			return new Dewdrop();
 		}
 		if (properties.contains(Property.MINIBOSS)) {
-			if (roll < 0.03f) return new VioletDewdrop();
-			if (roll < 0.15f) return new RedDewdrop();
-			if (roll < 0.50f) return new YellowDewdrop();
+			if (roll < MINIBOSS_VIOLET_THRESHOLD) return new VioletDewdrop();
+			if (roll < MINIBOSS_RED_THRESHOLD) return new RedDewdrop();
+			if (roll < MINIBOSS_YELLOW_THRESHOLD) return new YellowDewdrop();
 			return new Dewdrop();
 		}
-		if (roll < 0.005f) return new VioletDewdrop();
-		if (roll < 0.03f) return new RedDewdrop();
-		if (roll < 0.18f) return new YellowDewdrop();
+		if (roll < NORMAL_VIOLET_THRESHOLD) return new VioletDewdrop();
+		if (roll < NORMAL_RED_THRESHOLD) return new RedDewdrop();
+		if (roll < NORMAL_YELLOW_THRESHOLD) return new YellowDewdrop();
 		return new Dewdrop();
 	}
 	
