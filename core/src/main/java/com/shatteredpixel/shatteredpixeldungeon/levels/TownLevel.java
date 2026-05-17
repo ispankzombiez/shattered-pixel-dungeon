@@ -11,6 +11,8 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.Tinkerer5;
 import com.shatteredpixel.shatteredpixeldungeon.items.Generator;
 import com.shatteredpixel.shatteredpixeldungeon.items.Heap;
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.items.StoneOre;
+import com.shatteredpixel.shatteredpixeldungeon.items.nornstone.NornStone;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfHealing;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfIdentify;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfUpgrade;
@@ -31,7 +33,7 @@ viewDistance = 12;
 }
 
 private static final int ITEMS_PER_SHOPKEEPER = 6;
-private static final int STORE_ITEM_TYPE_COUNT = 8;
+private static final int STORE_ITEM_TYPE_COUNT = 12;
 private static final String STOCKED_FOR_DEPTH = "stocked_for_depth";
 private int stockedForDepth = -1;
 
@@ -177,8 +179,16 @@ private Item storeItem() {
 			return Generator.randomUsingDefaults(Generator.Category.SCROLL);
 		case 6:
 			return Generator.randomUsingDefaults(Generator.Category.FOOD);
-		default:
+		case 7:
 			return Generator.random(Generator.Category.SEED);
+		case 8:
+			return Generator.randomUsingDefaults(Generator.Category.WEAPON);
+		case 9:
+			return Generator.randomUsingDefaults(Generator.Category.ARMOR);
+		case 10:
+			return NornStone.randomNornStone();
+		default:
+			return new StoneOre();
 	}
 }
 

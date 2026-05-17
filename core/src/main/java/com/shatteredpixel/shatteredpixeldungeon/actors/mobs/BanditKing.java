@@ -1,6 +1,7 @@
 package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
 
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.items.StoneOre;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.BanditKingSprite;
 import com.watabou.utils.Random;
 
@@ -16,6 +17,9 @@ public class BanditKing extends Mob {
 		maxLvl = -2;
 
 		properties.add(Property.BOSS);
+
+		loot = new StoneOre().quantity(3);
+		lootChance = 1f;
 	}
 
 	@Override

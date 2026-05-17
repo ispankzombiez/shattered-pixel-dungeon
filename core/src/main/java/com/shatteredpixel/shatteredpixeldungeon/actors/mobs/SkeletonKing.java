@@ -1,6 +1,7 @@
 package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
 
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.items.nornstone.NornStone;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.SkeletonKingSprite;
 import com.watabou.utils.Random;
 
@@ -17,6 +18,9 @@ public class SkeletonKing extends Mob {
 
 		properties.add(Property.BOSS);
 		properties.add(Property.UNDEAD);
+
+		loot = NornStone.randomNornStone();
+		lootChance = 1f;
 	}
 
 	@Override

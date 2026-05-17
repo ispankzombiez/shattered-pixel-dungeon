@@ -1,6 +1,7 @@
 package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
 
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.items.Mushroom;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.FishProtectorSprite;
 import com.watabou.utils.Random;
 
@@ -19,6 +20,9 @@ public class FishProtector extends Mob {
 		flying = true;
 
 		properties.add(Property.DEMONIC);
+
+		loot = new Mushroom();
+		lootChance = 0.33f;
 	}
 
 	@Override

@@ -42,16 +42,24 @@ Update this file at the end of each work session.
 
 ### Mobs missing loot/behavior
 - [x] `Gullin` — drops a random `NornStone` at 50% chance
+- [x] `Kupua` — drops a random `NornStone` at 25% chance
+- [x] `FishProtector` — drops `Mushroom` at 33% chance
+- [x] `FlyingProtector` — drops `Mushroom` at 25% chance
+- [x] `ForestProtector` — drops `Mushroom` at 25% chance
+- [x] `BanditKing` (boss) — guaranteed drop: 3× `StoneOre`
+- [x] `ThiefKing` (boss) — guaranteed drop: 250 Gold
+- [x] `SkeletonKing` (boss, UNDEAD) — guaranteed drop: random `NornStone`
+- [x] `CrabKing` (boss) — guaranteed drop: 3× `StoneOre`
 - [ ] Verify other Sprouted mobs have correct drop tables (audit needed)
 
 ### NPC interaction completeness
 - [x] Tinkerer1–5 interact dialogs (complete)
 - [x] Tinkerer2 mushroom trade interaction (implemented)
-- [ ] Shopkeeper×2 in Town — confirm inventory set via `storeRefresh()` covers all relevant tiers
+- [x] Shopkeeper×2 in Town — `storeItem()` now covers Weapons, Armor, NornStone, StoneOre in addition to consumables (12 types total)
 
 ### Crafting / Generator
 - [x] `Generator.NORNSTONE` category — verified in `Generator`, wired with all 5 color variants and equal probs
-- [ ] Verify `NornStone` color variants have distinct effects or confirm generic value-only design is correct
+- [x] Verify `NornStone` color variants have distinct effects — DONE: Blue=heal, Green=satiate, Orange=Haste, Purple=identify-all, Yellow=Bless
 
 ### Items — still pending deeper design
 - [ ] `Mushroom` — currently only has food value; confirm if it should have special properties beyond trade use
@@ -70,5 +78,5 @@ Update this file at the end of each work session.
 
 - [x] 2026-05-17 (session 3): Implemented FishingBomb water-stun; HolyHandGrenade 50% bonus DEMONIC/UNDEAD damage; SanChikarah merge mechanic; SanChikarahTranscend AC_INVOKE (full heal + 60t Bless, consumed on use).
 
-- [x] 2026-05-17 (session 4): Implemented NornStoneAltar NPC (3 stones → ScrollOfUpgrade, with Dungeon.nornAltarDone flag); Tinkerer2 mushroom trade (WndOptions, 1 Mushroom → random Potion); StoneOre value() = 50/unit; Generator.NORNSTONE verified complete.
-  - Next priority: NornStone color-variant distinct effects audit; Shopkeeper inventory tier audit; mob drop-table audit.
+- [x] 2026-05-17 (session 5): NornStone color-variant effects (Blue=heal, Green=satiate, Orange=Haste, Purple=identify-all, Yellow=Bless); mob drop table audit + loot added to Kupua/Protectors/Bosses; TownLevel Shopkeeper now stocks Weapons/Armor/NornStone/StoneOre.
+  - Next priority: Mushroom special properties audit; remaining mob drop table sweep; P2-01 Town/Mine deeper behavior parity.

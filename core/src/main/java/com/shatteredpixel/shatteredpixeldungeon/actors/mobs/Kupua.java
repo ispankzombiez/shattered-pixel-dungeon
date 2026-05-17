@@ -1,6 +1,7 @@
 package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
 
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.items.nornstone.NornStone;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.KupuaSprite;
 import com.watabou.utils.Random;
 
@@ -18,6 +19,9 @@ public class Kupua extends Mob {
 		flying = true;
 
 		properties.add(Property.DEMONIC);
+
+		loot = NornStone.randomNornStone();
+		lootChance = 0.25f;
 	}
 
 	@Override
