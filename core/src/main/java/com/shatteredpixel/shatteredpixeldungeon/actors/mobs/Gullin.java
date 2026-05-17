@@ -1,6 +1,7 @@
 package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
 
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.items.nornstone.NornStone;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.GullinSprite;
 import com.watabou.utils.Random;
 
@@ -15,6 +16,9 @@ public class Gullin extends Mob {
 		EXP = 25;
 
 		properties.add(Property.DEMONIC);
+
+		loot = NornStone.randomNornStone();
+		lootChance = 0.5f;
 	}
 
 	@Override

@@ -26,6 +26,7 @@ package com.shatteredpixel.shatteredpixeldungeon.items.nornstone;
 
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
+import com.watabou.utils.Random;
 
 /**
  * Ported from Sprouted Pixel Dungeon.
@@ -55,5 +56,19 @@ public class NornStone extends Item {
 	@Override
 	public int value() {
 		return 1000 * quantity;
+	}
+
+	@SuppressWarnings("unchecked")
+	private static final Class<? extends NornStone>[] VARIANTS = new Class[]{
+		BlueNornStone.class, GreenNornStone.class, OrangeNornStone.class,
+		PurpleNornStone.class, YellowNornStone.class
+	};
+
+	public static NornStone randomNornStone() {
+		try {
+			return Random.element(VARIANTS).newInstance();
+		} catch (Exception e) {
+			return new BlueNornStone();
+		}
 	}
 }

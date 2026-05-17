@@ -162,10 +162,13 @@ abstract class SproutedArenaLevel extends Level {
 	protected void createMobs() {
 		for (int i = 0; i < mobTarget(); i++) {
 			Mob mob = Bestiary.mob(Dungeon.depth);
-			int pos;
+			int pos = -1;
+			int outerTries = 0;
 			do {
 				pos = mobSpawnCell(mob);
-			} while (pos == -1);
+				outerTries++;
+			} while (pos == -1 && outerTries < 100);
+			if (pos == -1) break; // bail out rather than infinite-loop on impossible placement
 			mob.pos = pos;
 			mobs.add(mob);
 			occupyCell(mob);
