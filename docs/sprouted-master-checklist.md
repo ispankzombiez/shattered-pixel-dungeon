@@ -28,7 +28,7 @@ Update this file at the end of each work session.
 - [x] P3-01: Route boss floors into Layouts.branchLevel() at correct branch depths (InfestBossLevel at depth 15)
 - [x] P3-02: Route/retire unrouted special levels — VaultLevel already routed; DragonCaveLevel/ZotBossLevel/SokobanCastle/SafeLevel/SafeLevel1 documented with SPROUTED_RESERVED comments
 - [x] P3-03: Verify Tinkerer1 (depth 11) → Tinkerer2 (depth 12-14) narrative arc in Mine branch
-- [ ] P4-01: Add route-audit regression checks so documented reserved/reachable status cannot drift from runtime routing
+- [x] P4-01: Add route-audit regression checks so documented reserved/reachable status cannot drift from runtime routing
 - [ ] P4-02: Add deterministic regression checks for key Sprouted progression flags/events (post-parity hardening)
 
 ## P2-03 Non-map subsystem detailed breakdown
@@ -98,3 +98,6 @@ Update this file at the end of each work session.
 
 - [x] 2026-05-17 (session 10): Continued checklist progression after P0-P3 completion by opening a post-parity hardening wave (P4) in `docs/sprouted-behavior-backlog.md`. Added two next targets: (1) route-audit regression checks for documented reserved/reachable level wrappers, and (2) deterministic regression checks for key Sprouted progression flags/events.
   - Next priority: Implement P4-01 route-audit assertions in `SproutedSeedRegressionChecks`.
+
+- [x] 2026-05-17 (session 11): Implemented P4-01 in `SproutedSeedRegressionChecks` by adding deterministic route-audit assertions: `InfestBossLevel` must remain mapped exactly at branch 2 depth 15, and documented SPROUTED_RESERVED wrappers/levels plus `VaultLevel` must remain unmapped in `Layouts.branchLevel()`.
+  - Next priority: Implement P4-02 deterministic checks for key Sprouted progression flags/events.

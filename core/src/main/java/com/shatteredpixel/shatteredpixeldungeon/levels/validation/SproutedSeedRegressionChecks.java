@@ -16,7 +16,17 @@ import com.shatteredpixel.shatteredpixeldungeon.levels.TownLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.CatacombLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.InfestBossLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.FortressLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.CrabBossLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.DragonCaveLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.MinesBossLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.MineLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.SafeLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.SafeLevel1;
+import com.shatteredpixel.shatteredpixeldungeon.levels.SkeletonBossLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.SokobanCastle;
+import com.shatteredpixel.shatteredpixeldungeon.levels.ThiefBossLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.VaultLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.ZotBossLevel;
 import com.watabou.utils.Random;
 
 public class SproutedSeedRegressionChecks {
@@ -71,6 +81,23 @@ public class SproutedSeedRegressionChecks {
 		assertRoute(25, 3, TenguHideoutLevel.class);
 		assertMissingRoute(23, 3);
 		assertMissingRoute(26, 3);
+
+		verifyDocumentedRouteAudit();
+	}
+
+	private static void verifyDocumentedRouteAudit() {
+		assertClassMappedExactly(InfestBossLevel.class, 15, 2);
+
+		assertClassNeverMappedInLayouts(MinesBossLevel.class);
+		assertClassNeverMappedInLayouts(SkeletonBossLevel.class);
+		assertClassNeverMappedInLayouts(CrabBossLevel.class);
+		assertClassNeverMappedInLayouts(ThiefBossLevel.class);
+		assertClassNeverMappedInLayouts(DragonCaveLevel.class);
+		assertClassNeverMappedInLayouts(ZotBossLevel.class);
+		assertClassNeverMappedInLayouts(SokobanCastle.class);
+		assertClassNeverMappedInLayouts(SafeLevel.class);
+		assertClassNeverMappedInLayouts(SafeLevel1.class);
+		assertClassNeverMappedInLayouts(VaultLevel.class);
 	}
 
 	private static String seededLayoutHash(long seed, LayoutType layoutType) {
@@ -121,6 +148,40 @@ public class SproutedSeedRegressionChecks {
 	private static void assertMissingRoute(int depth, int branch) {
 		if (Layouts.hasBranchRoute(depth, branch)) {
 			throw new IllegalStateException("Expected no Sprouted branch route for branch " + branch + " depth " + depth);
+		}
+	}
+
+	private static void assertClassNeverMappedInLayouts(Class<? extends Level> type) {
+		for (int branch = 0; branch <= 3; branch++) {
+			for (int depth = 1; depth <= 40; depth++) {
+				Level level = Layouts.branchLevel(depth, branch);
+				if (level != null && level.getClass() == type) {
+					throw new IllegalStateException("Expected " + type.getSimpleName()
+							+ " to remain unmapped in Layouts.branchLevel(), but found at branch " + branch
+							+ " depth " + depth);
+				}
+			}
+		}
+	}
+
+	private static void assertClassMappedExactly(Class<? extends Level> type, int expectedDepth, int expectedBranch) {
+		int matches = 0;
+		for (int branch = 0; branch <= 3; branch++) {
+			for (int depth = 1; depth <= 40; depth++) {
+				Level level = Layouts.branchLevel(depth, branch);
+				if (level != null && level.getClass() == type) {
+					matches++;
+					if (depth != expectedDepth || branch != expectedBranch) {
+						throw new IllegalStateException("Expected " + type.getSimpleName() + " only at branch "
+								+ expectedBranch + " depth " + expectedDepth + ", but found mapping at branch "
+								+ branch + " depth " + depth);
+					}
+				}
+			}
+		}
+		if (matches != 1) {
+			throw new IllegalStateException("Expected exactly one mapping for " + type.getSimpleName()
+					+ " in Layouts.branchLevel(), but found " + matches);
 		}
 	}
 
