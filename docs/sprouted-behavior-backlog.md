@@ -51,8 +51,8 @@ Session-level rollup checklist:
 |---|---|---|---|---|---|
 | P3-01 | Boss floors at designated branch depths | Boss-level classes exist as stubs; not routed | Wire MinesBossLevel/SkeletonBossLevel/CrabBossLevel/ThiefBossLevel/InfestBossLevel into Layouts.branchLevel() | `Layouts.java`, boss level classes | Boss floors are reachable via standard branch routing |
  - [x] InfestBossLevel routed at depth 15 (Mine boss: Gullin) — closes Mine 11-14 → Fortress 16-19 gap
- - [ ] MinesBossLevel: verify vs InfestBossLevel — may be a duplicate candidate for same depth
- - [ ] SkeletonBossLevel, CrabBossLevel, ThiefBossLevel: determine if standard-dungeon (branch 0) or Sprouted branch boss floors
+- [x] MinesBossLevel verified as legacy/duplicate wrapper; active mine boss route remains `InfestBossLevel` at branch 2 depth 15
+- [x] SkeletonBossLevel/CrabBossLevel/ThiefBossLevel verified as not routed by branch 0 or Sprouted branch flow; documented as reserved wrappers for future dedicated boss-floor expansion
 | P3-02 | All level types are reachable or intentionally retired | DragonCaveLevel, ZotBossLevel, SokobanCastle, SafeLevel, SafeLevel1, VaultLevel exist but are unrouted | Route into branch/depth map OR add a comment marking them as legacy/reserved | Unrouted level classes, `Layouts.java` | No level class is silently unreachable without explicit documentation |
  - [x] VaultLevel: already routed in Dungeon.java (branch 1 quest level, depths 16-19) — not unrouted
  - [x] DragonCaveLevel: documented with SPROUTED_RESERVED comment (Mine dragon encounter, intended depth 12/13)
