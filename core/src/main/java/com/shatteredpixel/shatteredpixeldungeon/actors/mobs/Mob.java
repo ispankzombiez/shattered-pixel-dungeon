@@ -65,6 +65,10 @@ import com.shatteredpixel.shatteredpixeldungeon.effects.Wound;
 import com.shatteredpixel.shatteredpixeldungeon.effects.particles.ShadowParticle;
 import com.shatteredpixel.shatteredpixeldungeon.items.Generator;
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.items.Dewdrop;
+import com.shatteredpixel.shatteredpixeldungeon.items.RedDewdrop;
+import com.shatteredpixel.shatteredpixeldungeon.items.VioletDewdrop;
+import com.shatteredpixel.shatteredpixeldungeon.items.YellowDewdrop;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.MasterThievesArmband;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.TimekeepersHourglass;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.exotic.ExoticPotion;
@@ -981,6 +985,12 @@ public abstract class Mob extends Char {
 					Dungeon.level.drop(lootThird, pos).sprite.drop();
 				}
 			}
+			if (Random.Float() < dewLootChance()) {
+				Item dewLoot = createDewLoot();
+				if (dewLoot != null) {
+					Dungeon.level.drop(dewLoot, pos).sprite.drop();
+				}
+			}
 		}
 		
 		//ring of wealth logic
@@ -1007,6 +1017,32 @@ public abstract class Mob extends Char {
 			Talent.onFoodEaten(Dungeon.hero, 0, null);
 		}
 
+	}
+
+	protected float dewLootChance() {
+		if (properties.contains(Property.BOSS)) return 1f;
+		if (properties.contains(Property.MINIBOSS)) return 0.5f;
+		return 0.2f;
+	}
+
+	protected Item createDewLoot() {
+		float roll = Random.Float();
+		if (properties.contains(Property.BOSS)) {
+			if (roll < 0.10f) return new VioletDewdrop();
+			if (roll < 0.35f) return new RedDewdrop();
+			if (roll < 0.75f) return new YellowDewdrop();
+			return new Dewdrop();
+		}
+		if (properties.contains(Property.MINIBOSS)) {
+			if (roll < 0.03f) return new VioletDewdrop();
+			if (roll < 0.15f) return new RedDewdrop();
+			if (roll < 0.50f) return new YellowDewdrop();
+			return new Dewdrop();
+		}
+		if (roll < 0.005f) return new VioletDewdrop();
+		if (roll < 0.03f) return new RedDewdrop();
+		if (roll < 0.18f) return new YellowDewdrop();
+		return new Dewdrop();
 	}
 	
 	protected Object loot = null;
