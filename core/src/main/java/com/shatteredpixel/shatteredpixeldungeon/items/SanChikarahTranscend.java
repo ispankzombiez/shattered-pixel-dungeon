@@ -32,7 +32,7 @@ public class SanChikarahTranscend extends SanChikarah {
 		if (action.equals(AC_INVOKE)) {
 			hero.HP = hero.HT;
 			hero.sprite.emitter().start(Speck.factory(Speck.HEALING), 0.04f, 20);
-			Buff.affect(hero, Bless.class, Bless.DURATION * 2);
+			Buff.affect(hero, Bless.class, Bless.DURATION * 2); // 2× Bless.DURATION = 60 turns
 			GLog.p("The SanChikarah pulses with transcendent energy — you are healed and blessed!");
 			detach(hero.belongings.backpack);
 			hero.spendAndNext(1f);
