@@ -50,7 +50,7 @@ Update this file at the end of each work session.
 - [x] `ThiefKing` (boss) — guaranteed drop: 250 Gold
 - [x] `SkeletonKing` (boss, UNDEAD) — guaranteed drop: random `NornStone`
 - [x] `CrabKing` (boss) — guaranteed drop: 3× `StoneOre`
-- [ ] Verify other Sprouted mobs have correct drop tables (audit needed)
+- [x] Remaining Sprouted mob drop-table sweep — audited (`BlueCat`, `RatBoss`, `King`, `DwarfKingTomb`, `GraveProtector`, `VaultProtector`) and currently kept on default/no-special-drop behavior
 
 ### NPC interaction completeness
 - [x] Tinkerer1–5 interact dialogs (complete)
@@ -62,7 +62,7 @@ Update this file at the end of each work session.
 - [x] Verify `NornStone` color variants have distinct effects — DONE: Blue=heal, Green=satiate, Orange=Haste, Purple=identify-all, Yellow=Bless
 
 ### Items — still pending deeper design
-- [ ] `Mushroom` — currently only has food value; confirm if it should have special properties beyond trade use
+- [x] `Mushroom` — confirmed as food-only (+trade input) with no extra special effect requirement; aligns with feature checklist parent-class target
 
 ## End-of-session update checklist (run every session)
 
@@ -80,3 +80,6 @@ Update this file at the end of each work session.
 
 - [x] 2026-05-17 (session 5): NornStone color-variant effects (Blue=heal, Green=satiate, Orange=Haste, Purple=identify-all, Yellow=Bless); mob drop table audit + loot added to Kupua/Protectors/Bosses; TownLevel Shopkeeper now stocks Weapons/Armor/NornStone/StoneOre.
   - Next priority: Mushroom special properties audit; remaining mob drop table sweep; P2-01 Town/Mine deeper behavior parity.
+
+- [x] 2026-05-17 (session 6): Completed Mushroom behavior audit (kept food+trade only) and finished remaining Sprouted mob drop-table sweep for default/no-special-drop mobs.
+  - Next priority: P2-01 Town/Mine deeper behavior parity pass.
