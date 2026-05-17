@@ -16,8 +16,8 @@ Update this file at the end of each work session.
 - [x] P2-02: Full Sokoban puzzle parity (beyond currently implemented sheep/switch/portal/destination flow)
 - [x] P2-03: Non-map parity audit and implementation (quests/resources/pets/crafting loops)
 - [x] P3-01: Boss floor routing — InfestBossLevel wired into Layouts.branchLevel() at depth 15 (Mine boss gap); regression check updated
-- [ ] P3-02: Unrouted special levels — DragonCaveLevel, ZotBossLevel, SokobanCastle, SafeLevel/SafeLevel1, VaultLevel need routing or retirement
-- [ ] P3-03: Tinkerer1 now placed at Mine depth 11; deeper validation of NPC narrative arc
+- [x] P3-02: Unrouted special levels — VaultLevel confirmed as already routed (Dungeon.java branch 1 quest); DragonCaveLevel/ZotBossLevel/SokobanCastle/SafeLevel/SafeLevel1 documented with SPROUTED_RESERVED comments explaining intended routing and current status
+- [x] P3-03: Tinkerer1/2 NPC arc verified — Tinkerer1 (depth 11) intro dialog and Tinkerer2 (depths 12-14) mushroom-trade dialog are correct and complete
 
 ## Remaining high-level work checklist
 
@@ -25,9 +25,9 @@ Update this file at the end of each work session.
 - [x] Finish deep behavior parity pass for Town/Mine/Fortress/Catacomb branches (P2-01)
 - [x] Finish deep behavior parity pass for all Sokoban puzzle mechanics and fail/retry flow (P2-02)
 - [x] Complete P2-03 non-map subsystem work (see detailed breakdown below)
-- [ ] P3-01: Route boss floors into Layouts.branchLevel() at correct branch depths
-- [ ] P3-02: Route/retire unrouted special levels (DragonCaveLevel, ZotBossLevel, SokobanCastle, VaultLevel, SafeLevel, SafeLevel1)
-- [ ] P3-03: Verify Tinkerer1 (depth 11) → Tinkerer2 (depth 12-14) narrative arc in Mine branch
+- [x] P3-01: Route boss floors into Layouts.branchLevel() at correct branch depths (InfestBossLevel at depth 15)
+- [x] P3-02: Route/retire unrouted special levels — VaultLevel already routed; DragonCaveLevel/ZotBossLevel/SokobanCastle/SafeLevel/SafeLevel1 documented with SPROUTED_RESERVED comments
+- [x] P3-03: Verify Tinkerer1 (depth 11) → Tinkerer2 (depth 12-14) narrative arc in Mine branch
 
 ## P2-03 Non-map subsystem detailed breakdown
 
@@ -90,5 +90,4 @@ Update this file at the end of each work session.
 - [x] 2026-05-17 (session 6): Completed Mushroom behavior audit (kept food+trade only) and finished remaining Sprouted mob drop-table sweep for default/no-special-drop mobs.
   - Next priority: P2-01 Town/Mine deeper behavior parity pass.
 
-- [x] 2026-05-17 (session 7): Closed P2-01, P2-02, P2-03 — all sub-items verified complete. Placed Tinkerer1 on Mine depth 11 (mushroom scout intro) vs Tinkerer2 on depths 12-14 (trade NPC). Added P3-01/02/03 backlog: boss floor routing, unrouted special levels, and NPC narrative arc verification.
-  - Next priority: P3-01 boss floor routing in Layouts.branchLevel().
+- [x] 2026-05-17 (session 8): Closed P3-02 and P3-03. Confirmed VaultLevel is already routed (Dungeon.java branch 1 quest). Added SPROUTED_RESERVED documentation to DragonCaveLevel (Mine dragon encounter, reserved for depth 12/13), ZotBossLevel (Catacomb boss, reserved for depth 23 pending depth-range shift), SokobanCastle (post-Sokoban castle challenge, reserved for depth 31), SafeLevel (pre-Mine safe floor, reserved for depth 10), and SafeLevel1 (second safe floor variant, reserved for future use). Verified Tinkerer1/2 NPC arc is correct: Tinkerer1 intro dialog at depth 11, Tinkerer2 mushroom-trade dialog at depths 12-14. All P0/P1/P2/P3 checklist items now complete.

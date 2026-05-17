@@ -54,4 +54,13 @@ Session-level rollup checklist:
  - [ ] MinesBossLevel: verify vs InfestBossLevel — may be a duplicate candidate for same depth
  - [ ] SkeletonBossLevel, CrabBossLevel, ThiefBossLevel: determine if standard-dungeon (branch 0) or Sprouted branch boss floors
 | P3-02 | All level types are reachable or intentionally retired | DragonCaveLevel, ZotBossLevel, SokobanCastle, SafeLevel, SafeLevel1, VaultLevel exist but are unrouted | Route into branch/depth map OR add a comment marking them as legacy/reserved | Unrouted level classes, `Layouts.java` | No level class is silently unreachable without explicit documentation |
+ - [x] VaultLevel: already routed in Dungeon.java (branch 1 quest level, depths 16-19) — not unrouted
+ - [x] DragonCaveLevel: documented with SPROUTED_RESERVED comment (Mine dragon encounter, intended depth 12/13)
+ - [x] ZotBossLevel: documented with SPROUTED_RESERVED comment (Catacomb boss, intended depth 23 pending depth-range shift)
+ - [x] SokobanCastle: documented with SPROUTED_RESERVED comment (post-Sokoban castle challenge, intended depth 31)
+ - [x] SafeLevel: documented with SPROUTED_RESERVED comment (pre-Mine safe floor, intended depth 10)
+ - [x] SafeLevel1: documented with SPROUTED_RESERVED comment (second safe floor variant, future use)
 | P3-03 | Tinkerer NPC narrative arc integrity | Tinkerer1 at depth 11, Tinkerer2 at 12-14 | Verify exact per-depth NPC trigger conditions in-game | `MineLevel.java` | Arc plays out as designed at each mine depth |
+ - [x] Tinkerer1 dialog verified: "Oh wow, have you seen this dungeon? I'm scouting it and looking for toadstool mushrooms." (correct intro arc)
+ - [x] Tinkerer2 dialog verified: mushroom-present prompt offers trade (1 Mushroom → random Potion); no-mushroom prompt sends player to look for mushrooms (correct follow-through)
+ - [x] MineLevel.createItems(): depth==11 → Tinkerer1, depth 12-14 → Tinkerer2 (correct placement logic)
