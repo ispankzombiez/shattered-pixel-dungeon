@@ -9,6 +9,7 @@ public static Level branchLevel(int depth, int branch) {
 switch (branch) {
 case 2:
 if (depth >= 11 && depth <= 14) return new MineLevel();
+if (depth == 15) return new InfestBossLevel();
 if (depth >= 16 && depth <= 19) return new FortressLevel();
 if (depth >= 20 && depth <= 22) return new CatacombLevel();
 if (depth == 23) return new TownLevel();

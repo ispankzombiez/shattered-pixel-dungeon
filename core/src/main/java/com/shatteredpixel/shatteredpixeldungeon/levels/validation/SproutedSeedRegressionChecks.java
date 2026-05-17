@@ -14,6 +14,7 @@ import com.shatteredpixel.shatteredpixeldungeon.levels.TenguHideoutLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.TownLayouts;
 import com.shatteredpixel.shatteredpixeldungeon.levels.TownLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.CatacombLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.InfestBossLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.FortressLevel;
 import com.shatteredpixel.shatteredpixeldungeon.levels.MineLevel;
 import com.watabou.utils.Random;
@@ -51,6 +52,7 @@ public class SproutedSeedRegressionChecks {
 	private static void verifyBranchRoutes() {
 		assertRoute(11, 2, MineLevel.class);
 		assertRoute(14, 2, MineLevel.class);
+		assertRoute(15, 2, InfestBossLevel.class);
 		assertRoute(16, 2, FortressLevel.class);
 		assertRoute(19, 2, FortressLevel.class);
 		assertRoute(20, 2, CatacombLevel.class);
@@ -63,7 +65,6 @@ public class SproutedSeedRegressionChecks {
 		assertRoute(28, 2, SokobanPuzzles2Level.class);
 		assertRoute(29, 2, SokobanTeleportLevel.class);
 		assertRoute(30, 2, SokobanVaultLevel.class);
-		assertMissingRoute(15, 2);
 		assertMissingRoute(31, 2);
 
 		assertRoute(24, 3, TownLevel.class);

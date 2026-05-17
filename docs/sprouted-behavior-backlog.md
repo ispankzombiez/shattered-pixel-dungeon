@@ -23,7 +23,7 @@ Session-level rollup checklist:
 | P1-02 | Sokoban-authored puzzle layouts are in active flow | Sokoban levels used generic RegularLevel generation | Integrate Sokoban layout parsing/stamping into Sokoban levels | `core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/levels/SokobanIntroLevel.java`, `.../SokobanPuzzlesLevel.java`, `.../SokobanPuzzles2Level.java`, `.../SokobanTeleportLevel.java`, `.../SokobanVaultLevel.java`, `.../SokobanLayouts.java`, `.../SokobanLayouts2.java`, `.../SproutedLayoutStamp.java` | P0-02 | Each Sokoban level uses deterministic authored layout symbols in map generation |
 | P1-03 | Branch area pacing scales with floor area | Mob/trap/item scaling mostly fixed | Scale trap/mob/item/retry logic with explicit profile | `core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/levels/RegularLevel.java`, `.../MapSizeProfiles.java` | P0-02 | Spawn/item density remains playable after map size increases |
 
-## P2 – Remaining parity tickets (next wave)
+## P2 – Remaining parity tickets (next wave) — ALL COMPLETE ✓
 
 | ID | Source behavior | Current behavior | Missing logic | Affected files | Dependencies | Acceptance criteria |
 |---|---|---|---|---|---|---|
@@ -31,7 +31,7 @@ Session-level rollup checklist:
  - [x] TownLevel: safe hub (randomRespawnCell=-1), NPC spawning (Shopkeeper×2, Tinkerer4, Tinkerer5)
  - [x] FortressLevel: PEDESTAL entrance/exit, CHASM→EMPTY, SanChikarahLife drop at exit, Tinkerer3 NPC spawn
  - [x] CatacombLevel: PEDESTAL entrance/exit, CHASM→EMPTY, SanChikarahDeath drop at exit, sink drip visuals
- - [x] MineLevel: Tinkerer2 NPC spawn
+ - [x] MineLevel: Tinkerer1 at depth 11 (intro scout), Tinkerer2 at depths 12-14 (mushroom trade)
  - [x] Dungeon: sanchikarahlife/sanchikarahdeath flags added with full bundle persistence
  - [x] TownLevel: storeRefresh() depth-gated shop inventory
  - [x] FortressLevel/CatacombLevel: SanChikarah flags cleared when item is picked up (SanChikarahLife/Death.doPickUp)
@@ -43,3 +43,15 @@ Session-level rollup checklist:
  - [x] Per-floor Sokoban completion rules on teleport/vault floors: exits stay locked until all Sokoban portal switches are consumed
  - [x] Destination-mapped portal networks: layout `d` markers pair switches to specific portal destinations by authored order
 | P2-03 | Full non-map parity (quests/resources/pets/crafting loops) | Partial/unknown in several subsystems | Behavior audit and implementation per subsystem | Quest/resource/pet/crafting classes across `core/src/main/java/...` | P0/P1 complete | All audit items are marked behavior-verified with deterministic seeds |
+ - [x] All P2-03 sub-items in master checklist confirmed complete (see docs/sprouted-master-checklist.md § P2-03)
+
+## P3 – Post-parity backlog
+
+| ID | Source behavior | Current behavior | Missing logic | Affected files | Acceptance criteria |
+|---|---|---|---|---|---|
+| P3-01 | Boss floors at designated branch depths | Boss-level classes exist as stubs; not routed | Wire MinesBossLevel/SkeletonBossLevel/CrabBossLevel/ThiefBossLevel/InfestBossLevel into Layouts.branchLevel() | `Layouts.java`, boss level classes | Boss floors are reachable via standard branch routing |
+ - [x] InfestBossLevel routed at depth 15 (Mine boss: Gullin) — closes Mine 11-14 → Fortress 16-19 gap
+ - [ ] MinesBossLevel: verify vs InfestBossLevel — may be a duplicate candidate for same depth
+ - [ ] SkeletonBossLevel, CrabBossLevel, ThiefBossLevel: determine if standard-dungeon (branch 0) or Sprouted branch boss floors
+| P3-02 | All level types are reachable or intentionally retired | DragonCaveLevel, ZotBossLevel, SokobanCastle, SafeLevel, SafeLevel1, VaultLevel exist but are unrouted | Route into branch/depth map OR add a comment marking them as legacy/reserved | Unrouted level classes, `Layouts.java` | No level class is silently unreachable without explicit documentation |
+| P3-03 | Tinkerer NPC narrative arc integrity | Tinkerer1 at depth 11, Tinkerer2 at 12-14 | Verify exact per-depth NPC trigger conditions in-game | `MineLevel.java` | Arc plays out as designed at each mine depth |
